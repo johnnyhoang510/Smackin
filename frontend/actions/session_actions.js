@@ -36,8 +36,8 @@ export const clearErrors = (errors) => {
 
 //thunk action creators
 
-export const login = (user) => (dispatch) => {
-    return APISessionUtil.login(user)
+export const login = (formUser) => (dispatch) => {
+    return APISessionUtil.login(formUser)
         .then(user => dispatch(receiveCurrentUser(user))
     ), err => (
         dispatch(receiveErrors(err.responseJSON))
@@ -49,8 +49,8 @@ export const logout = () => (dispatch) => {
         .then(() => dispatch(logoutCurrentUser()))
 };
 
-export const signup = (user) => (dispatch) => {
-    return APISessionUtil.signup(user)
+export const signup = (formUser) => (dispatch) => {
+    return APISessionUtil.signup(formUser)
         .then(user => dispatch(receiveCurrentUser(user))
     ), err => (
         dispatch(receiveErrors(err.responseJSON))
