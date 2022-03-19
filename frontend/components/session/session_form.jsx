@@ -9,11 +9,13 @@ class SessionForm extends React.Component {
             first_name: "",
             last_name: "",
             email: "",
-            password: ""
+            password: "",
+            zip_code: ""
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.demoLogin = this.demoLogin.bind(this);
+        this.clearErrors = this.clearErrors.bind(this);
     }
 
     handleSubmit(e) {
@@ -34,12 +36,23 @@ class SessionForm extends React.Component {
         this.props.demoLogin(user);        
     }
 
+    clearErrors() {
+        this.props.clearErrors();
+    }
+
 
     render() {
 
         const { errors, formType } = this.props;
 
-        // let showErrors;
+        let showErrors;
+        if (errors.length) {
+            showErrors = errors.map( (err, idx) => (
+                <li key={idx}>{err}</li>
+            ))
+            let error = document.getElementById('errors');
+            error.classList.add('errors')
+        };
         
 
         if (formType === "Log In") {
@@ -53,15 +66,17 @@ class SessionForm extends React.Component {
                     <form className="form" onSubmit={this.handleSubmit}>
                         <h2 className="form-type-title">Log in to Smackin'</h2>
                         <h3 className="form-type-subtitle">New to Smackin'?</h3>
-                        <Link className="switch-form-text" to="/signup">Sign Up</Link>
+                        <Link className="switch-form-text" to="/signup" onClick={this.clearErrors}>Sign Up</Link>
                         <p className="terms">By logging in, you agree to Smackin's Terms of Service and Private Policy</p>
 
                         <div className="demo-user">
                             <button onClick={this.demoLogin}>Continue as Demo User</button>
-
                         </div>
+                        <br />
 
+                        <div className="session-form-divider">OR</div>
 
+                        <br />
                         <input className="signup-login-input"
                             type="email"
                             value={this.state.email}
@@ -80,8 +95,17 @@ class SessionForm extends React.Component {
                         />
                         <br />
                         <button className="signup-login-submit" type="submit">{formType}</button>
-                        <p className="switch-form-text-2">New to Smackin'?</p>
-                        <Link className="switch-form-2" to="/signup">Sign Up</Link>
+
+                        <h4 className="switch-form-text-2">New to Smackin'?
+                            <Link className="switch-form-2" to="/signup" onClick={this.clearErrors}>Sign Up</Link>
+                        </h4>
+
+                        <div className="errors-container">
+                            <ul id="errors">
+                                {showErrors}
+                            </ul>
+                        </div>
+
                     </form>
                 </div>
             )
@@ -99,6 +123,30 @@ class SessionForm extends React.Component {
                         <h3 className="form-type-subtitle">Connect with great local businesses</h3>
                         <p className="terms">By continuing, you agree to Smackin’s Terms of Service and acknowledge Smackin’s Privacy Policy.</p>
 
+                        <div className="demo-user">
+                            <button onClick={this.demoLogin}>Continue as Demo User</button>
+                        </div>
+                        <br />
+
+                        <div className="session-form-divider">OR</div>
+
+                        <br />
+                        <input className="form-name-input"
+                            type="text"
+                            value={this.state.first_name}
+                            onChange={this.update('first_name')}
+                            placeholder="First Name"
+                            required
+                        />
+                        <input className="form-name-input"
+                            type="text"
+                            value={this.state.last_name}
+                            onChange={this.update('last_name')}
+                            placeholder="Last Name"
+                            required
+                        />
+
+                        <br />
                         <input className="signup-login-input"
                             type="email"
                             value={this.state.email}
@@ -116,8 +164,26 @@ class SessionForm extends React.Component {
                             required
                         />
                         <br />
+
+                        <input className="signup-login-input"
+                            type="text"
+                            value={this.state.zip_code}
+                            onChange={this.update('zip_code')}
+                            placeholder="Zip Code"
+                            required
+                        />
+                        <br />
                         <button className="signup-login-submit" type="submit">{formType}</button>
-                        <Link className="switch-form" to="/signup">Sign Up</Link>
+                        <h4 className="switch-form-text-2">Already on Smackin'?
+                            <Link className="switch-form" to="/login" onClick={this.clearErrors}>Login</Link>
+                        </h4>
+
+                        <div className="errors-container">
+                            <ul id="errors">
+                                {showErrors}
+                            </ul>
+                        </div>
+
                     </form>
                 </div>
             )
