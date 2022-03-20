@@ -65,19 +65,22 @@ class SessionForm extends React.Component {
 
                     <form className="form" onSubmit={this.handleSubmit}>
                         <h2 className="form-type-title">Log in to Smackin'</h2>
-                        <h3 className="form-type-subtitle">New to Smackin'?</h3>
-                        <Link className="switch-form-text" to="/signup" onClick={this.clearErrors}>Sign Up</Link>
-                        <p className="terms">By logging in, you agree to Smackin's Terms of Service and Private Policy</p>
+
+                        <div className="switch-form-header">
+                            <h3 className="switch-form-subtitle">New to Smackin'?</h3>
+                            <Link className="switch-form-link" to="/signup" onClick={this.clearErrors}>Sign Up</Link>
+                        </div>
+                        <p className="terms">By logging in, you agree to Smackin's Terms of Service and Private Policy.</p>
 
                         <div className="demo-user">
-                            <button onClick={this.demoLogin}>Continue as Demo User</button>
+                            <button className="demo-button" onClick={this.demoLogin}>Continue as Demo User</button>
                         </div>
                         <br />
 
                         <div className="session-form-divider">OR</div>
 
                         <br />
-                        <input className="signup-login-input"
+                        <input className="login-input"
                             type="email"
                             value={this.state.email}
                             onChange={this.update('email')}
@@ -86,7 +89,7 @@ class SessionForm extends React.Component {
                         />
                         <br />
 
-                        <input className="signup-login-input"
+                        <input className="login-input"
                             type="password"
                             value={this.state.password}
                             onChange={this.update('password')}
@@ -120,25 +123,28 @@ class SessionForm extends React.Component {
 
                     <form className="form" onSubmit={this.handleSubmit}>
                         <h2 className="form-type-title">Sign Up for Smackin'</h2>
-                        <h3 className="form-type-subtitle">Connect with great local businesses</h3>
-                        <p className="terms">By continuing, you agree to Smackin’s Terms of Service and acknowledge Smackin’s Privacy Policy.</p>
+
+                        <div className="switch-form-header">
+                            <h3 className="signup-subtitle">Connect with great local businesses</h3>
+                            <p className="terms-2">By continuing, you agree to Smackin’s Terms of Service and acknowledge Smackin’s Privacy Policy.</p>
+                        </div>
 
                         <div className="demo-user">
-                            <button onClick={this.demoLogin}>Continue as Demo User</button>
+                            <button className="demo-button" onClick={this.demoLogin}>Continue as Demo User</button>
                         </div>
                         <br />
 
                         <div className="session-form-divider">OR</div>
 
                         <br />
-                        <input className="form-name-input"
+                        <input className="first-name-input"
                             type="text"
                             value={this.state.first_name}
                             onChange={this.update('first_name')}
                             placeholder="First Name"
                             required
                         />
-                        <input className="form-name-input"
+                        <input className="last-name-input"
                             type="text"
                             value={this.state.last_name}
                             onChange={this.update('last_name')}
@@ -147,7 +153,7 @@ class SessionForm extends React.Component {
                         />
 
                         <br />
-                        <input className="signup-login-input"
+                        <input className="signup-input"
                             type="email"
                             value={this.state.email}
                             onChange={this.update('email')}
@@ -156,7 +162,7 @@ class SessionForm extends React.Component {
                         />
                         <br />
 
-                        <input className="signup-login-input"
+                        <input className="signup-input"
                             type="password"
                             value={this.state.password}
                             onChange={this.update('password')}
@@ -165,7 +171,7 @@ class SessionForm extends React.Component {
                         />
                         <br />
 
-                        <input className="signup-login-input"
+                        <input className="signup-input"
                             type="text"
                             value={this.state.zip_code}
                             onChange={this.update('zip_code')}
@@ -174,8 +180,8 @@ class SessionForm extends React.Component {
                         />
                         <br />
                         <button className="signup-login-submit" type="submit">{formType}</button>
-                        <h4 className="switch-form-text-2">Already on Smackin'?
-                            <Link className="switch-form" to="/login" onClick={this.clearErrors}>Login</Link>
+                        <h4 className="switch-form-text">Already on Smackin'?
+                            <Link className="switch-form" to="/login" onClick={this.clearErrors}>Log in</Link>
                         </h4>
 
                         <div className="errors-container">

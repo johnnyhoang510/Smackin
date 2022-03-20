@@ -3,6 +3,10 @@
     justify-content: center;
 }
 
+.form {
+    width: 50%;
+}
+
 .session-form-header {
     display: flex;
     position: absolute;
@@ -18,7 +22,7 @@
     text-decoration: none;
     color: white;
     font-size: 24px;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 700;
     
 }
@@ -28,6 +32,230 @@
     text-decoration: none;
     color: white;
     font-size: 18px;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 700;
+}
+
+
+.form-type-title {
+    display: flex;
+    justify-content: center;
+    color: #d32323;
+    margin-top: 185px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+}
+
+.switch-form-header {
+    color: #333;
+    display: flex;
+    justify-content: center;
+}
+
+.switch-form-subtitle {
+    display: flex;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    margin: 0 0 12px;
+    font-weight: 700;
+    padding-top: 10px;
+}
+
+.switch-form-link {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    padding-left: 5px;
+    color: #0073bb;
+    font-weight: 700;
+    padding-top: 10px;
+}
+
+.switch-form-link:hover{
+    text-decoration: underline;
+}
+
+.terms {
+    display: flex;
+    justify-content: center;
+    color: #333;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    margin-bottom: 12px;
+    width: 53%;
+    margin-left: 23%;
+    text-align: center;
+    line-height: 1.5em;
+}
+
+.demo-user {
+    display: flex;
+    justify-content: center;
+}
+
+.demo-button {
+    color: #666;
+    background-color: white;
+    border: 1px solid #ccc;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    border-radius: 4px;
+    width: 50%;
+    height: 35px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.demo-button:hover {
+    color: white;
+    background-color: #666;
+    transition: all 1s;
+    border-color: white;
+}
+
+.session-form-divider {
+    display: flex;
+    justify-content: center;
+    color: #666;
+    font-size: 14px;
+    margin: 10px 0px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.login-input {
+    display: block;
+    width: 48%;
+    margin-left: 25%;
+    height: 30px;
+    background-color: white;
+    border: 1px solid #ccc;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    border-radius: 4px;
+    padding-left: 8px;
+}
+
+.signup-login-submit {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    display: block;
+    background-color: #d32323;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    width: 50%;
+    margin-left: 25%;
+    font-size: 17px;
+    font-weight: 700;
+    height: 42px;
+    border: 1px solid #d32323;
+    border-radius: 4px;
+    margin-top: 10px;
+}   
+
+.signup-login-submit:hover {
+    opacity: 0.88;
+    transition: all 0.6s;
+}
+
+.switch-form-text-2 {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    color: #999;
+    margin-left: 47%;
+    padding-top: 10px;
+}
+
+.switch-form-2 {
+    text-decoration: none;
+    color: #0073bb;
+    padding-left: 5px;
+}
+
+.switch-form-2:hover {
+    text-decoration: underline;
+}
+
+.signup-subtitle {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #333;
+    position: absolute;
+    padding-top: 15px;
+}
+
+.terms-2 {
+    position: relative;
+    padding-top: 45px;
+    color: #333;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    margin-bottom: 15px;
+    width: 52%;
+    margin-left: 0%;
+    text-align: center;
+    line-height: 1.5em;
+}
+
+.first-name-input {
+    margin-left: 25%;
+    width: 22.5%;
+    padding-left: 5px;
+    height: 28px;
+    background-color: white;
+    border: 1px solid #ccc;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    border-radius: 4px;
+    padding-left: 8px;
+    margin-bottom: 10px;
+}
+
+.last-name-input {
+    width: 22.5%;
+    padding-left: 5px;
+    margin-left: 6px;
+    height: 28px;
+    background-color: white;
+    border: 1px solid #ccc;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    border-radius: 4px;
+    padding-left: 8px;
+}
+
+.signup-input {
+    display: flex;
+    justify-content: center;
+    width: 49%;
+    margin-left: 25%;
+    padding-left: 5px;
+    height: 28px;
+    background-color: white;
+    border: 1px solid #ccc;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    border-radius: 4px;
+    margin-bottom: -3px;
+}
+
+.switch-form {
+    text-decoration: none;
+    color: #0073bb;
+    padding-left: 5px;
+}
+
+.switch-form:hover {
+    text-decoration: underline;
+}
+
+.switch-form-text {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    color: #999;
+    margin-left: 45%;
+    padding-top: 10px;
 }
