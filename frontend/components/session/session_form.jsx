@@ -59,8 +59,8 @@ class SessionForm extends React.Component {
             return(
                 <div className="signup-login-form">
                     <header className="session-form-header">
-                        <Link className="session-form-header-link" to="/">Smackin'</Link>
-                        <Link className="session-form-header-logo" to="/">Logo goes here</Link>
+                        <Link className="session-form-header-link" to="/">smackin'</Link>
+                        <Link className="session-form-header-logo" to="/">(Logo goes here)</Link>
                     </header>
 
                     <form className="form" onSubmit={this.handleSubmit}>
@@ -114,8 +114,8 @@ class SessionForm extends React.Component {
             return (
                 <div className="signup-login-form">
                     <header className="session-form-header">
-                        <Link className="session-form-header-link" to="/">Smackin'</Link>
-                        <Link className="session-form-header-logo" to="/">Logo goes here</Link>
+                        <Link className="session-form-header-link" to="/">smackin'</Link>
+                        <Link className="session-form-header-logo" to="/">(Logo goes here)</Link>
                     </header>
 
                     <form className="form" onSubmit={this.handleSubmit}>

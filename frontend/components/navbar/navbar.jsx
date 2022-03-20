@@ -11,7 +11,7 @@ class NavBar extends React.Component {
         const { currentUser, logout} = this.props;
         const display = currentUser ? (
             <div>
-                <h2>Welcome!</h2>
+                <h2>Welcome, {currentUser.first_name}!</h2>
                 {/* <h2>Welcome, {currentUser.email}!</h2> */}
                 <button onClick={logout}>Log out</button>
             </div>
