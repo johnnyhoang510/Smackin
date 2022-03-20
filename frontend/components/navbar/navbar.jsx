@@ -11,9 +11,8 @@ class NavBar extends React.Component {
         const { currentUser, logout} = this.props;
         const display = currentUser ? (
             <div>
-                <h2>Welcome, {currentUser.first_name}!</h2>
-                {/* <h2>Welcome, {currentUser.email}!</h2> */}
-                <button onClick={logout}>Log out</button>
+                <h2 className="welcome-user">Welcome, {currentUser.first_name}!</h2>
+                <button className="logout-user" onClick={logout}>Log out</button>
             </div>
         ) : (
             <div>
@@ -33,30 +32,3 @@ class NavBar extends React.Component {
 
 export default NavBar;
 
-// export default ({ currentUser, logout }) => {
-
-//     const display = currentUser ? (
-//         <div>
-//             {console.log(currentUser)}
-//             <h2>Hello</h2>
-//             <button onClick={logout}>LogOut</button>
-//         </div>
-//     ) : (
-//         <div>
-//             {console.log(currentUser)}
-//             {console.log(logout)}
-            
-//             <Link to='/signup'>Sign Up</Link>
-//             <Link to='/login'>Log In</Link>
-//             <button onClick={logout}>LogOut</button>
-
-//         </div>
-//     );
-
-//     return (
-//         <div>
-//             <h1>{display}</h1>
-//         </div>
-//     )
-
-// }

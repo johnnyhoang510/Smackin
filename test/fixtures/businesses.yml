@@ -1,0 +1,30 @@
+# == Schema Information
+#
+# Table name: businesses
+#
+#  id           :bigint           not null, primary key
+#  name         :string           not null
+#  address      :string           not null
+#  city         :string           not null
+#  state        :string           not null
+#  zip_code     :string           not null
+#  phone_number :string           not null
+#  category     :string           not null
+#  website      :string
+#  lat          :decimal(, )      not null
+#  lng          :decimal(, )      not null
+#  price        :string
+#  hours        :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+# column: value
