@@ -4,24 +4,31 @@ import { withRouter } from "react-router";
 class BusinessShowPage extends React.Component {
     constructor(props) {
         super(props);
-        // console.log(this.props)
-        // console.log("from constructor")
     }
     
     componentDidMount() {
-        this.props.fetchBusiness(this.props.match.params.businessId);
-        // console.log("from componentdidmount")
-        // console.log(this.props);
+        // debugger
+        this.props.fetchBusiness(this.props.businessId)
     };
+
+    
+    componentDidUpdate(prevProps) {
+        if (prevProps.businessId !== this.props.businessId) {
+            this.props.fetchBusiness(this.props.businessId)
+        }
+    }
     
 
     render() {
-
+        // console.log(this.props)
         const { business } = this.props;
-        // console.log(this.props);
-        // console.log("from render")
+
+        // on a re render, this will allow it to hit compDidMount
+        if (business === undefined) return null;
+        
         return(
             <div>
+                {business.name}
                 <h1>Welcome to the show page</h1>
             </div>
         )

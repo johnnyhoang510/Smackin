@@ -8,7 +8,8 @@ const BusinessReducer = (state = {}, action) => {
         case RECEIVE_ALL_BUSINESSES:
             return action.businesses;
         case RECEIVE_BUSINESS:
-            return nextState[action.business.id] = action.business
+            nextState[action.business.id] = action.business;
+            return nextState;
         default:
             return state;
     }
