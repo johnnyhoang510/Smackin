@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class BusinessIndexItem extends React.Component {
     constructor(props) {
@@ -12,6 +13,7 @@ class BusinessIndexItem extends React.Component {
         return (
             <div className="biz-index-item-wrapper">
                 <li className="biz-index-item-container">
+                    <Link to={`/businesses/${business.id}`}>Link to show page</Link>
                     <div className="biz-index-item-name">
                         {business.name}
                     </div>
