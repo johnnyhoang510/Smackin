@@ -111,7 +111,8 @@
 
 .demo-button:hover {
     color: white;
-    background-color: #666;
+    background-color: #d32323;
+    /* background-color: #666; */
     transition: all 1s;
     border-color: white;
 }
@@ -202,7 +203,7 @@
 
 .first-name-input {
     margin-left: 25%;
-    width: 22.5%;
+    width: 23%;
     padding-left: 5px;
     height: 28px;
     background-color: white;
@@ -215,9 +216,9 @@
 }
 
 .last-name-input {
-    width: 22.5%;
+    width: 23%;
     padding-left: 5px;
-    margin-left: 6px;
+    margin-left: 4px;
     height: 28px;
     background-color: white;
     border: 1px solid #ccc;
@@ -253,9 +254,10 @@
 }
 
 .switch-form-text {
+    display: flex;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 12px;
     color: #999;
-    margin-left: 45%;
+    margin-left: 48%;
     padding-top: 10px;
 }

@@ -38,9 +38,9 @@ export const clearErrors = (errors) => {
 
 export const login = (formUser) => (dispatch) => {
     return APISessionUtil.login(formUser)
-        .then(user => dispatch(receiveCurrentUser(user))
-    ), err => (
-        dispatch(receiveErrors(err.responseJSON))
+        .then(
+            user => dispatch(receiveCurrentUser(user)),
+            err => dispatch(receiveErrors(err.responseJSON))
     )
 };
 
@@ -51,8 +51,8 @@ export const logout = () => (dispatch) => {
 
 export const signup = (formUser) => (dispatch) => {
     return APISessionUtil.signup(formUser)
-        .then(user => dispatch(receiveCurrentUser(user))
-    ), err => (
-        dispatch(receiveErrors(err.responseJSON))
+        .then(
+            user => dispatch(receiveCurrentUser(user)),
+            err => dispatch(receiveErrors(err.responseJSON))
     )
 };
