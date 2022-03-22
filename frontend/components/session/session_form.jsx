@@ -36,6 +36,7 @@ class SessionForm extends React.Component {
         this.props.demoLogin(user);        
     }
 
+    // not clearing when keying in url
     clearErrors() {
         this.props.clearErrors();
     }

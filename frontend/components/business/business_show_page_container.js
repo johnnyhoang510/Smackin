@@ -7,8 +7,8 @@ import { withRouter } from "react-router";
 const mSTP = (state, ownProps) => {
     // console.log(state)
     return {
-        business: state.entities.businesses[ownProps.match.params.businessId]
-        // businessId: ownProps.match.params.businessId
+        business: state.entities.businesses[ownProps.match.params.businessId],
+        businessId: ownProps.match.params.businessId
     }
 };
 

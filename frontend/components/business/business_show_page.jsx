@@ -18,12 +18,13 @@ class BusinessShowPage extends React.Component {
     };
 
     
-    // componentDidUpdate(prevProps) {
-    //     console.log(prevProps.businessId);
-    //     if (prevProps.businessId !== this.props.businessId) {
-    //         this.componentDidMount();
-    //     }
-    // }
+    // when keying in url, this will maintain state
+    componentDidUpdate(prevProps) {
+        // console.log(prevProps.businessId);
+        if (prevProps.businessId !== this.props.businessId) {
+            this.componentDidMount();
+        }
+    }
     
 
     render() {
