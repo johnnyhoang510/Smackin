@@ -14,15 +14,16 @@ class BusinessShowPage extends React.Component {
     
     componentDidMount() {
         // debugger
-        this.props.fetchBusiness(this.props.businessId)
+        this.props.fetchBusiness(this.props.match.params.businessId)
     };
 
     
-    componentDidUpdate(prevProps) {
-        if (prevProps.businessId !== this.props.businessId) {
-            this.componentDidMount();
-        }
-    }
+    // componentDidUpdate(prevProps) {
+    //     console.log(prevProps.businessId);
+    //     if (prevProps.businessId !== this.props.businessId) {
+    //         this.componentDidMount();
+    //     }
+    // }
     
 
     render() {

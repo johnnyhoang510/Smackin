@@ -50,8 +50,6 @@ class SessionForm extends React.Component {
             showErrors = errors.map( (err, idx) => (
                 <li key={idx}>{err}</li>
             ))
-            let error = document.getElementById('errors');
-            error.classList.add('errors')
         };
         
 
@@ -104,7 +102,7 @@ class SessionForm extends React.Component {
                         </h4>
 
                         <div className="errors-container">
-                            <ul id="errors">
+                            <ul id="show-errors">
                                 {showErrors}
                             </ul>
                         </div>
@@ -185,7 +183,7 @@ class SessionForm extends React.Component {
                         </h4>
 
                         <div className="errors-container">
-                            <ul id="errors">
+                            <ul id="show-errors">
                                 {showErrors}
                             </ul>
                         </div>
