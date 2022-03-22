@@ -39,6 +39,10 @@ class BusinessShowPage extends React.Component {
                     <NavBarContainer />
                 </div>
 
+                <div className="biz-show-background-photos">
+                    <h1>(Background photos here)</h1>
+                </div>
+
                 <div className="biz-show-header">
                     <h1 className="biz-show-name">{business.name}</h1>
 
@@ -111,6 +115,10 @@ class BusinessShowPage extends React.Component {
                     <div className="biz-show-aside-info-directions">
                         <a href="#" target="_blank">Get Directions (need to source link)</a>
                     </div>
+                </div>
+
+                <div className="biz-show-rec-reviews">
+                    <h1>ReviewIndexContainer here!</h1>
                 </div>
 
             </div>
