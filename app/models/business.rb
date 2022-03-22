@@ -26,5 +26,5 @@ class Business < ApplicationRecord
         foreign_key: :business_id,
         class_name: :Business
 
-    has_one_attached :photo
+    has_many_attached :photos
 end

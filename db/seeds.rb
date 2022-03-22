@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+require 'open-uri'
 
 User.destroy_all
 Business.destroy_all
@@ -19,6 +20,8 @@ user5 = User.create!(first_name: 'Demo', last_name: 'User', email:'demouser@emai
 
 # ----- businesses
 business1 = Business.create!(name: "TrueBurger", address: "146 Grand Ave", city: "Oakland", state: "CA", zip_code: 94612, phone_number: "(510) 208-5678", category:"Burgers", website:"http://www.trueburgeroakland.com", lat: 37.80279145639032, lng: -122.26515935093786, price:"$$", hours: "11:00AM - 8:00PM")
+business1.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/trueburger.jpg"), filename: "trueburger.jpg")
+
 business2 = Business.create!(name: "Tacos Mi Rancho", address: "1434 1st Ave", city: "Oakland", state: "CA", zip_code: 94606, phone_number: "(510) 395-1403", category:"Mexican", website:"https://www.tacos.com", lat: 37.799534, lng: -122.256362, price:"$$", hours: "9:00AM - 12:00AM")
 business4 = Business.create!(name: "Kansai", address: "4345 Telegraph Ave", city: "Oakland", state: "CA", zip_code: 94609, phone_number: "(510) 658-7273", category:"Japanese", website:"https://www.orderkansai.com", lat: 37.83200063948505, lng: -122.26393759431681, price:"$", hours: "11:30AM - 11:30PM")
 business5 = Business.create!(name: "L & S Fish & Chips", address: "326 E 18th St", city: "Oakland", state: "CA", zip_code: 94606, phone_number: "(510) 625-1700", category:"Seafood", website:"http://www.louisianafishandchips.net/", lat: 37.79970435200378, lng: -122.25139858853203, price:"$", hours: "12:0PAM - 6:30PM")

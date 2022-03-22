@@ -9,11 +9,21 @@ class BusinessIndexItem extends React.Component {
     render() {
 
         const {business} = this.props;
+        // console.log(business)
+        let renderPhoto;
+        if (business.photoURLs) {
+            renderPhoto = business.photoURLs.shift();
+        } else {
+            renderPhoto = "#"
+        };
 
         return (
             <div className="biz-index-item-wrapper">
                 <li className="biz-index-item-container">
-                    <Link to={`/businesses/${business.id}`}>Link to show page</Link>
+                    <Link to={`/businesses/${business.id}`}>(whole container should be link)</Link>
+                    <div className="biz-index-photo-wrapper">
+                        <img className="biz-index-photo" src={renderPhoto} alt="" />
+                    </div>
                     <div className="biz-index-item-name">
                         {business.name}
                     </div>

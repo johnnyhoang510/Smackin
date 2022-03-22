@@ -43,6 +43,7 @@ class BusinessShowPage extends React.Component {
 
                 <div className="biz-show-background-photos">
                     <h1>(Background photos here)</h1>
+                    {business.photoURLs.map( (photo_url, idx) => <img key={idx} className="biz-show-photo" src={photo_url} alt="" />)}
                 </div>
 
                 <div className="biz-show-header">

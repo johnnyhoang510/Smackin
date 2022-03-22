@@ -18,8 +18,7 @@ class BusinessIndex extends React.Component {
             <div>
                 <h1>Hi from business index</h1>
                 <br />
-                <h2>SEARCH BAR COMPONENT AT THE TOP OF PAGE</h2>
-                <h2>NOTE: CLICKING ON CONTAINER SHOULD LINK TO SHOW PAGE</h2>
+                <h2>(SEARCH BAR COMPONENT HERE)</h2>
 
                 <ul>
                     {businesses.map(business => (
