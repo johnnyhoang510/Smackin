@@ -1,5 +1,7 @@
 import React from "react";
 import NavBarContainer from "../navbar/navbar_container";
+import { Link } from "react-router-dom";
+
 
 class BusinessShowPage extends React.Component {
     constructor(props) {
@@ -30,10 +32,10 @@ class BusinessShowPage extends React.Component {
     render() {
         // console.log(this.props)
         const { business } = this.props;
-
         // on a rerender, this will allow it to hit compDidMount
         if (!business) return null;
-        
+
+
         return(
             <div className="biz-show-container">
 
@@ -63,7 +65,7 @@ class BusinessShowPage extends React.Component {
                 </div>
 
                 <div className="biz-show-write-review-container">
-                    <p className="biz-show-write-review-link">Write a Review (link to review)</p>
+                    <Link to={`/businesses/${business.id}/reviews/new`} className="biz-show-review-link">Write a Review</Link>
                 </div>
 
                 <div className="biz-show-location-hours-container">
