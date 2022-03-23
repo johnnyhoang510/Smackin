@@ -28,13 +28,14 @@ business1.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.c
 business1.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/trueburger3.jpg"), filename: "trueburger3.jpg")
 
 business2 = Business.create!(name: "Tacos Mi Rancho", address: "1434 1st Ave", city: "Oakland", state: "CA", zip_code: 94606, phone_number: "(510) 395-1403", category:"Mexican", website:"https://www.tacos.com", lat: 37.799534, lng: -122.256362, price:"$$", hours: "9:00AM - 12:00AM")
-business2.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/rancho.jpg"), filename: "rancho.jpg")
+business2.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/rancho4.jpg"), filename: "rancho4.jpg")
 business2.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/rancho2.jpg"), filename: "rancho2.jpg")
+business2.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/rancho.jpg"), filename: "rancho.jpg")
 business2.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/rancho3.jpg"), filename: "rancho3.jpg")
 
 business3 = Business.create!(name: "Smokin Woods BBQ", address: "4307 Telegraph Ave", city: "Oakland", state: "CA", zip_code: 94609, phone_number: "(510) 423-8634", category:"Barbeque", website:"https://www.smokinwoodsbbq.com", lat: 37.831919065169, lng: -122.26410305981324, price:"$$", hours: "12:00PM - 9:00PM")
-business3.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/smokinwoods.jpg"), filename: "smokinwoods.jpg")
 business3.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/smokinwoods2.jpg"), filename: "smokinwoods2.jpg")
+business3.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/smokinwoods.jpg"), filename: "smokinwoods.jpg")
 business3.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/smokinwoods3.jpg"), filename: "smokinwoods3.jpg")
 
 business4 = Business.create!(name: "Kansai", address: "4345 Telegraph Ave", city: "Oakland", state: "CA", zip_code: 94609, phone_number: "(510) 658-7273", category:"Japanese", website:"https://www.orderkansai.com", lat: 37.83200063948505, lng: -122.26393759431681, price:"$", hours: "11:30AM - 11:30PM")
@@ -48,23 +49,23 @@ business5.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.c
 business5.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/lns3.jpg"), filename: "lns3.jpg")
 
 business6 = Business.create!(name: "Monster Pho", address: "360 40th St", city: "Oakland", state: "CA", zip_code: 94609, phone_number: "(510) 788-4459", category:"Vietnamese", website:"https://www.monsterpho.com", lat: 37.8308727322662, lng: -122.2577183573041, price:"$", hours: "11:00AM - 8:00PM")
-business6.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/monsterpho.jpg"), filename: "monsterpho.jpg")
-business6.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/monsterpho2.jpg"), filename: "monsterpho2.jpg")
 business6.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/monsterpho3.jpg"), filename: "monsterpho3.jpg")
+business6.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/monsterpho2.jpg"), filename: "monsterpho2.jpg")
+business6.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/monsterpho.jpg"), filename: "monsterpho.jpg")
 
 business7 = Business.create!(name: "Jong Ga House", address: "372 Grand Ave", city: "Oakland", state: "CA", zip_code: 94610, phone_number: "(510) 444-7658", category:"Korean", website:"https://www.jonggahouse.com", lat: 37.80912742696728, lng: -122.254985730861, price:"$$", hours: "11:00AM - 11:00PM")
-business7.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/jongga.jpg"), filename: "jongga.jpg")
 business7.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/jongga2.jpg"), filename: "jongga2.jpg")
+business7.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/jongga.jpg"), filename: "jongga.jpg")
 business7.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/jongga3.jpg"), filename: "jongga3.jpg")
 
 business8 = Business.create!(name: "Mad Oak", address: "135 12th St", city: "Oakland", state: "CA", zip_code: 94607, phone_number: "(510) 843-7416", category:"Bars", website:"https://www.madoakbar.com", lat: 37.80006416808729, lng: -122.26469191551965, price:"$$", hours: "3:00PM - 12:00AM")
+business8.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/madoak3.jpg"), filename: "madoak3.jpg")
 business8.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/madoak.jpg"), filename: "madoak.jpg")
 business8.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/madoak2.jpg"), filename: "madoak2.jpg")
-business8.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/madoak3.jpg"), filename: "madoak3.jpg")
 
 business9 = Business.create!(name: "World Famous Hotboys", address: "1601 San Pablo Ave", city: "Oakland", state: "CA", zip_code: 94612, phone_number: "(510) 000-0000", category:"Burgers", website:"https://www.worldfamoushotboys.com", lat: 37.8066309466293, lng: -122.27223291736733, price:"$$", hours: "11:00AM - 9:00PM")
-business9.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/hotboys.jpg"), filename: "hotboys.jpg")
 business9.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/hotboys2.jpg"), filename: "hotboys2.jpg")
+business9.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/hotboys.jpg"), filename: "hotboys.jpg")
 business9.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/hotboys3.jpg"), filename: "hotboys3.jpg")
 
 business10 = Business.create!(name: "Yokee Milk Tea", address: "1728 Franklin St", city: "Oakland", state: "CA", zip_code: 94612, phone_number: "(510) 836-3288", category:"Milk tea", website:"https://www.yokee.business.site", lat: 37.8067426065941, lng: -122.26810218853186, price:"$", hours: "11:00AM - 6:00PM")
