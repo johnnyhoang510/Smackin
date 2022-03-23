@@ -13,6 +13,7 @@ class NavBar extends React.Component {
             <div>
                 <h2 className="welcome-user">Welcome, {currentUser.first_name}!</h2>
                 <button className="logout-user" onClick={logout}>Log out</button>
+                <Link className="nav-businesses" to='/businesses'>Businesses</Link>
             </div>
         ) : (
             <div>

@@ -14,6 +14,12 @@ User.destroy_all
 Business.destroy_all
 Review.destroy_all
 
+# resets the IDs
+ActiveRecord::Base.connection.reset_pk_sequence!('users')
+ActiveRecord::Base.connection.reset_pk_sequence!('businesses')
+ActiveRecord::Base.connection.reset_pk_sequence!('reviews')
+
+
 # ----- users
 user1 = User.create!(first_name: 'John', last_name: 'Smith', email:'johnsmith@email.com', password: 'password', zip_code: 94606)
 user2 = User.create!(first_name: 'Rick', last_name: 'Sanchez', email:'ricksanchez@email.com', password: 'password', zip_code: 94605)

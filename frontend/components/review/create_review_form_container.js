@@ -9,7 +9,7 @@ const mSTP = (state, ownProps) => {
     return {
         currentUser: state.entities.users[state.session.id],
         business: state.entities.businesses[ownProps.match.params.businessId],
-        errors: Object.values(state.errors.review),
+        errors: state.errors.review,
         user_id: state.session.id
     }
 };

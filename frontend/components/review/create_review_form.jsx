@@ -21,7 +21,9 @@ class CreateReviewForm extends React.Component{
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.createReview(this.state, this.props.match.params.businessId)
+        this.props.createReview(this.state, this.props.business.id)
+            .then(() => this.props.history.push(`/businesses/${this.props.business.id}`))
+        // redirect the user back to show page
     }
 
     update(field) {
@@ -30,10 +32,18 @@ class CreateReviewForm extends React.Component{
 
     render() {
 
-        const { business } = this.props;
+        const { business, errors } = this.props;
+        console.log(errors)
         // console.log(this.state);
         // console.log(this.props);
         if (!business) return null;
+
+        let showErrors;
+        if (errors.length) {
+            showErrors = errors.map( (err, idx) => (
+                <li key={idx}>{err}</li>
+            ))
+        };
 
         return(
             <div className="create-review-form-container">
@@ -59,10 +69,16 @@ class CreateReviewForm extends React.Component{
                         <input id="rating-5" type="radio"  value="5" onChange={this.update('rating')} name="rating"/>
                     </div>
 
-                    <textarea rows="25" cols="70" className="create-review-form-textarea" placeholder="it was trash"></textarea>
+                    <textarea rows="25" cols="70" className="create-review-form-textarea" onChange={this.update('body')} placeholder="it was trash" required></textarea>
                     <br />
                     <button type="submit" className="create-review-form-submit">Post Review</button>
                 </form>
+
+                <div className="create-review-form-errors">
+                    <ul className="create-review-show-errors">
+                        {showErrors}
+                    </ul>
+                </div>
             </div>
         )
     }
