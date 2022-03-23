@@ -4,7 +4,7 @@ import { login, logout, signup } from './actions/session_actions';
 import configureStore from "./store/store";
 import Root from "./components/root";
 import { fetchBusinesses, fetchBusiness } from "./actions/business_actions";
-import { fetchReviews, fetchReview, createReview, updateReview, deleteReview } from "./util/review_api_util";
+import { fetchReviews, fetchReview, createReview, updateReview, deleteReview } from "./actions/review_actions"
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.getElementById('root');
