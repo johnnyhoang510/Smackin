@@ -1,10 +1,14 @@
 class Api::ReviewsController < ApplicationController
     # :index, :create, :show, :update, :destroy
 
-    before_action :require_logged_in, only: [:create, :show, :update, :destroy]
+    # before_action :require_logged_in, only: [:create, :show, :update, :destroy]
 
     def index
-        @reviews = Review.all
+        if params[:business_id]
+            @reviews = Review.where(business_id: params[:business_id])
+        else
+            @reviews = Review.all
+        end
         render :index
     end
 
