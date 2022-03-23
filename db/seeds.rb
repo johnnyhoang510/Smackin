@@ -83,13 +83,45 @@ business12.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.
 business12.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/farmhouse3.jpg"), filename: "farmhouse3.jpg")
 
 business13 = Business.create!(name: "MAMA Oakland", address: "388 Grand Ave", city: "Oakland", state: "CA", zip_code: 94610, phone_number: "(510) 974-6372", category:"Italian", website:"https://www.mama-oakland.com", lat: 37.80921062565971, lng: -122.25453175969645, price:"$$$", hours: "5:00M - 9:00PM")
+business13.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/mama.jpg"), filename: "mama.jpg")
+business13.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/mama2.jpg"), filename: "mama2.jpg")
+business13.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/mama3.jpg"), filename: "mama3.jpg")
+
 business14 = Business.create!(name: "Commis", address: "3859 Piedmont Ave", city: "Oakland", state: "CA", zip_code: 94611, phone_number: "(510) 653-3902", category:"American", website:"https://www.commisrestaurant.com", lat: 37.82486929710936, lng: -122.25489403086075, price:"$$$$", hours: "5:30PM - 11:30PM")
+business14.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/commis.jpg"), filename: "commis.jpg")
+business14.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/commis2.jpg"), filename: "commis2.jpg")
+business14.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/commis3.jpg"), filename: "commis3.jpg")
+
 business15 = Business.create!(name: "Portal", address: "1611 2nd Ave", city: "Oakland", state: "CA", zip_code: 94606, phone_number: "(510) 663-7678", category:"American", website:"https://www.orderportaloakland.com", lat: 37.799459409894325, lng: -122.2546341038738, price:"$$", hours: "11:00AM - 9:00PM")
+business15.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/portal.jpg"), filename: "portal.jpg")
+business15.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/portal2.jpg"), filename: "portal2.jpg")
+business15.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/portal3.jpg"), filename: "portal3.jpg")
+
 business16 = Business.create!(name: "Q's Halal", address: "2306 Central Ave", city: "Alameda", state: "CA", zip_code: 94501, phone_number: "(510) 227-5870", category:"Mediterranean", website:"https://www.qhalal.com", lat: 37.76464146540329, lng: -122.243935475039, price:"$", hours: "11:00AM - 8:00PM")
+business16.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/halal.jpg"), filename: "halal.jpg")
+business16.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/halal2.jpg"), filename: "halal2.jpg")
+business16.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/halal3.jpg"), filename: "halal3.jpg")
+
 business17 = Business.create!(name: "Burma Superstar", address: "1345 Park St", city: "Alameda", state: "CA", zip_code: 94501, phone_number: "(510) 522-6200", category:"Burmese", website:"https://www.burmasuperstar.co", lat: 37.763888930077925, lng: -122.24363844620362, price:"$$", hours: "11:30AM - 8:30PM")
+business17.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/burma.jpg"), filename: "burma.jpg")
+business17.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/burma2.jpg"), filename: "burma2.jpg")
+business17.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/burma3.jpg"), filename: "burma3.jpg")
+
 business18 = Business.create!(name: "Izza", address: "4419 Telegraph Ave", city: "Oakland", state: "CA", zip_code: 94609, phone_number: "(510) 607-7361", category:"Japanese", website:"https://www.izza.menu11.com", lat: 37.83266725896303, lng: -122.26384788853136, price:"$$", hours: "11:30AM - 12:00AM")
+business18.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/izza.jpg"), filename: "izza.jpg")
+business18.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/izza2.jpg"), filename: "izza2.jpg")
+business18.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/izza3.jpg"), filename: "izza3.jpg")
+
 business19 = Business.create!(name: "Annapurna Restaurant and Bar", address: "948 Clay St", city: "Oakland", state: "CA", zip_code: 94607, phone_number: "(510) 250-9696", category:"Indian", website:"https://www.annapurnaoakland.com", lat: 37.80244306885019, lng: -122.27523078853197, price:"$$", hours: "11:00AM - 9:30PM")
+business19.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/annapurna.jpg"), filename: "annapurna.jpg")
+business19.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/annapurna2.jpg"), filename: "annapurna2.jpg")
+business19.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/annapurna3.jpg"), filename: "annapurna3.jpg")
+
 business20 = Business.create!(name: "Banh Mi Ba Le", address: "1909 International Blvd", city: "Oakland", state: "CA", zip_code: 94606, phone_number: "(510) 261-9800", category:"Vietnamese", website:"http://banh-mi-ba-le.cafe-inspector.com/", lat: 37.78630872314333, lng: -122.2409487020285, price:"$", hours: "7:30AM - 3:00PM")
+business20.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/bale.jpg"), filename: "bale.jpg")
+business20.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/bale2.jpg"), filename: "bale2.jpg")
+business20.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/bale3.jpg"), filename: "bale3.jpg")
+
 
 # ----- reviews
 review1 = Review.create!(rating: 5, body: "Best burgers I've ever had! It's a little pricey for a burger but it is so worth it. I had the bacon cheesy trueburger. The bacon was perfect, and the bun complimented everything so well. Would definitely come back again.", user_id: user1.id, business_id: business1.id)
