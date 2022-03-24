@@ -1,6 +1,7 @@
 import React from "react";
 import NavBarContainer from "../navbar/navbar_container";
 import { Link } from "react-router-dom";
+import ReviewIndexContainer from "../review/review_index_container";
 
 
 class BusinessShowPage extends React.Component {
@@ -35,6 +36,12 @@ class BusinessShowPage extends React.Component {
         // on a rerender, this will allow it to hit compDidMount
         if (!business) return null;
 
+        let rating = 0;
+        business.reviews.map(review => (
+            rating += review.rating
+        ))
+        let avgRating = (rating / business.reviews.length).toFixed(2)
+
 
         return(
             <div className="biz-show-container">
@@ -52,8 +59,8 @@ class BusinessShowPage extends React.Component {
                     <h1 className="biz-show-name">{business.name}</h1>
 
                     <div className="biz-show-reviews-section">
-                        <p className="biz-show-avgRating">Avg Rating here</p>
-                        <p className="biz-show-numReviews"># of Reviews here</p>
+                        <p className="biz-show-avgRating">Average rating: {avgRating}</p>
+                        <p className="biz-show-numReviews">{business.reviews.length}</p>
                     </div>
 
                     <div className="biz-show-details-info">
@@ -123,7 +130,9 @@ class BusinessShowPage extends React.Component {
                 </div>
 
                 <div className="biz-show-rec-reviews">
-                    <h1>ReviewIndexContainer here!</h1>
+                    <div className="biz-show-each-review">
+                        <ReviewIndexContainer business={business}/>
+                    </div>
                 </div>
 
             </div>

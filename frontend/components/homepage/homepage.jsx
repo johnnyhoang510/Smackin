@@ -18,17 +18,20 @@ class Homepage extends React.Component{
             </div>
         ) : (
             <div className="homepage-login-signup-buttons">
-                {/* <h1>Welcome to Smackin'</h1> */}
                 <Link className="homepage-login-button" to='/login'>Log In</Link>
                 <Link className="homepage-signup-button" to='/signup'>Sign Up</Link>
             </div>
         )
 
-        // console.log(bg)
         return(
             <div className="homepage-container">
                 <div className="homepage-bg-photo-wrapper">
-                    <img className="homepage-bg-photo" src={window.homePhotoURL} alt="background-photo" />
+                    <img className="homepage-bg-photo" src={window.homepageBG} alt="background-photo" />
+                </div>
+
+                <div className="homepage-title-logo-wrapper">
+                    <h1 className="homepage-title">smackin'</h1>
+                    <img className="homepage-logo" src={window.logo} alt="logo" />
                 </div>
 
                 <div className="homepage-biz-wrapper">

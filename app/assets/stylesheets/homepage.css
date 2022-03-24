@@ -120,3 +120,20 @@
     box-shadow: none;
     background: transparent;
 }
+
+.homepage-title {
+    position: absolute;
+    color: black;
+    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    font-size: 40px;
+    margin-left: 43%;
+    margin-top: 11%;
+}
+
+.homepage-logo {
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    margin-left: 55%;
+    margin-top: 10%;
+}
