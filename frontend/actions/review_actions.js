@@ -59,7 +59,7 @@ export const createReview = (review, businessId) => (dispatch) => {
     return APIReviewUtil.createReview(review, businessId)
         .then(
             review => dispatch(receiveReview(review)),
-            err => dispatch(receiveReviewErrors(err.responseJSON))
+            err => dispatch(receiveReviewErrors(err))
         )
 };
 
@@ -67,7 +67,7 @@ export const updateReview = (review, businessId) => (dispatch) => {
     return APIReviewUtil.updateReview(review, businessId)
         .then(
             review => dispatch(receiveReview(review)),
-            err => dispatch(receiveReviewErrors(err.responseJSON))
+            err => dispatch(receiveReviewErrors(err))
         )
 };
 
@@ -75,6 +75,6 @@ export const deleteReview = (reviewId, businessId) => (dispatch) => {
     return APIReviewUtil.deleteReview(reviewId, businessId)
         .then(
             review => dispatch(removeReview(review)),
-            err => dispatch(receiveReviewErrors(err.responseJSON))
+            err => dispatch(receiveReviewErrors(err))
         )
 };
