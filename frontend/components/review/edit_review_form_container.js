@@ -7,11 +7,13 @@ import { fetchBusiness } from "../../actions/business_actions";
 const mSTP = (state, ownProps) => {
     // console.log(ownProps);
     return {
-        review: state.entities.businesses[ownProps.match.params.reviewId],
+        review: state.entities.reviews[ownProps.match.params.reviewId],
         business: state.entities.businesses[ownProps.match.params.businessId],
         currentUser: state.entities.users[state.session.id],
+        user_id: state.session.id,
         businessId: ownProps.match.params.businessId,
-        reviewId: ownProps.match.params.reviewId
+        reviewId: ownProps.match.params.reviewId,
+        errors: state.errors.review
     }
 };
 
