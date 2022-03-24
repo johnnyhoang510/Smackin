@@ -1,0 +1,44 @@
+.create-review-form-container {
+    margin-top: 8%;
+    margin-left: 7%;
+}
+
+.create-review-form-title {
+    /* position: absolute; */
+    font-size: 28px;
+    color: rgba(45,46,47,1);
+    font-weight: 700;
+    font-family: 'Poppins','Helvetica Neue',Helvetica,Arial,sans-serif;
+    line-height: 36px;
+    letter-spacing: -0.4px;
+}
+
+
+.create-review-form-submit {
+    width: 200px;
+    height: 40px;
+    font-size: 15px;
+    font-weight: 700;
+    background-color: rgba(224,7,7,1);
+    color: rgba(255,255,255,1);
+    border: 0;
+    border-radius: 4px;
+    margin-top: 40px;
+    cursor: pointer;
+}
+
+.create-review-form-submit:hover {
+    background-color: rgb(255, 42, 42);
+    transition: all 1s;
+}
+
+.create-review-form-textarea {
+    border: 1px solid #c8c9ca;
+    border-radius: 4px;
+    cursor: text;
+    display: flex;
+    flex-direction: column;
+    max-width: 630px;
+    min-height: 320px;
+    resize: none;
+}

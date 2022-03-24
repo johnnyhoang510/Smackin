@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 
 class CreateReviewForm extends React.Component{
     constructor(props){
@@ -46,7 +46,16 @@ class CreateReviewForm extends React.Component{
         };
 
         return(
+
+            <div>
+
+                {/* <header className="session-form-header">
+                    <Link className="session-form-header-link" to="/">smackin'</Link>
+                    <Link className="session-form-header-logo" to="/">(Logo goes here)</Link>
+                </header> */}
+
             <div className="create-review-form-container">
+
                 <h1 className="create-review-form-title">{business.name}</h1>
 
                 <form className="create-review-form" onSubmit={this.handleSubmit}>
@@ -80,6 +89,9 @@ class CreateReviewForm extends React.Component{
                     </ul>
                 </div>
             </div>
+
+        </div>
+
         )
     }
 };

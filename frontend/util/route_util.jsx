@@ -9,7 +9,7 @@ const mapStateToProps = (state) => {
     }
 }
 
-
+//renders comp if logged out. dont want a signed in user to go here
 const Auth = ({ path, loggedIn, component: Component, exact }) => (
     <Route
         path={path}
@@ -20,9 +20,25 @@ const Auth = ({ path, loggedIn, component: Component, exact }) => (
     />
 );
 
+//renders comp if logged in, otherwise redirect
+const Protected = ({ loggedIn, path, component: Component }) => (
+    <Route
+        path={path}
+        render={props => (
+            loggedIn ? <Component {...props} /> : <Redirect to="/signup" />
+        )}
+    />
+);
+
 
 export const AuthRoute = withRouter(
     connect(
         mapStateToProps, null
     )(Auth)
+);
+
+export const ProtectedRoute = withRouter(
+    connect(
+        mapStateToProps, null
+    )(Protected)
 );

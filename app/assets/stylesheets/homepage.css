@@ -1,0 +1,122 @@
+.homepage-container {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+}
+.homepage-bg-photo {
+    display: flex;
+    position: absolute;
+    z-index: -999;
+    opacity: 0.9;
+    width: 100vw;
+    height: auto;
+    min-width: 800px;
+    top: 0%;
+    filter: brightness(55%);
+}
+
+.homepage-biz-link {
+    color: #fff;
+    display: block;
+    padding: 9px 12px 10px;
+    font-size: 14px;
+    line-height: 1.28571em;
+    font-weight: 700;
+    background: none;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 0;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 8px;
+    margin-left: 12%;
+    margin-top: 3%;
+}
+
+.homepage-biz-link:hover {
+    /* need to adjust this similar to login button */
+    text-decoration: underline;
+}
+
+.homepage-login-signup-buttons{
+    margin-left: 75%;
+    margin-top: -2.5%;
+}
+
+.homepage-login-button {
+    color: #fff;
+    padding: 9px 12px 10px;
+    font-size: 14px;
+    line-height: 1.28571em;
+    font-weight: 700;
+    background: none;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.homepage-login-button:hover {
+    border-bottom: 2px solid #fff;
+    padding-bottom: 10px;
+}
+
+.homepage-signup-button {
+    color: #fff;
+    padding: 9px 12px 10px;
+    font-size: 14px;
+    line-height: 1.28571em;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    border: 2px solid #fff;
+    border-radius: 4px;
+    padding: 7px 24px 8px;
+    box-shadow: none;
+    background: transparent;
+}
+
+.homepage-signup-button:hover, .homepage-logout-user:hover {
+    background-color: #fff;
+    color: #666;
+    transition: all .6s;
+}
+
+.homepage-welcome-user-wrapper {
+    margin-left: 70%;
+    margin-top: -3.2%;
+}
+
+.homepage-welcome-user {
+    color: #fff;
+    padding: 9px 12px 10px;
+    font-size: 14px;
+    line-height: 1.28571em;
+    font-weight: 700;
+    background: none;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.homepage-logout-user {
+    position: absolute;
+    margin-left: 12%;
+    margin-top: -3%;
+    color: #fff;
+    padding: 9px 12px 10px;
+    font-size: 14px;
+    line-height: 1.28571em;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    border: 2px solid #fff;
+    border-radius: 4px;
+    padding: 7px 24px 8px;
+    box-shadow: none;
+    background: transparent;
+}

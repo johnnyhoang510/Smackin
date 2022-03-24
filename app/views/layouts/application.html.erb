@@ -7,9 +7,14 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+
+    
   </head>
 
   <body>
+    <script type="text/javascript">
+      window.homePhotoURL = "<%= image_url('homepage2.png') %>";
+    </script>
     <%= yield %>
   </body>
 </html>

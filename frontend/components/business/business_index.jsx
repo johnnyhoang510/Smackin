@@ -15,18 +15,25 @@ class BusinessIndex extends React.Component {
         // console.log(this.props)
         const { businesses } = this.props;
         return(
-            <div>
-                <h1>Hi from business index</h1>
+            <div className="biz-index-container">
+                <h1>Business index</h1>
                 <br />
-                <h2>(SEARCH BAR COMPONENT HERE)</h2>
+                <div className="biz-index-searchbar">
+                    <h2>(SEARCH BAR COMPONENT HERE)</h2>
+                </div>
 
-                <ul>
-                    {businesses.map(business => (
-                        <BusinessIndexItem key={business.id} business={business} />
-                    ))}
-                </ul>
+                <div className="biz-index-list-container">
+                    <ol className="biz-index-list">
+                        {businesses.map(business => (
+                            <BusinessIndexItem key={business.id} business={business} />
+                        ))}
+                    </ol>
+                </div>
+
                 <br />
-                <h3>MAP COMPONENT TO THE RIGHT</h3>
+                <div className="biz-index-map-container">
+                    <h3>MAP COMPONENT TO THE RIGHT</h3>
+                </div>
             </div>
         )
     }
