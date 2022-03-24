@@ -135,6 +135,10 @@ class BusinessShowPage extends React.Component {
                     </div>
                 </div>
 
+                <footer className="biz-show-footer-wrapper">
+                    <h1>(Footer)</h1>
+                </footer>
+
             </div>
         )
     }

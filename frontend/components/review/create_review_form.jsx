@@ -33,7 +33,7 @@ class CreateReviewForm extends React.Component{
     render() {
 
         const { business, errors } = this.props;
-        console.log(errors)
+        // console.log(errors)
         // console.log(this.state);
         // console.log(this.props);
         if (!business) return null;
