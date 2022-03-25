@@ -48,9 +48,9 @@
 .biz-index-photo {
     width: 220px;
     height: 220px;
-    border-radius: 4px;
-    object-fit: cover;
     margin-top: 3px;
+    object-fit: cover;
+    border-radius: 4px;
 }
 
 .biz-index-item-inner-container {
@@ -159,4 +159,16 @@
     font-size: 14px;
     margin-left: 7px;
     line-height: 1.3em;
+}
+
+.biz-index-map-container {
+    position: absolute;
+    margin-top: -6000px;
+    z-index: 1000;
+}
+
+#map-container {
+    width: 500px;
+    height: 500px;
+
 }

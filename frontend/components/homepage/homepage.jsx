@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
 class Homepage extends React.Component{
     constructor(props) {
         super(props);
@@ -41,6 +42,7 @@ class Homepage extends React.Component{
                 <div className="homepage-check-login">
                     {display}
                 </div>
+                
             </div>
         )
     }

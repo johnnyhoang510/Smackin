@@ -1,5 +1,6 @@
 import React from "react";
 import BusinessIndexItem from "./business_index_item";
+import BusinessMap from "../map/business_map";
 
 
 class BusinessIndex extends React.Component {
@@ -38,7 +39,7 @@ class BusinessIndex extends React.Component {
 
                     <br />
                     <div className="biz-index-map-container">
-                        <h3>MAP COMPONENT TO THE RIGHT</h3>
+                        <BusinessMap businesses={businesses} />
                     </div>
                 </div>
 
