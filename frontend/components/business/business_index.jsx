@@ -30,16 +30,16 @@ class BusinessIndex extends React.Component {
                     </aside>
 
                     <div className="biz-index-list-container">
+                        <h1 className="biz-index-all-results">All Results</h1>
                         <ol className="biz-index-list">
                             {businesses.map(business => (
                                 <BusinessIndexItem key={business.id} business={business} fetchReviews={fetchReviews} />
                             ))}
                         </ol>
-                    </div>
 
-                    <br />
-                    <div className="biz-index-map-container">
-                        <BusinessMap businesses={businesses} />
+                        <div className="biz-index-map-container">
+                            <BusinessMap businesses={businesses} />
+                        </div>
                     </div>
                 </div>
 
