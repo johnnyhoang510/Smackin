@@ -13,7 +13,7 @@ class BusinessIndex extends React.Component {
 
     render() {
         // console.log(this.props)
-        const { businesses } = this.props;
+        const { businesses, fetchReviews } = this.props;
         return(
             <div>
 
@@ -31,7 +31,7 @@ class BusinessIndex extends React.Component {
                     <div className="biz-index-list-container">
                         <ol className="biz-index-list">
                             {businesses.map(business => (
-                                <BusinessIndexItem key={business.id} business={business} />
+                                <BusinessIndexItem key={business.id} business={business} fetchReviews={fetchReviews} />
                             ))}
                         </ol>
                     </div>

@@ -10,9 +10,9 @@
 # this is for attaching photos
 require 'open-uri'
 
+Review.destroy_all
 User.destroy_all
 Business.destroy_all
-Review.destroy_all
 
 # resets the IDs
 ActiveRecord::Base.connection.reset_pk_sequence!('users')
@@ -21,10 +21,10 @@ ActiveRecord::Base.connection.reset_pk_sequence!('reviews')
 
 
 # ----- users
-user1 = User.create!(first_name: 'John', last_name: 'Smith', email:'johnsmith@email.com', password: 'password', zip_code: 94606)
+user1 = User.create!(first_name: 'Guy', last_name: 'Fieri', email:'guyfieri@email.com', password: 'password', zip_code: 94606)
 user2 = User.create!(first_name: 'Rick', last_name: 'Sanchez', email:'ricksanchez@email.com', password: 'password', zip_code: 94605)
 user3 = User.create!(first_name: 'Steph', last_name: 'Curry', email:'stephcurry@email.com', password: 'password', zip_code: 94601)
-user4 = User.create!(first_name: 'Peter', last_name: 'Griffin', email:'petergriffin@email.com', password: 'password', zip_code: 94610)
+user4 = User.create!(first_name: 'wat', last_name: 'man', email:'watman@email.com', password: 'password', zip_code: 94610)
 user5 = User.create!(first_name: 'Demo', last_name: 'User', email:'demouser@email.com', password: 'password', zip_code: 94602)
 
 # ----- businesses
@@ -49,10 +49,10 @@ business4.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.c
 business4.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/kansai2.jpg"), filename: "kansai2.jpg")
 business4.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/kansai3.jpg"), filename: "kansai3.jpg")
 
-business5 = Business.create!(name: "L & S Fish & Chips", address: "326 E 18th St", city: "Oakland", state: "CA", zip_code: 94606, phone_number: "(510) 625-1700", category:"Seafood", website:"http://www.louisianafishandchips.net/", lat: 37.79970435200378, lng: -122.25139858853203, price:"$", hours: "12:0PAM - 6:30PM")
+business5 = Business.create!(name: "L & S Fish & Chips", address: "326 E 18th St", city: "Oakland", state: "CA", zip_code: 94606, phone_number: "(510) 625-1700", category:"Seafood", website:"http://www.louisianafishandchips.net/", lat: 37.79970435200378, lng: -122.25139858853203, price:"$", hours: "12:00PM - 6:30PM")
+business5.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/lns3.jpg"), filename: "lns3.jpg")
 business5.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/lns.jpg"), filename: "lns.jpg")
 business5.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/lns2.jpg"), filename: "lns2.jpg")
-business5.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/lns3.jpg"), filename: "lns3.jpg")
 
 business6 = Business.create!(name: "Monster Pho", address: "360 40th St", city: "Oakland", state: "CA", zip_code: 94609, phone_number: "(510) 788-4459", category:"Vietnamese", website:"https://www.monsterpho.com", lat: 37.8308727322662, lng: -122.2577183573041, price:"$", hours: "11:00AM - 8:00PM")
 business6.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/monsterpho3.jpg"), filename: "monsterpho3.jpg")
@@ -132,8 +132,8 @@ business20.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.
 
 # ----- reviews
 review1 = Review.create!(rating: 5, body: "Best burgers I've ever had! It's a little pricey for a burger but it is so worth it. I had the bacon cheesy trueburger. The bacon was perfect, and the bun complimented everything so well. Would definitely come back again.", user_id: user1.id, business_id: business1.id)
-review2 = Review.create!(rating: 3, body: "We went here for happy hour. It's nothing special, but the price was really good for the amount of food and quality. I would say come here with some friends after hanging out, but not for a special occassion dinner or anything. Big plus for staying open pretty late.", user_id: user1.id, business_id: business2.id)
+review2 = Review.create!(rating: 3, body: "We went here for happy hour. It's nothing special, but the price was really good for the amount of food and quality. I would say come here with some friends after hanging out, but not for a special occassion dinner or anything. Big plus for staying open pretty late.", user_id: user1.id, business_id: business4.id)
 review3 = Review.create!(rating: 3, body: "Can't beat the BBQ here. As authentic as you can get. However, the service is extremely lacking. Granted, they were busy and seemed to be short staff. I would come back, but might order takeout instead.", user_id: user2.id, business_id: business3.id)
-review4 = Review.create!(rating: 5, body: "The BEST cheese steak fries in the town! They have a big menu, but come here for the fries. You will not be disappointed. Add shrimp if you'd like, they use black tiger shrimp which is BOMB.", user_id: user2.id, business_id: business4.id)
-review5 = Review.create!(rating: 2, body: "It was meh. There's plenty of better pho spots in Oakland. We only came here for lunch to try it out since none of us had eaten here before.", user_id: user3.id, business_id: business5.id)
-review6 = Review.create!(rating: 4, body: "Love this place. It's a above average AYCE Korean BBQ spot. You can tell their meat is of higher quality than other KBBQ spots around the area. Only reason it wasn't a 5 was because parking is really hit and miss here, and also because they're so busy, the service isn't the greatest but they're really nice.", user_id: user3.id, business_id: business6.id)
+review4 = Review.create!(rating: 5, body: "The BEST cheese steak fries in the town! They have a big menu, but come here for the fries. You will not be disappointed. Add shrimp if you'd like, they use black tiger shrimp which is BOMB.", user_id: user2.id, business_id: business5.id)
+review5 = Review.create!(rating: 2, body: "It was meh. There's plenty of better pho spots in Oakland. We only came here for lunch to try it out since none of us had eaten here before.", user_id: user3.id, business_id: business6.id)
+review6 = Review.create!(rating: 4, body: "Love this place. It's a above average AYCE Korean BBQ spot. You can tell their meat is of higher quality than other KBBQ spots around the area. Only reason it wasn't a 5 was because parking is really hit and miss here, and also because they're so busy, the service isn't the greatest but they're really nice.", user_id: user3.id, business_id: business7.id)
