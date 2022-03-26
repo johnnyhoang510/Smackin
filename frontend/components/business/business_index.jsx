@@ -1,6 +1,7 @@
 import React from "react";
 import BusinessIndexItem from "./business_index_item";
 import BusinessMap from "../map/business_map";
+import SearchBarContainer from "../search_bar/search_bar_container"
 
 
 class BusinessIndex extends React.Component {
@@ -22,7 +23,7 @@ class BusinessIndex extends React.Component {
                     <h1>Business index</h1>
                     <br />
                     <div className="biz-index-searchbar">
-                        <h2>(SEARCH BAR COMPONENT HERE)</h2>
+                        <SearchBarContainer /> 
                     </div>
 
                     <aside className="biz-index-filters-aside">
@@ -38,7 +39,7 @@ class BusinessIndex extends React.Component {
                         </ol>
 
                         <div className="biz-index-map-container">
-                            <BusinessMap businesses={businesses} />
+                            {/* <BusinessMap businesses={businesses} /> */}
                         </div>
                     </div>
                 </div>

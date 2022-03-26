@@ -1,4 +1,134 @@
-.biz-show-photo {
-    width: 40%;
-    height: 60%;
+.biz-show-container {
+    font-family: 'Poppins','Helvetica Neue',Helvetica,Arial,sans-serif;
+
 }
+
+.biz-show-searchbar {
+    height: 127px;
+    border: 1px solid #666;
+}
+
+.biz-show-background-photos {
+    display: flex;
+    z-index: -999;
+}
+
+/* how to make bottom darker */
+.biz-show-photo {
+    width: 500px;
+    height: 430px;
+    object-fit: cover;
+    filter: brightness(65%);
+    background:linear-gradient(rgba(0,0,0,0) 20%, rgba(0,0,0,1));
+}
+
+.biz-show-header {
+    position: absolute;
+    margin-top: -220px;
+    margin-left: 150px;
+}
+
+.biz-show-name {
+    font-size: 48px;
+    color: #fff;
+    font-weight: 700;
+    padding-bottom: 20px;
+}
+
+.biz-show-reviews-section {
+    display: flex;
+    padding-bottom: 20px;
+    font-weight: 700;
+    margin-top: 12px;
+}
+
+.biz-show-avgRating {
+    color: #fff;
+    font-size: 16px;
+}
+
+.biz-show-numReviews {
+    color: #fff;
+    font-size: 16px;
+    padding-left: 10px;
+    margin-top: -1px;
+}
+
+.biz-show-details-info {
+    display: flex;
+}
+
+.biz-show-details-claimed {
+    color: #1f8eff;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.biz-show-details-price {
+    padding-right: 12px;
+    padding-left: 12px;
+    color: #fff;
+    font-size: 16px;
+    word-spacing: 0.5em;
+}
+
+.biz-show-details-category {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.biz-show-details-hours-wrapper{
+    display: flex;
+    padding-top: 20px;
+
+}
+
+.biz-show-details-hours {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.biz-show-details-hours-update {
+    color: #1f8eff;
+    font-weight: 700;
+    font-size: 16px;
+    padding-left: 10px;
+    margin-top: -2px;
+}
+
+
+.biz-show-write-review-button{
+    margin-top: 20px;
+    margin-left: 50px;
+    height: 40px;
+    background-color: rgba(224,7,7,1);
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+}
+
+.biz-show-review-link{
+    padding: 8px 16px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    width: 60px;
+    box-shadow: none;
+}
+
+.review-star-icon {
+    padding-right: 7px;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.biz-show-write-review-button:hover {
+    background-color: rgb(240, 34, 34);
+    box-shadow: 0 0 12px #0000001a;
+    transition: all 0.6s;
+    
+}
+

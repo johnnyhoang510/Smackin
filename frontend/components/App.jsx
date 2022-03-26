@@ -1,5 +1,4 @@
 import React from "react";
-// import NavBar from "./navbar/navbar";
 import NavBarContainer from "./navbar/navbar_container";
 import { Route, Switch } from "react-router";
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
@@ -23,7 +22,6 @@ const App = () => {
                 <Route exact path="/businesses" component={BusinessIndexContainer} />
                 <Route exact path="/businesses/:businessId" component={BusinessShowPageContainer} />
                 <Route exact path="/" component={HomepageContainer} />
-                {/* <Route exact path="/" component={NavBarContainer} /> */}
             </Switch>
         </div>
     )

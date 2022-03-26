@@ -2,7 +2,8 @@ import React from "react";
 import NavBarContainer from "../navbar/navbar_container";
 import { Link } from "react-router-dom";
 import ReviewIndexContainer from "../review/review_index_container";
-
+import SearchBarContainer from "../search_bar/search_bar_container";
+import { BsFillCheckCircleFill, BsInfoCircleFill, BsStar } from "react-icons/bs";
 
 class BusinessShowPage extends React.Component {
     constructor(props) {
@@ -23,7 +24,6 @@ class BusinessShowPage extends React.Component {
     
     // when keying in url, this will maintain state
     componentDidUpdate(prevProps) {
-        // console.log(prevProps.businessId);
         if (prevProps.businessId !== this.props.businessId) {
             this.componentDidMount();
         }
@@ -40,18 +40,18 @@ class BusinessShowPage extends React.Component {
         business.reviews.map(review => (
             rating += review.rating
         ))
-        let avgRating = (rating / business.reviews.length).toFixed(2)
+        let avgRating = (rating / business.reviews.length).toFixed(1)
 
 
         return(
             <div className="biz-show-container">
 
-                <div className="biz-show-nav">
+                <div className="biz-show-searchbar">
+                    {/* <SearchBarContainer /> */}
                     <NavBarContainer />
                 </div>
 
                 <div className="biz-show-background-photos">
-                    <h1>(Background photos here)</h1>
                     {business.photoURLs.map( (photo_url, idx) => <img key={idx} className="biz-show-photo" src={photo_url} alt="" />)}
                 </div>
 
@@ -60,20 +60,24 @@ class BusinessShowPage extends React.Component {
 
                     <div className="biz-show-reviews-section">
                         <p className="biz-show-avgRating">Average rating: {avgRating}</p>
-                        <p className="biz-show-numReviews">{business.reviews.length}</p>
+                        <p className="biz-show-numReviews">{business.reviews.length} reviews</p>
                     </div>
 
                     <div className="biz-show-details-info">
-                        <p className="biz-show-details-claimed">Claimed</p>
-                        <p className="biz-show-details-price">{business.price}</p>
+                        <p className="biz-show-details-claimed"><BsFillCheckCircleFill/> Claimed</p>
+                        <p className="biz-show-details-price">   •   {business.price}   •   </p>
                         <p className="biz-show-details-category">{business.category}</p>
+                    </div>
+
+                    <div className="biz-show-details-hours-wrapper">
                         <p className="biz-show-details-hours">{business.hours}</p>
+                        <p className="biz-show-details-hours-update">  <BsInfoCircleFill />  Hours updated {Math.floor(Math.random() * 12) + 2} months ago</p>
                     </div>
                 </div>
 
-                <div className="biz-show-write-review-container">
-                    <Link to={`/businesses/${business.id}/reviews/new`} className="biz-show-review-link">Write a Review</Link>
-                </div>
+                    <button className="biz-show-write-review-button">
+                        <Link to={`/businesses/${business.id}/reviews/new`} className="biz-show-review-link"> <BsStar className="review-star-icon"/> Write a Review</Link>
+                    </button>
 
                 <div className="biz-show-location-hours-container">
                     <h1 className="biz-show-location-hours-title">Location &amp; Hours</h1>
@@ -129,6 +133,7 @@ class BusinessShowPage extends React.Component {
                     </div>
                 </div>
 
+                {/* --- BROKEN. ONLY SHOWS REVIEWS WHEN LOGGED IN */}
                 <div className="biz-show-rec-reviews">
                     <div className="biz-show-each-review">
                         <ReviewIndexContainer business={business}/>
