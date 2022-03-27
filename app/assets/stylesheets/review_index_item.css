@@ -1,4 +1,59 @@
+.review-item-container {
+    width: 45%;
+    /* border: 1px solid #666; */
+    margin-left: 2%;
+    margin-top: 3%;
+    height: 350px;
+    font-family: 'Poppins','Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+
+.review-item-profile-container {
+    display: flex;
+}
+
 .review-item-user-icon {
-    font-size: 60px;
-    color: #666;
+    font-size: 65px;
+    color: #000;
+}
+
+.review-item-name-container {
+    margin-left: 11px;
+    margin-top: 8px;
+}
+
+.review-item-users-name {
+    color: rgba(45,46,47,1);
+    font-weight: 600;
+    font-size: 16px;
+    padding-bottom: 6px;
+}
+
+.review-item-users-location {
+    font-size: 14px;
+    color: rgb(61, 62, 63);
+}
+
+.review-item-rating-container {
+    display: flex;
+    padding-top: 6px;
+}
+
+.review-item-rating {
+    padding-right: 7px;
+}
+
+.review-item-create-date {
+    color: rgba(110,112,114,1);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.review-item-body-container {
+    margin-top: 20px;
+}
+
+.review-item-body {
+    color: rgba(45,46,47,1);
+    font-size: 14px;
+    font-weight: 400;
 }

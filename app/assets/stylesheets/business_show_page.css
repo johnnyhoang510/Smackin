@@ -142,9 +142,11 @@
 
 .biz-show-location-hours-container {
     display: flex;
-    width: 62%;
+    width: 65%;
     margin-left: 50px;
     border-top: solid 1px #ebebeb;
+    border-bottom: solid 1px #ebebeb;
+    padding-bottom: 30px;
 }
 
 .biz-show-location-hours-title {
@@ -228,6 +230,7 @@
 
 .biz-show-aside-container {
     display: flex;
+    /* sticky not working?? */
     position: sticky;
 }
 
@@ -236,8 +239,8 @@
     border: 1px solid #ebebeb;
     width: 325px;
     height: 185px;
-    margin-left: 900px;
-    margin-top: -335px;
+    margin-left: 72%;
+    margin-top: -25%;
     background-color: #fff;
     border-radius: 4px;
     padding: 16px;
@@ -258,8 +261,10 @@
     padding-bottom: 18px;
 }
 
-.biz-show-website-link:hover {
+.biz-show-website-link:hover, .biz-show-aside-directions-link:hover {
     text-decoration: underline;
+    color: rgba(2,122,151,1);
+    font-weight: 600;
 }
 
 .biz-show-website-icon {

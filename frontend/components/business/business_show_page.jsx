@@ -9,7 +9,7 @@ class BusinessShowPage extends React.Component {
     constructor(props) {
         super(props);
 
-        //extra feature, add a open now or closed marker depending on current time/day
+        //work on if extra time
         this.time = new Date();
         this.minutes = this.time.getMinutes();
         this.hours = this.time.getHours() - 12;
@@ -18,11 +18,11 @@ class BusinessShowPage extends React.Component {
     
     componentDidMount() {
         // debugger
-        this.props.fetchBusiness(this.props.match.params.businessId)
+        this.props.fetchBusiness(this.props.match.params.businessId);
+        window.scrollTo(0, 0)
     };
 
     
-    // when keying in url, this will maintain state
     componentDidUpdate(prevProps) {
         if (prevProps.businessId !== this.props.businessId) {
             this.componentDidMount();
@@ -33,7 +33,7 @@ class BusinessShowPage extends React.Component {
     render() {
         // console.log(this.props)
         const { business } = this.props;
-        // on a rerender, this will allow it to hit compDidMount
+
         if (!business) return null;
 
         let rating = 0;
