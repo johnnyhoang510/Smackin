@@ -13,10 +13,10 @@ class ReviewIndex extends React.Component {
     }
 
     render() {
+        console.log(this.props);
 
-        const { reviews, updateReview, deleteReview, currentUser } = this.props;
+        const { reviews, updateReview, deleteReview, currentUser, fetchReview, business } = this.props;
 
-        // console.log(this.props);
         if (!reviews) return null;
         // console.log(reviews)
 
@@ -25,7 +25,7 @@ class ReviewIndex extends React.Component {
                 <div className="review-index-wrapper">
                     <h1>(Review Index)</h1>
                     {reviews.map(review => (
-                        <ReviewIndexItem review={review} key={review.id} updateReview={updateReview} deleteReview={deleteReview} currentUser={currentUser} />
+                        <ReviewIndexItem review={review} key={review.id} updateReview={updateReview} deleteReview={deleteReview} currentUser={currentUser} business={business} fetchReview={fetchReview} />
                     ))}
                 </div>
             </div>

@@ -1,11 +1,11 @@
 .biz-show-container {
     font-family: 'Poppins','Helvetica Neue',Helvetica,Arial,sans-serif;
-
 }
 
 .biz-show-searchbar {
     height: 127px;
     border: 1px solid #666;
+    width: 100%;
 }
 
 .biz-show-background-photos {
@@ -13,14 +13,21 @@
     z-index: -999;
 }
 
-/* how to make bottom darker */
 .biz-show-photo {
-    width: 500px;
+    width: 33.3%;
     height: 430px;
     object-fit: cover;
-    filter: brightness(65%);
+    filter: brightness(70%);
+}
+
+.biz-show-photo-gradient {
+    position: absolute;
+    margin-top: -200px;
+    width: 100%;
+    height: 200px;
     background:linear-gradient(rgba(0,0,0,0) 20%, rgba(0,0,0,1));
 }
+
 
 .biz-show-header {
     position: absolute;
@@ -107,6 +114,7 @@
     border-radius: 4px;
     border: none;
     cursor: pointer;
+    margin-bottom: 30px;
 }
 
 .biz-show-review-link{
@@ -132,3 +140,183 @@
     
 }
 
+.biz-show-location-hours-container {
+    display: flex;
+    width: 62%;
+    margin-left: 50px;
+    border-top: solid 1px #ebebeb;
+}
+
+.biz-show-location-hours-title {
+    margin-top: 35px;
+    font-size: 20px;
+    font-weight: 700;
+    -webkit-letter-spacing: -0.4px;
+    -moz-letter-spacing: -0.4px;
+    -ms-letter-spacing: -0.4px;
+    letter-spacing: -0.4px;
+    line-height: 28px;
+    color: rgba(45,46,47,1);
+    margin-bottom: 30px;
+}
+
+.biz-show-location-hours-map-container {
+    flex-direction: column;
+}
+
+.biz-show-map {
+    display: block;
+    border: 1px solid #666;
+    height: 130px;
+    width: 300px;
+}
+
+/* .biz-show-hours-item {
+    display: flex;
+}
+
+.biz-show-hours-item-day {
+    flex-direction: column;
+}
+
+.biz-show-hours-item-hours {
+    flex-direction: column;
+} */
+
+.biz-show-hours-day-container {
+    width: 400px;
+    display: flex;
+    margin-top: 90px;
+    margin-left: 40px;
+    color: rgb(58, 60, 61);
+    line-height: 24px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.biz-show-day-container {
+    flex-direction: column;
+    padding-right: 40px;
+}
+
+.biz-show-day {
+    padding-bottom: 5px;
+}
+
+.biz-show-hours-container {
+    flex-direction: column;
+}
+
+.biz-show-hours {
+    padding-bottom: 5px;
+}
+
+.biz-show-address {
+    color: rgba(2,122,151,1);
+    font-size: 14px;
+    font-weight: 600;
+    padding-top: 24px;
+    padding-bottom: 6px;
+}
+
+.biz-show-city-state {
+    color: rgba(45,46,47,1);
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 700;
+}
+
+.biz-show-aside-container {
+    display: flex;
+    position: sticky;
+}
+
+.biz-show-aside-info {
+    flex-direction: column;
+    border: 1px solid #ebebeb;
+    width: 325px;
+    height: 185px;
+    margin-left: 900px;
+    margin-top: -335px;
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 16px;
+    object-fit: cover;
+}
+
+.biz-show-aside-info-website {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ebebeb;
+    width: 320px;
+}
+
+.biz-show-website-link, .biz-show-aside-directions-link {
+    text-decoration: none;
+    color: rgba(2,122,151,1);
+    font-weight: 600;
+    padding-bottom: 18px;
+}
+
+.biz-show-website-link:hover {
+    text-decoration: underline;
+}
+
+.biz-show-website-icon {
+    color: #000;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: -5px;
+    text-decoration: none;
+}
+
+.biz-show-aside-info-phone-number {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ebebeb;
+    width: 320px;
+    padding: 18px 0;
+}
+
+.biz-show-phone-number {
+    color: rgba(45,46,47,1);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+.biz-show-phone-icon {
+    font-size: 20px;
+    font-weight: 700;
+    color: #000;
+}
+
+.biz-show-aside-info-directions {
+    display: flex;
+    justify-content: space-between;
+    padding: 18px 0;
+    width: 98%;
+}
+
+
+.biz-show-aside-address {
+    color: rgba(110,112,114,1);
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 0;
+}
+
+.biz-show-aside-zipcode {
+    color: rgba(110,112,114,1);
+    font-size: 16px;
+    font-weight: 500;
+    padding-bottom: 8px;
+}
+
+.biz-show-aside-directions-icon {
+    font-size: 20px;
+    color: #000;
+    font-weight: 700;
+    margin-top: 20px;
+    padding-left: -20px;
+}

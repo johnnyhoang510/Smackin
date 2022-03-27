@@ -9,6 +9,10 @@ class ReviewIndexItem extends React.Component {
         this.handleDelete = this.handleDelete.bind(this);
     }
 
+    componentDidMount() {
+        this.props.fetchReview(this.props.business.id, this.props.review.id)
+    }
+
     handleUpdate(e) {
         e.preventDefault();
     }
@@ -20,11 +24,11 @@ class ReviewIndexItem extends React.Component {
 
     render() {
         // console.log(this.props);
+        if (!this.props.review) return null;
+        if (!this.props.currentUser) return null;
         
         const { review, currentUser, updateReview, deleteReview } = this.props;
 
-        if (!review) return null;
-        if (!currentUser) return null;
 
         let editReviewButton;
         let deleteReviewButton;
@@ -37,6 +41,7 @@ class ReviewIndexItem extends React.Component {
             deleteReviewButton = null;
         }
 
+        // not rendering properly. only shows reviews when signed in
         return(
             <div>
                 <h1>Review Index item!</h1>
