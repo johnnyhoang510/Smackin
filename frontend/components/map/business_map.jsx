@@ -8,7 +8,7 @@ class BusinessMap extends React.Component {
         const MAP_OPTIONS = {
             center: { lat: 37.8044, lng: -122.2712 }, // Oakland, CA
             zoom: 13,
-            streetViewControl: false, //for streeview
+            streetViewControl: true, //for streeview
             mapTypeControl: false, //change between satellite image
             fullscreenControl: false //button to toggle fullscreen
         };

@@ -175,15 +175,34 @@ class BusinessShowPage extends React.Component {
 
 
                 {/* --- BROKEN. ONLY SHOWS REVIEWS WHEN LOGGED IN */}
+                {/* --- IT MIGHT BE FIXED NOW. PERHAPS */}
                 <div className="biz-show-rec-reviews">
                     <div className="biz-show-each-review">
                         <ReviewIndexContainer business={business}/>
                     </div>
                 </div>
 
-                <footer className="biz-show-footer-wrapper">
-                    <h1>(Footer)</h1>
-                </footer>
+                <div className="biz-index-footer">
+                    <div className="biz-index-footer-about">
+                        <h3 className="biz-index-footer-title">About</h3>
+                    </div>
+
+                    <div className="biz-index-footer-discover">
+                        <h3 className="biz-index-footer-title">Discover</h3>
+                    </div>
+
+                    <div className="biz-index-footer-business">
+                        <h3 className="biz-index-footer-title">Smackin' for Business</h3>
+                    </div>
+
+                    <div className="biz-index-footer-languages-countries">
+                        <h3 className="biz-index-footer-title">Languages</h3>
+                        <p className="biz-index-footer-small-text"></p>
+                        <h3 className="biz-index-footer-title">Countries</h3>
+                        <p className="biz-index-footer-small-text"></p>
+
+                    </div>
+                </div>
 
             </div>
         )

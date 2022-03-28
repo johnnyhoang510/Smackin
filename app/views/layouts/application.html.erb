@@ -4,6 +4,8 @@
     <title>Smackin</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    
+    <link href='https://fonts.googleapis.com/css?family=Dekko' rel='stylesheet'>
 
     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['MAPS_API_KEY']}" %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -15,7 +17,11 @@
   <body>
     <script type="text/javascript">
       window.homepageBG = "<%= image_url('homepage2.png') %>";
-      window.logo = "<%= image_url('smackinlogo.png') %>";
+      window.logo = "<%= image_url('smackinlogo2.png') %>";
+      window.burgerPhoto = "<%= image_url('trueburger.jpg') %>";
+      window.thaiPhoto = "<%= image_url('farmhouse2.jpg') %>";
+      window.mexicanPhoto = "<%= image_url('gordo3.jpg') %>";
+      window.japanesePhoto = "<%= image_url('kansai.jpg') %>";
     </script>
     <%= yield %>
   </body>

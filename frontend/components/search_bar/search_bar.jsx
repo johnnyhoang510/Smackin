@@ -24,8 +24,8 @@ class SearchBar extends React.Component {
         
         return(
             <div>
-                <h1>From SearchBar</h1>
                 <input
+                className="searchbar-component"
                     type="search"
                     placeholder="burgers, tacos, American"
                     onChange={this.update}

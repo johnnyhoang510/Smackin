@@ -1,7 +1,7 @@
 .homepage-container {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-
 }
+
 .homepage-bg-photo {
     display: flex;
     position: absolute;
@@ -12,6 +12,17 @@
     min-width: 800px;
     top: 0%;
     filter: brightness(55%);
+}
+
+
+.homepage-links-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3%;
+}
+
+.homepage-biz-wrapper {
+    margin-left: 10%;
 }
 
 .homepage-biz-link {
@@ -29,18 +40,17 @@
     border-radius: 0;
     border-bottom: 2px solid transparent;
     padding-bottom: 8px;
-    margin-left: 12%;
-    margin-top: 3%;
+    width: 150px;
+    margin-left: -35px;
 }
 
 .homepage-biz-link:hover {
-    /* need to adjust this similar to login button */
-    text-decoration: underline;
+    border-bottom: 2px solid #fff;
 }
 
 .homepage-login-signup-buttons{
-    margin-left: 75%;
-    margin-top: -2.5%;
+    margin-top: 2%;
+    margin-left: -67%;
 }
 
 .homepage-login-button {
@@ -59,7 +69,6 @@
 
 .homepage-login-button:hover {
     border-bottom: 2px solid #fff;
-    padding-bottom: 10px;
 }
 
 .homepage-signup-button {
@@ -86,28 +95,26 @@
 }
 
 .homepage-welcome-user-wrapper {
-    margin-left: 70%;
+    display: flex;
+    margin-left: -30%;
     margin-top: -2.7%;
 }
 
 .homepage-welcome-user {
     color: #fff;
-    /* padding: 9px 12px 10px; */
+    padding: 9px 12px 10px;
     font-size: 14px;
     line-height: 1.28571em;
     font-weight: 700;
     background: none;
     font-size: 16px;
     font-weight: 700;
-    /* margin-right: 10px; */
+    margin-right: 10px;
     padding-right: 20px;
 
 }
 
 .homepage-logout-user {
-    position: absolute;
-    margin-left: 14%;
-    margin-top: -2.5%;
     color: #fff;
     padding: 10px 12px 10px;
     font-size: 14px;
@@ -127,10 +134,12 @@
 .homepage-title {
     position: absolute;
     color: black;
-    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-    font-size: 40px;
-    margin-left: 43%;
-    margin-top: 11%;
+    filter: drop-shadow(3px 0 0 #fff) drop-shadow(0 3px 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 -2px 0 #fff);
+    font-size: 60px;
+    margin-left: 40%;
+    margin-top: 6.5%;
+    font-weight: 700;
+    font-family: "Dekko";
 }
 
 .homepage-logo {
@@ -138,7 +147,67 @@
     height: 60px;
     position: absolute;
     margin-left: 55%;
-    margin-top: 10%;
+    margin-top: 6%;
 }
 
 
+.homepage-best-businesses-container {
+    background-color: #f7f7f7;
+    position: absolute;
+    margin-top: 510px;
+    height: 340px;
+    width: 100%;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.homepage-best-businesses-title {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 6px;
+    font-size: 21px;
+    line-height: 1.28571em;
+    color: #d32323;
+    padding-top: 30px;
+}
+
+.homepage-best-businesses-photos-container {
+    display: flex;
+    justify-content: center;
+}
+
+.homepage-best-business-photo-box {
+    height: 220px;
+    width: 205px;
+    border: 1px solid #e6e6e6;
+    margin: 15px 15px 22px 15px;
+    border-radius: 4px;
+}
+
+.homepage-best-business-photo {
+    height: 180px;
+    width: 100%;
+    background-color: pink;
+    object-fit: cover;
+    border-radius: 3px 3px 1px 1px;
+}
+
+.homepage-best-business-photo-text {
+    display: block;
+    text-align: center;
+    padding: 10px 0;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.28571em;
+    color: #333;
+}
+
+
+.biz-homepage-footer {
+    display: flex;
+    justify-content: space-evenly;
+    font-family: 'Poppins','Helvetica Neue',Helvetica,Arial,sans-serif;
+    width: 100%;
+    height: 200px;
+    background-color: #f7f7f7;
+    margin-top: 1100px;
+}

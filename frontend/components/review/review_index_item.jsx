@@ -54,7 +54,7 @@ class ReviewIndexItem extends React.Component {
             //link not working properly. still can key in url other reviews that dont belong to user
             editReviewButton = <Link to={`/businesses/${review.business_id}/reviews/${review.id}/edit`}>Edit Review</Link>;
             deleteReviewButton = <button onClick={this.handleDelete}>Delete Review</button>;
-        } else if (!currentUser.id) {
+        } else if (!currentUser) {
             editReviewButton = null;
             deleteReviewButton = null;
         }
@@ -63,6 +63,7 @@ class ReviewIndexItem extends React.Component {
 
         // ****-----------------------------------------------------****
         // not rendering properly. only shows reviews when signed in
+        // I THINK I FIXED IT??? MAYBE
         return(
 
 

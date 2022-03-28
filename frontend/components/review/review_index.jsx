@@ -13,7 +13,16 @@ class ReviewIndex extends React.Component {
     }
 
     render() {
-        console.log(this.props);
+
+        //if no current user, this will allow reviews to still render
+        let checkCurrentUser;
+        if (this.props.currentUser) {
+            checkCurrentUser = this.props.currentUser
+        } else {
+            checkCurrentUser = {};
+        }
+
+        // console.log(checkCurrentUser);
 
         const { reviews, updateReview, deleteReview, currentUser, fetchReview, business } = this.props;
 
@@ -25,7 +34,7 @@ class ReviewIndex extends React.Component {
                 <div className="review-index-wrapper">
                     <h1>(Review Index)</h1>
                     {reviews.map(review => (
-                        <ReviewIndexItem review={review} key={review.id} updateReview={updateReview} deleteReview={deleteReview} currentUser={currentUser} business={business} fetchReview={fetchReview} />
+                        <ReviewIndexItem review={review} key={review.id} updateReview={updateReview} deleteReview={deleteReview} currentUser={checkCurrentUser} business={business} fetchReview={fetchReview} />
                     ))}
                 </div>
             </div>
