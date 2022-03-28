@@ -11,13 +11,14 @@
 .biz-show-background-photos {
     display: flex;
     z-index: -999;
+    margin-top: -30px;
 }
 
 .biz-show-photo {
     width: 33.3%;
     height: 430px;
     object-fit: cover;
-    filter: brightness(70%);
+    filter: brightness(80%);
 }
 
 .biz-show-photo-gradient {

@@ -31,8 +31,7 @@ class BusinessShowPage extends React.Component {
     
 
     render() {
-        // console.log(this.props)
-        const { business } = this.props;
+        const { business, currentUser, logout } = this.props;
 
         if (!business) return null;
 
@@ -40,15 +39,39 @@ class BusinessShowPage extends React.Component {
         business.reviews.map(review => (
             rating += review.rating
         ))
-        let avgRating = (rating / business.reviews.length).toFixed(1)
+        let avgRating = (rating / business.reviews.length).toFixed(1);
+
+
+        const checkLoggedIn = currentUser ? (
+            <div className="biz-index-check-loggedin-container">
+                {/* <Link to="/" className="biz-index-your-reviews">Your Reviews</Link> */}
+                <h2 className="biz-index-welcome-user">Welcome, {currentUser.first_name}!</h2>
+                <button className="biz-index-logout-user" onClick={logout}>Log out</button>
+            </div>
+        ) : (
+            <div className="biz-index-login-signup-buttons">
+                <Link className="biz-index-login-button" to='/login'>Log In</Link>
+                <Link className="biz-index-signup-button" to='/signup'>Sign Up</Link>
+            </div>
+        )
 
 
         return(
+
             <div className="biz-show-container">
 
-                <div className="biz-show-searchbar">
-                    {/* <SearchBarContainer /> */}
-                    <NavBarContainer />
+                <div className="biz-index-navbar">
+                    <Link to="/" className="biz-index-back-to-homepage">
+                        <h3 className="biz-index-homepage-text">smackin'</h3>
+                        <img className="biz-index-logo" src={window.logo} alt="logo" />
+                    </Link>
+
+                    <div className="biz-index-searchbar">
+                        <SearchBarContainer />
+                    </div>
+
+                    {checkLoggedIn}
+
                 </div>
 
                 <div className="biz-show-background-photos">

@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import SearchBar from "./search_bar";
 import { fetchBusinesses} from "../../actions/business_actions";
+import { withRouter } from "react-router";
 
 
 const mSTP = (state, ownProps) => {
@@ -17,4 +18,9 @@ const mDTP = (dispatch) => {
 };
 
 
-export default connect(mSTP, mDTP)(SearchBar);
+export default withRouter(
+    connect(
+        mSTP,
+        mDTP)(
+        SearchBar)
+        );

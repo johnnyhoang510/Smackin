@@ -15,7 +15,6 @@ class BusinessIndex extends React.Component {
     }
 
     render() {
-        // console.log(this.props)
         const { businesses, fetchReviews, currentUser, logout } = this.props;
 
         const checkLoggedIn = currentUser ? (

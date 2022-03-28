@@ -186,7 +186,6 @@
 .homepage-best-business-photo {
     height: 180px;
     width: 100%;
-    background-color: pink;
     object-fit: cover;
     border-radius: 3px 3px 1px 1px;
 }

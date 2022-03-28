@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { fetchBusiness } from "../../actions/business_actions";
 import BusinessShowPage from "./business_show_page";
 import { fetchReviews } from "../../actions/review_actions";
-import { withRouter } from "react-router";
+import { logout } from "../../actions/session_actions";
 
 
 const mSTP = (state, ownProps) => {
@@ -19,7 +19,8 @@ const mSTP = (state, ownProps) => {
 const mDTP = (dispatch) => {
     return {
         fetchBusiness: (businessId) => dispatch(fetchBusiness(businessId)),
-        fetchReviews: (businessId) => dispatch(fetchReviews(businessId))
+        fetchReviews: (businessId) => dispatch(fetchReviews(businessId)),
+        logout: () => dispatch(logout())
     }
 };
 
