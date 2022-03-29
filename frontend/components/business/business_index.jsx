@@ -43,6 +43,14 @@ class BusinessIndex extends React.Component {
             filtered = allBusinesses.filter(business => business.category.toLowerCase() === query.toLowerCase());
             return filtered;
         }
+    }
+
+    noMatchedBusinesses() {
+        if (this.searchBusinesses().length === 0) {
+            return <div>
+                    <h1>No results</h1>
+                </div>
+        }
 
     }
 
@@ -69,13 +77,13 @@ class BusinessIndex extends React.Component {
         )
 
 
-        const queryBusinesses = this.searchBusinesses().length ? (
-            console.log(this.searchBusinesses().length)
-        ) : (
-            <div>
-                <h1>No results</h1>
-            </div>
-        )
+        // const queryBusinesses = this.searchBusinesses().length ? (
+        //     console.log(this.searchBusinesses().length)
+        // ) : (
+        //     <div>
+        //         <h1>No results</h1>
+        //     </div>
+        // )
 
         return(
             <div>
@@ -109,7 +117,7 @@ class BusinessIndex extends React.Component {
                             ))}
                         </ol>
 
-                        {queryBusinesses}
+                        {this.noMatchedBusinesses()}
 
                         <div className="biz-index-map-container">
                             {/* buggy when using the search function */}

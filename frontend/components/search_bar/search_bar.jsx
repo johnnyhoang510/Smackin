@@ -1,5 +1,5 @@
 import React from "react";
-
+import { BsSearch } from "react-icons/bs"
 
 class SearchBar extends React.Component {
     constructor(props) {
@@ -32,7 +32,7 @@ class SearchBar extends React.Component {
         // if (!this.props.businesses) return null;
         
         return(
-            <div>
+            <div className="searchbar-container">
                 <input
                 className="searchbar-component"
                     type="text"
@@ -40,7 +40,8 @@ class SearchBar extends React.Component {
                     onChange={this.update('query')}
                     value={this.state.query}
                 />
-                <button onClick={this.handleSearch} className="searchbar-button">Search</button>
+                {/* <button onClick={this.handleSearch} className="searchbar-button">Search</button> */}
+                <BsSearch onClick={this.handleSearch} className="searchbar-icon" />
             </div>
         )
     }
