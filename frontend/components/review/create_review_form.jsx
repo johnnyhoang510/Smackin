@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { BsStar, BsStarFill } from "react-icons/bs";
 
 class CreateReviewForm extends React.Component{
     constructor(props){
@@ -41,7 +42,7 @@ class CreateReviewForm extends React.Component{
         let showErrors;
         if (errors.length) {
             showErrors = errors.map( (err, idx) => (
-                <li key={idx}>{err}</li>
+                <li key={`error-${idx}`}>{err}</li>
             ))
         };
 
@@ -62,8 +63,9 @@ class CreateReviewForm extends React.Component{
                     <div className="create-review-form-rating-wrapper">
                         <p className="select-your-rating">Select your rating</p>
 
-                        <label htmlFor="rating-1" className="create-review-form-rating-1">1</label>
-                        <input id="rating-1" type="radio"  value="1" onChange={this.update('rating')} name="rating"/>
+                        <label htmlFor="rating-1" className="create-review-form-rating-1"><BsStarFill className="review-star-1" />
+                            <input id="rating-1" type="radio"  value="1" onChange={this.update('rating')} name="rating"/>
+                        </label>
 
                         <label htmlFor="rating-2" className="create-review-form-rating-2">2</label>
                         <input id="rating-2" type="radio"  value="2" onChange={this.update('rating')} name="rating"/>
