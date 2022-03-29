@@ -291,6 +291,38 @@
     font-weight: 700;
 }
 
+.biz-index-no-results-container {
+    width: 1500px;
+    font-family: 'Poppins','Helvetica Neue',Helvetica,Arial,sans-serif;
+    margin-left: 180px;
+    margin-top: 60px;
+}
+
+.biz-index-no-results-header {
+    font-size: 20px;
+    color: #333;
+    font-weight: 600;
+    line-height: 30px;
+    padding-bottom: 25px;
+}
+
+.biz-index-no-results-suggestions {
+    color: #333;
+    font-size: 15px;
+    padding-bottom: 10px;
+    font-weight: 500;
+}
+
+.biz-index-suggestions-list {
+    list-style-type:disc;
+    font-size: 14px;
+    color: #333;
+    margin-left: 30px;
+}
+
+.biz-index-suggestion-item {
+    padding: 10px 0;
+}
 
 /* ---- MAP COMPONENT ---- */
 

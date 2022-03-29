@@ -23,7 +23,7 @@ class SearchBar extends React.Component {
         e.preventDefault();
         let searchQuery = this.state.query
         this.props.history.push(`/businesses?search=${searchQuery === '' ? 0 : searchQuery}`);
-        // window.location.reload(); this brings up an error for key index in the console
+        // window.location.reload(); //this brings up an error for key index in the console
     }
 
     render() {
@@ -36,7 +36,7 @@ class SearchBar extends React.Component {
                 <input
                 className="searchbar-component"
                     type="text"
-                    placeholder="slightly working..."
+                    placeholder="testing..."
                     onChange={this.update('query')}
                     value={this.state.query}
                 />

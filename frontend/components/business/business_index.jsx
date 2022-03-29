@@ -8,9 +8,6 @@ import { Link } from "react-router-dom";
 class BusinessIndex extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            biz: []
-        }
 
         this.searchBusinesses = this.searchBusinesses.bind(this)
     }
@@ -34,10 +31,9 @@ class BusinessIndex extends React.Component {
         const allBusinesses = this.props.businesses;
         let filtered = [];
 
-        if (query === undefined || query === 0) { //if nothing is searched, show all businesses
+        if (!query || query === '0') { //if nothing is searched, show all businesses
             return allBusinesses;
-        } else if (!validCategories.includes(query.toLowerCase())) { //if query is not in categories, return error message
-            // filtered.push('No results');
+        } else if (!validCategories.includes(query.toLowerCase())) { //if query is not in categories
             return filtered;
         } else {
             filtered = allBusinesses.filter(business => business.category.toLowerCase() === query.toLowerCase());
@@ -47,11 +43,16 @@ class BusinessIndex extends React.Component {
 
     noMatchedBusinesses() {
         if (this.searchBusinesses().length === 0) {
-            return <div>
-                    <h1>No results</h1>
-                </div>
-        }
+            return <div className="biz-index-no-results-container">
+                        <h1 className="biz-index-no-results-header">No results found for your search</h1>
+                        <h3 className="biz-index-no-results-suggestions">Suggestions for improving your result:</h3>
 
+                        <ul className="biz-index-suggestions-list">
+                           <li className="biz-index-suggestion-item">Check the spelling or try alternate spellings</li> 
+                           <li>Try a more general search, e.g. "burgers" instead of "bacon burgers"</li> 
+                        </ul>
+                    </div>
+        }
     }
 
     render() {
@@ -59,7 +60,7 @@ class BusinessIndex extends React.Component {
         if (!this.props.businesses) return null;
         // console.log(this.props.businesses);
         // console.log(this.state);
-        console.log(this.searchBusinesses())
+        // console.log("render", this.searchBusinesses())
 
         const { businesses, fetchReviews, currentUser, logout } = this.props;
 
@@ -76,14 +77,6 @@ class BusinessIndex extends React.Component {
             </div>
         )
 
-
-        // const queryBusinesses = this.searchBusinesses().length ? (
-        //     console.log(this.searchBusinesses().length)
-        // ) : (
-        //     <div>
-        //         <h1>No results</h1>
-        //     </div>
-        // )
 
         return(
             <div>
