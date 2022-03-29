@@ -21,9 +21,9 @@ class SearchBar extends React.Component {
 
     handleSearch(e) {
         e.preventDefault();
-        let desc = this.state.findDesc;
-        let loc = this.state.findLoc;
-        this.props.history.push(`/businesses?find=${desc === '' ? 0 : desc}`)
+        let searchQuery = this.state.query
+        this.props.history.push(`/businesses?search=${searchQuery === '' ? 0 : searchQuery}`);
+        // window.location.reload(); this brings up an error for key index in the console
     }
 
     render() {
@@ -36,9 +36,9 @@ class SearchBar extends React.Component {
                 <input
                 className="searchbar-component"
                     type="text"
-                    placeholder="this dont work yet :("
-                    onChange={this.update('findDesc')}
-                    value={this.state.findDesc}
+                    placeholder="slightly working..."
+                    onChange={this.update('query')}
+                    value={this.state.query}
                 />
                 <button onClick={this.handleSearch} className="searchbar-button">Search</button>
             </div>

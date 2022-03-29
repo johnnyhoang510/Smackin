@@ -8,13 +8,51 @@ import { Link } from "react-router-dom";
 class BusinessIndex extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            biz: []
+        }
+
+        this.searchBusinesses = this.searchBusinesses.bind(this)
     }
 
     componentDidMount() {
         this.props.fetchBusinesses();
     }
 
+    // componentDidUpdate() {
+    //     this.searchBusinesses();
+    // }
+
+    searchBusinesses() {
+        //storing all categories for each business
+        let validCategories = [];
+        this.props.businesses.map(business => validCategories.push(business.category.toLowerCase()));
+
+        let query;
+        if (this.props.location.search) query = (this.props.location.search.split('=')[1]).toString();
+
+        const allBusinesses = this.props.businesses;
+        let filtered = [];
+
+        if (query === undefined || query === 0) { //if nothing is searched, show all businesses
+            return allBusinesses;
+        } else if (!validCategories.includes(query.toLowerCase())) { //if query is not in categories, return error message
+            // filtered.push('No results');
+            return filtered;
+        } else {
+            filtered = allBusinesses.filter(business => business.category.toLowerCase() === query.toLowerCase());
+            return filtered;
+        }
+
+    }
+
     render() {
+
+        if (!this.props.businesses) return null;
+        // console.log(this.props.businesses);
+        // console.log(this.state);
+        console.log(this.searchBusinesses())
+
         const { businesses, fetchReviews, currentUser, logout } = this.props;
 
         const checkLoggedIn = currentUser ? (
@@ -27,6 +65,15 @@ class BusinessIndex extends React.Component {
             <div className="biz-index-login-signup-buttons">
                 <Link className="biz-index-login-button" to='/login'>Log In</Link>
                 <Link className="biz-index-signup-button" to='/signup'>Sign Up</Link>
+            </div>
+        )
+
+
+        const queryBusinesses = this.searchBusinesses().length ? (
+            console.log(this.searchBusinesses().length)
+        ) : (
+            <div>
+                <h1>No results</h1>
             </div>
         )
 
@@ -57,13 +104,16 @@ class BusinessIndex extends React.Component {
                     <div className="biz-index-list-container">
                         <h1 className="biz-index-all-results">All Results</h1>
                         <ol className="biz-index-list">
-                            {businesses.map(business => (
+                            {this.searchBusinesses().map(business => (
                                 <BusinessIndexItem key={business.id} business={business} fetchReviews={fetchReviews} />
                             ))}
                         </ol>
 
+                        {queryBusinesses}
+
                         <div className="biz-index-map-container">
-                            {/* <BusinessMap businesses={businesses} /> */}
+                            {/* buggy when using the search function */}
+                            {/* <BusinessMap businesses={this.searchBusinesses()} /> */}
                         </div>
                     </div>
                 </div>
