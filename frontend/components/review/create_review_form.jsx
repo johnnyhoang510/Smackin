@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { BsStar, BsStarFill } from "react-icons/bs";
+import { BsStarFill } from "react-icons/bs";
 
 class CreateReviewForm extends React.Component{
     constructor(props){
@@ -14,6 +14,7 @@ class CreateReviewForm extends React.Component{
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleLogout = this.handleLogout.bind(this);
     }
 
     componentDidMount() {
@@ -24,7 +25,12 @@ class CreateReviewForm extends React.Component{
         e.preventDefault();
         this.props.createReview(this.state, this.props.business.id)
             .then(() => this.props.history.push(`/businesses/${this.props.business.id}`))
-        // redirect the user back to show page
+    }
+
+    handleLogout(e) {
+        e.preventDefault();
+        this.props.logout()
+            .then(() => this.props.history.push(`/businesses/${this.props.business.id}`))
     }
 
     update(field) {
@@ -33,7 +39,7 @@ class CreateReviewForm extends React.Component{
 
     render() {
 
-        const { business, errors } = this.props;
+        const { business, errors, currentUser } = this.props;
         // console.log(errors)
         // console.log(this.state);
         // console.log(this.props);
@@ -50,10 +56,17 @@ class CreateReviewForm extends React.Component{
 
         <div>
 
-                {/* <header className="session-form-header">
-                    <Link className="session-form-header-link" to="/">smackin'</Link>
-                    <Link className="session-form-header-logo" to="/">(Logo goes here)</Link>
-                </header> */}
+            <header className="create-form-header">
+                <Link to="/" className="create-form-title-logo-wrapper">
+                    <h1 className="create-form-title">smackin'</h1>
+                    <img className="create-form-logo" src={window.logo} alt="logo" />
+                </Link>
+
+                <div className="create-form-user-container">
+                    <h2 className="create-form-welcome-user">Welcome, {currentUser.first_name}!</h2>
+                    <button onClick={this.handleLogout} className="create-form-logout-button">Log Out</button>
+                </div>
+            </header>
 
             <div className="create-review-form-container">
 
@@ -62,25 +75,27 @@ class CreateReviewForm extends React.Component{
                 <form className="create-review-form" onSubmit={this.handleSubmit}>
                     <div className="create-review-form-rating-wrapper">
 
+                        <div className="create-form-stars-container">
                             <input id="rating-1" type="radio"  value="1" onChange={this.update('rating')} name="rating"/>
-                            <label htmlFor="rating-1" className="create-review-form-rating-1"><BsStarFill className="review-star-1" /></label>
+                            <label htmlFor="rating-1" id="create-review-form-rating"><BsStarFill className="review-star" /></label>
 
-                        <label htmlFor="rating-2" className="create-review-form-rating-2">2</label>
-                        <input id="rating-2" type="radio"  value="2" onChange={this.update('rating')} name="rating"/>
+                            <input id="rating-2" type="radio"  value="2" onChange={this.update('rating')} name="rating"/>
+                            <label htmlFor="rating-2" id="create-review-form-rating"><BsStarFill className="review-star" /></label>
 
-                        <label htmlFor="rating-3" className="create-review-form-rating-3">3</label>
-                        <input id="rating-3" type="radio"  value="3" onChange={this.update('rating')} name="rating"/>
+                            <input id="rating-3" type="radio"  value="3" onChange={this.update('rating')} name="rating"/>
+                            <label htmlFor="rating-3" id="create-review-form-rating"><BsStarFill className="review-star" /></label>
 
-                        <label htmlFor="rating-4" className="create-review-form-rating-4">4</label>
-                        <input id="rating-4" type="radio"  value="4" onChange={this.update('rating')} name="rating"/>
+                            <input id="rating-4" type="radio"  value="4" onChange={this.update('rating')} name="rating"/>
+                            <label htmlFor="rating-4" id="create-review-form-rating"><BsStarFill className="review-star" /></label>
 
-                        <label htmlFor="rating-5" className="create-review-form-rating-5">5</label>
-                        <input id="rating-5" type="radio"  value="5" onChange={this.update('rating')} name="rating"/>
+                            <input id="rating-5" type="radio"  value="5" onChange={this.update('rating')} name="rating"/>
+                            <label htmlFor="rating-5" id="create-review-form-rating"><BsStarFill className="review-star" /></label>
+                        </div>
                         
                         <p className="select-your-rating">Select your rating</p>
                     </div>
 
-                    <textarea rows="25" cols="70" className="create-review-form-textarea" onChange={this.update('body')} placeholder="it was trash" required></textarea>
+                    <textarea rows="25" cols="70" className="create-review-form-textarea" onChange={this.update('body')} placeholder="If you want to find the world's best street burrito, look no further. Whenever I'm craving a California burrito, I immediately head here. For $12, they stuff in fries, guacamole, sour cream, and your choice of meat. The employees like to keep the line moving, which is great especially during lunch. Tip: call in your order to skip the line!" required></textarea>
                     <br />
                     <button type="submit" className="create-review-form-submit">Post Review</button>
                 </form>

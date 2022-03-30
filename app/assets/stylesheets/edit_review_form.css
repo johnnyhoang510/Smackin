@@ -1,20 +1,19 @@
-.edit-review-form-container {
+/* .edit-review-form-container {
     margin-top: 8%;
     margin-left: 7%;
-}
+} */
 
-.edit-review-form-title {
-    /* position: absolute; */
+/* .edit-review-form-title {
     font-size: 28px;
     color: rgba(45,46,47,1);
     font-weight: 700;
     font-family: 'Poppins','Helvetica Neue',Helvetica,Arial,sans-serif;
     line-height: 36px;
     letter-spacing: -0.4px;
-}
+} */
 
 
-.edit-review-form-submit {
+/* .edit-review-form-submit {
     width: 200px;
     height: 40px;
     font-size: 15px;
@@ -41,4 +40,4 @@
     max-width: 630px;
     min-height: 320px;
     resize: none;
-}
+} */

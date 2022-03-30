@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { BsStarFill } from "react-icons/bs";
 
 
 class EditReviewForm extends React.Component{
@@ -12,6 +14,7 @@ class EditReviewForm extends React.Component{
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleLogout = this.handleLogout.bind(this);
     };
 
     componentDidMount() {
@@ -32,6 +35,12 @@ class EditReviewForm extends React.Component{
             .then(() => this.props.history.push(`/businesses/${this.props.business.id}`))
     };
 
+    handleLogout(e) {
+        e.preventDefault();
+        this.props.logout()
+            .then(() => this.props.history.push(`/businesses/${this.props.business.id}`))
+    }
+
     update(field) {
         return e => this.setState({ [field]: e.currentTarget.value })
     };
@@ -50,45 +59,61 @@ class EditReviewForm extends React.Component{
         // console.log(this.state);
         const { review, business, businessId, reviewId, currentUser, errors } = this.props;
         
-        console.log(business);
-        console.log(review);
+        // console.log(business);
+        // console.log(review);
 
         let showErrors;
         if (errors.length) {
             showErrors = errors.map((err, idx) => (
-                <li key={idx}>{err}</li>
+                <li key={`err-${idx}`}>{err}</li>
             ))
         };
         
         return(
             <div>
+
+                <header className="edit-form-header">
+                    <Link to="/" className="edit-form-title-logo-wrapper">
+                        <h1 className="edit-form-title">smackin'</h1>
+                        <img className="edit-form-logo" src={window.logo} alt="logo" />
+                    </Link>
+
+                    <div className="edit-form-user-container">
+                        <h2 className="edit-form-welcome-user">Welcome, {currentUser.first_name}!</h2>
+                        <button onClick={this.handleLogout} className="edit-form-logout-button">Log Out</button>
+                    </div>
+                </header>
+
                 <div className="edit-review-form-container">
 
                     <h1 className="edit-review-form-title">{business.name}</h1>
 
                     <form className="edit-review-form" onSubmit={this.handleSubmit}>
                         <div className="edit-review-form-rating-wrapper">
+
+                            <div className="edit-form-stars-container">
+                                <input id="rating-1" type="radio" value="1" onChange={this.update('rating')} name="rating" />
+                                <label htmlFor="rating-1" id="edit-review-form-rating"><BsStarFill className="review-star" /></label>
+
+                                <input id="rating-2" type="radio" value="2" onChange={this.update('rating')} name="rating" />
+                                <label htmlFor="rating-2" id="edit-review-form-rating"><BsStarFill className="review-star" /></label>
+
+                                <input id="rating-3" type="radio" value="3" onChange={this.update('rating')} name="rating" />
+                                <label htmlFor="rating-3" id="edit-review-form-rating"><BsStarFill className="review-star" /></label>
+
+                                <input id="rating-4" type="radio" value="4" onChange={this.update('rating')} name="rating" />
+                                <label htmlFor="rating-4" id="edit-review-form-rating"><BsStarFill className="review-star" /></label>
+
+                                <input id="rating-5" type="radio" value="5" onChange={this.update('rating')} name="rating" />
+                                <label htmlFor="rating-5" id="edit-review-form-rating"><BsStarFill className="review-star" /></label>
+                            </div>
+
                             <p className="select-your-rating">Select your rating</p>
-
-                            <label htmlFor="rating-1" className="edit-review-form-rating-1">1</label>
-                            <input id="rating-1" type="radio" value="1" onChange={this.update('rating')} name="rating" />
-
-                            <label htmlFor="rating-2" className="edit-review-form-rating-2">2</label>
-                            <input id="rating-2" type="radio" value="2" onChange={this.update('rating')} name="rating" />
-
-                            <label htmlFor="rating-3" className="edit-review-form-rating-3">3</label>
-                            <input id="rating-3" type="radio" value="3" onChange={this.update('rating')} name="rating" />
-
-                            <label htmlFor="rating-4" className="edit-review-form-rating-4">4</label>
-                            <input id="rating-4" type="radio" value="4" onChange={this.update('rating')} name="rating" />
-
-                            <label htmlFor="rating-5" className="edit-review-form-rating-5">5</label>
-                            <input id="rating-5" type="radio" value="5" onChange={this.update('rating')} name="rating" />
                         </div>
 
                         <textarea rows="25" cols="70" className="edit-review-form-textarea" onChange={this.update('body')} placeholder={review.body} required></textarea>
                         <br />
-                        <button type="submit" className="edit-review-form-submit">Update Review</button>
+                        <button type="submit" className="edit-review-form-submit">Edit Review</button>
                     </form>
 
                     <div className="edit-review-form-errors">

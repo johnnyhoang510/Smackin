@@ -1,10 +1,83 @@
-.create-review-form-container {
-    margin-top: 8%;
+.create-form-header, .edit-form-header {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    border-bottom: solid 1px #ebebeb;
+    padding-bottom: 30px;
+}
+
+.create-form-title-logo-wrapper, .edit-form-title-logo-wrapper {
+    display: flex;
+    margin-top: 30px;
+    text-decoration: none;
+    margin-left: 40px;
+}
+
+.create-form-title, .edit-form-title {
+    font-size: 30px;
+    font-family: "Dekko";
+    font-weight: bold;
+    color: #000;
+    object-fit: cover;
+    text-shadow: 1px 0 #000;
+}
+
+.create-form-logo, .edit-form-logo {
+    width: 30px;
+    height: 30px;
+    margin-top: -4%;
+    object-fit: cover;
+}
+
+.create-form-user-container, .edit-form-user-container {
+    display: flex;
+    margin-top: 17px;
+    margin-right: 40px;
+}
+
+.create-form-welcome-user, .edit-form-welcome-user {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    margin-top: 10px;
+    padding-right: 15px;
+}
+
+.create-form-logout-button, .edit-form-logout-button {
+    cursor: pointer;
+    padding: 8px 16px;
+    background-color: rgba(224,7,7,1);
+    border: none;
+    border-radius: 4px;
+    color: white;
+    text-decoration: none;
+    height: 35px;
+    width: auto;
+    font-weight: 500;
+    margin-left: 8px;
+    font-size: 16px;
+}
+
+.create-form-logout-button:hover, .edit-form-logout-button:hover {
+    opacity: 0.85;
+    transition: all 0.6s;
+}
+
+
+.create-review-form-container, .edit-review-form-container {
+    margin-top: 4%;
     margin-left: 7%;
 }
 
-.create-review-form-title {
-    /* position: absolute; */
+.create-review-form, .edit-review-form {
+    border: 1px solid #c8c9ca;
+    width: 650px;
+    height: 400px;
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+.create-review-form-title, .edit-review-form-title {
     font-size: 28px;
     color: rgba(45,46,47,1);
     font-weight: 700;
@@ -13,50 +86,78 @@
     letter-spacing: -0.4px;
 }
 
-input[type="radio"] {
-    position: absolute;
-    opacity: 0;
-    width: 0;
-    height: 0;
+.create-review-form-rating-wrapper, .edit-review-form-rating-wrapper {
+    display: flex;
 }
 
-input[type="radio"] + .review-star-1 {
-    cursor: pointer;
+.create-form-stars-container, .edit-form-stars-container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    margin-left: 20px;
+    margin-top: 20px;
+
+    #rating-1 {
+        display: none;
+        &:checked ~ label, &:hover ~ label {
+            background-color: #f52d2d;
+        }
+    }
+
+    #rating-2 {
+        display: none;
+        &:checked ~ label, &:hover ~ label {
+            background-color: orangered;
+        }
+    }
+    #rating-3 {
+        display: none;
+        &:checked ~ label, &:hover ~ label {
+            background-color: rgb(255, 123, 0);
+        }
+    }
+    #rating-4 {
+        display: none;
+        &:checked ~ label, &:hover ~ label {
+            background-color: rgb(255, 174, 23);
+        }
+    }
+    #rating-5 {
+        display: none;
+        &:checked ~ label, &:hover ~ label {
+            background-color: gold;
+        }
+    }
+
+    label {
+        background-color: #ebebeb;
+        border-radius: 5px;
+        margin-right: 5px;
+    }
 }
 
-
-.review-star-1 {
-    font-size: 18px;
+.review-star {
     color: white;
-    border: 1px solid rgb(192, 192, 192);
-    background-color: rgb(192, 192, 192);
-    border-radius: 3px;
-    padding: 5px;
+    margin-top: 4px;
+    margin-left: 4px;
+    font-size: 20px;
+    padding: 2px 5px 3px 2px;
+    word-spacing: 4px;
 }
 
-.review-star-1:focus {
-    background-color: green;
-}
-
-.review-star-1:hover {
-    background-color: gold;
-    border-color: gold;
-}
-
-input[type=radio]:checked + .review-star-1 {
-    outline: 2px solid green;
-    background: pink;
-}
-
-.create-review-form-rating-1:focus-within {
-    & > .review-star-1 {
-        background-color: gold;
-        border-color: gold;
-    } 
+.select-your-rating {
+    font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 20px;
+    color: rgb(67, 67, 68);
+    margin-top: 27px;
+    margin-left: 10px;
+    letter-spacing: 0.2px;
 }
 
 
-.create-review-form-submit {
+.create-review-form-submit, .edit-review-form-submit {
     width: 200px;
     height: 40px;
     font-size: 15px;
@@ -69,18 +170,28 @@ input[type=radio]:checked + .review-star-1 {
     cursor: pointer;
 }
 
-.create-review-form-submit:hover {
+.create-review-form-submit:hover, .edit-review-form-submit:hover {
     background-color: rgb(255, 42, 42);
     transition: all 1s;
 }
 
-.create-review-form-textarea {
+.create-review-form-textarea, .edit-review-form-textarea {
     border: 1px solid #c8c9ca;
     border-radius: 4px;
     cursor: text;
     display: flex;
     flex-direction: column;
-    max-width: 630px;
-    min-height: 320px;
+    margin-top: 20px;
+    padding: 22px;
+    width: 93%;
+    height: 280px;
     resize: none;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: rgb(51, 51, 51);
+    line-height: 20px;
 }

@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import EditReviewForm from "./edit_review_form";
 import { fetchReview, updateReview, clearReviewErrors } from "../../actions/review_actions";
 import { fetchBusiness } from "../../actions/business_actions";
+import { logout } from "../../actions/session_actions";
 
 
 const mSTP = (state, ownProps) => {
@@ -23,7 +24,8 @@ const mDTP = (dispatch) => {
         fetchReview: (businessId, reviewId) => dispatch(fetchReview(businessId, reviewId)),
         updateReview: (review, businessId) => dispatch(updateReview(review, businessId)),
         clearReviewErrors: () => dispatch(clearReviewErrors()),
-        fetchBusiness: (businessId) => dispatch(fetchBusiness(businessId))
+        fetchBusiness: (businessId) => dispatch(fetchBusiness(businessId)),
+        logout: () => dispatch(logout())
     }
 };
 
