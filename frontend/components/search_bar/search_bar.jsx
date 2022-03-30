@@ -9,6 +9,7 @@ class SearchBar extends React.Component {
         }
 
         this.handleSearch = this.handleSearch.bind(this);
+        this.handleSearchEnter = this.handleSearchEnter.bind(this);
     };
 
     // componentDidMount() {
@@ -26,6 +27,13 @@ class SearchBar extends React.Component {
         // window.location.reload(); //this brings up an error for key index in the console
     }
 
+    handleSearchEnter(e) {
+        if (e.key === "Enter") {
+            let searchQuery = this.state.query
+            this.props.history.push(`/businesses?search=${searchQuery === '' ? 0 : searchQuery}`);
+        }
+    }
+
     render() {
 
         // console.log(this.props);
@@ -38,6 +46,7 @@ class SearchBar extends React.Component {
                     type="text"
                     placeholder="testing..."
                     onChange={this.update('query')}
+                    onKeyPress={this.handleSearchEnter}
                     value={this.state.query}
                 />
                 {/* <button onClick={this.handleSearch} className="searchbar-button">Search</button> */}

@@ -8,10 +8,11 @@
     z-index: -999;
     opacity: 0.9;
     width: 100vw;
-    height: auto;
+    height: 650px;
     min-width: 800px;
     top: 0%;
     filter: brightness(55%);
+    object-fit: cover;
 }
 
 
@@ -131,13 +132,17 @@
     background: transparent;
 }
 
+.homepage-title-logo-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 6%;
+    text-decoration: none;
+}
+
 .homepage-title {
-    position: absolute;
     color: black;
     filter: drop-shadow(3px 0 0 #fff) drop-shadow(0 3px 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 -2px 0 #fff);
     font-size: 60px;
-    margin-left: 40%;
-    margin-top: 6.5%;
     font-weight: 700;
     font-family: "Dekko";
 }
@@ -145,16 +150,21 @@
 .homepage-logo {
     width: 60px;
     height: 60px;
-    position: absolute;
-    margin-left: 55%;
-    margin-top: 6%;
+    margin-top: -5px;
+}
+
+.homepage-searchbar-container {
+    margin-top: 3%;
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
 }
 
 
 .homepage-best-businesses-container {
     background-color: #f7f7f7;
     position: absolute;
-    margin-top: 510px;
+    margin-top: 19%;
     height: 340px;
     width: 100%;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;

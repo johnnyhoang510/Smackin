@@ -28,6 +28,8 @@ class ReviewIndexItem extends React.Component {
     handleDelete(e) {
         e.preventDefault();
         this.props.deleteReview(this.props.review.id, this.props.review.business_id)
+        window.location.reload();
+        //need to add a delete modal
     }
 
     reviewCreateDate() {
@@ -80,7 +82,9 @@ class ReviewIndexItem extends React.Component {
 
                     <div className="review-item-rating-container">
                         <p className="review-item-rating">(Star-Rating): {review.rating}</p>
-                        <p className="review-item-create-date">{this.reviewCreateDate()}</p>
+                        {/* giving an error after editing a review */}
+                        {/* <p className="review-item-create-date">{this.reviewCreateDate()}</p> */}
+                        {/* <p className="review-item-create-date">{review.created_at}</p> */}
                     </div>
 
                     <div className="review-item-body-container">

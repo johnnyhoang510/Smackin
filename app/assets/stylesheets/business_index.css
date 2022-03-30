@@ -331,14 +331,14 @@
     top: 130px;
     margin-top: -70px;
     min-width: 310px;
-    width: 100%;
+    width: 310px;
     height: 110vh;
     margin-bottom: 18px;
 }
 
 #map-container {
     min-width: 310px;
-    width: 100%;
+    width: 310px;
     height: 110vh;
 }
 

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import SearchBarContainer from "../search_bar/search_bar_container";
 
 
 class Homepage extends React.Component{
@@ -46,6 +47,10 @@ class Homepage extends React.Component{
                         <h1 className="homepage-title">smackin'</h1>
                         <img className="homepage-logo" src={window.logo} alt="logo" />
                     </Link>
+                </div>
+
+                <div className="homepage-searchbar-container">
+                    <SearchBarContainer className="homepage-searchbar"/>
                 </div>
 
                 <div className="homepage-best-businesses-container">

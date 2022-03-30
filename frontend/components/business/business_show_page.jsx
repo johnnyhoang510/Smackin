@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import ReviewIndexContainer from "../review/review_index_container";
 import SearchBarContainer from "../search_bar/search_bar_container";
 import { BsFillCheckCircleFill, BsInfoCircleFill, BsStar, BsArrowUpRightSquare, BsTelephoneOutbound, BsArrow90DegRight } from "react-icons/bs";
+import BusinessMap from "../map/business_map";
 
 class BusinessShowPage extends React.Component {
     constructor(props) {

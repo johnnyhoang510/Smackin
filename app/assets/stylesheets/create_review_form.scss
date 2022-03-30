@@ -43,9 +43,16 @@ input[type="radio"] + .review-star-1 {
     border-color: gold;
 }
 
-input[type="radio"]:checked + .review-star-1 {
+input[type=radio]:checked + .review-star-1 {
     outline: 2px solid green;
     background: pink;
+}
+
+.create-review-form-rating-1:focus-within {
+    & > .review-star-1 {
+        background-color: gold;
+        border-color: gold;
+    } 
 }
 
 

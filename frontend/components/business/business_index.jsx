@@ -42,7 +42,7 @@ class BusinessIndex extends React.Component {
     }
 
     noMatchedBusinesses() {
-        if (this.searchBusinesses().length === 0) {
+        if (this.searchBusinesses().length === 0 && this.props.businesses) {
             return <div className="biz-index-no-results-container">
                         <h1 className="biz-index-no-results-header">No results found for your search</h1>
                         <h3 className="biz-index-no-results-suggestions">Suggestions for improving your result:</h3>
@@ -114,7 +114,7 @@ class BusinessIndex extends React.Component {
 
                         <div className="biz-index-map-container">
                             {/* buggy when using the search function */}
-                            {/* <BusinessMap businesses={this.searchBusinesses()} /> */}
+                            <BusinessMap businesses={this.searchBusinesses()} />
                         </div>
                     </div>
                 </div>

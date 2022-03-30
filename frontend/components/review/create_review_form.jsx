@@ -63,9 +63,8 @@ class CreateReviewForm extends React.Component{
                     <div className="create-review-form-rating-wrapper">
                         <p className="select-your-rating">Select your rating</p>
 
-                        <label htmlFor="rating-1" className="create-review-form-rating-1"><BsStarFill className="review-star-1" />
                             <input id="rating-1" type="radio"  value="1" onChange={this.update('rating')} name="rating"/>
-                        </label>
+                            <label htmlFor="rating-1" className="create-review-form-rating-1"><BsStarFill className="review-star-1" /></label>
 
                         <label htmlFor="rating-2" className="create-review-form-rating-2">2</label>
                         <input id="rating-2" type="radio"  value="2" onChange={this.update('rating')} name="rating"/>
