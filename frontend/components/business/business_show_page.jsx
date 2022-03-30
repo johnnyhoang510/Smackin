@@ -76,7 +76,7 @@ class BusinessShowPage extends React.Component {
                 </div>
 
                 <div className="biz-show-background-photos">
-                    {business.photoURLs.map( (photo_url, idx) => <img key={idx} className="biz-show-photo" src={photo_url} alt="" />)}
+                    {business.photoURLs.slice(0,3).map( (photo_url, idx) => <img key={idx} className="biz-show-photo" src={photo_url} alt="" />)}
                 </div>
                 <div className="biz-show-photo-gradient">
                 </div>
@@ -112,7 +112,7 @@ class BusinessShowPage extends React.Component {
 
                     <div className="biz-show-location-hours-map-container">
                         <h1 className="biz-show-location-hours-title">Location &amp; Hours</h1>
-                        <p className="biz-show-map">MAP PHOTO GOES HERE</p>
+                        <a href={`https://maps.google.com/?q=${business.lat},${business.lng}`} target="_blank"><img src={business.photoURLs[business.photoURLs.length - 1]} alt="map" className="biz-show-map" /></a>
                         <p className="biz-show-address">{business.address}</p>
                         <p className="biz-show-city-state">{business.city}, {business.state} {business.zip_code}</p>
                     </div>

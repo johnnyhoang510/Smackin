@@ -1,6 +1,5 @@
 .biz-index-container {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-
 }
 
 .biz-index-navbar {
@@ -18,8 +17,8 @@
 
 .biz-index-back-to-homepage {
     display: flex;
-    margin-left: -8%;
-    margin-top: 2%;
+    margin-left: -20px;
+    margin-top: 30px;
     text-decoration: none
 }
 
@@ -40,8 +39,8 @@
 }
 
 .biz-index-searchbar {
-    margin-top: 1.5%;
-    margin-left: -18%;
+    margin-top: 20px;
+    margin-left: -65px;
 }
 
 /* logged in */
@@ -50,9 +49,9 @@
 /* not logged in */
 .biz-index-login-signup-buttons, .biz-index-check-loggedin-container {
     display: flex;
-    margin-top: 1.5%;
+    margin-top: 25px;
     text-decoration: none;
-    margin-right: -6%;
+    margin-right: -20px;
 }
 
 .biz-index-welcome-user {

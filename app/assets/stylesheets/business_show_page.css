@@ -170,8 +170,9 @@
 .biz-show-map {
     display: block;
     border: 1px solid #666;
-    height: 130px;
+    height: 140px;
     width: 300px;
+    border: none;
 }
 
 /* .biz-show-center-map {

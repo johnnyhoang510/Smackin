@@ -61,7 +61,6 @@ class CreateReviewForm extends React.Component{
 
                 <form className="create-review-form" onSubmit={this.handleSubmit}>
                     <div className="create-review-form-rating-wrapper">
-                        <p className="select-your-rating">Select your rating</p>
 
                             <input id="rating-1" type="radio"  value="1" onChange={this.update('rating')} name="rating"/>
                             <label htmlFor="rating-1" className="create-review-form-rating-1"><BsStarFill className="review-star-1" /></label>
@@ -77,6 +76,8 @@ class CreateReviewForm extends React.Component{
 
                         <label htmlFor="rating-5" className="create-review-form-rating-5">5</label>
                         <input id="rating-5" type="radio"  value="5" onChange={this.update('rating')} name="rating"/>
+                        
+                        <p className="select-your-rating">Select your rating</p>
                     </div>
 
                     <textarea rows="25" cols="70" className="create-review-form-textarea" onChange={this.update('body')} placeholder="it was trash" required></textarea>
