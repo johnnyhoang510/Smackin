@@ -35,9 +35,9 @@ business1.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.c
 business1.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/trueburgermap.png"), filename: "trueburgermap.png")
 
 business2 = Business.create!(name: "Tacos Mi Rancho", address: "1434 1st Ave", city: "Oakland", state: "CA", zip_code: 94606, phone_number: "(510) 395-1403", category:"Mexican", website:"https://www.tacos.com", lat: 37.799534, lng: -122.256362, price:"$$", hours: "9:00AM - 12:00AM")
+business2.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/rancho3.jpg"), filename: "rancho3.jpg")
 business2.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/rancho.jpg"), filename: "rancho.jpg")
 business2.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/rancho2.jpg"), filename: "rancho2.jpg")
-business2.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/rancho3.jpg"), filename: "rancho3.jpg")
 business2.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/ranchomap.png"), filename: "ranchomap.png")
 
 business3 = Business.create!(name: "Smokin Woods BBQ", address: "4307 Telegraph Ave", city: "Oakland", state: "CA", zip_code: 94609, phone_number: "(510) 423-8634", category:"Barbeque", website:"https://www.smokinwoodsbbq.com", lat: 37.831919065169, lng: -122.26410305981324, price:"$$", hours: "12:00PM - 9:00PM")
@@ -53,9 +53,9 @@ business4.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.c
 business4.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/kansaimap.png"), filename: "kansaimap.png")
 
 business5 = Business.create!(name: "L & S Fish & Chips", address: "326 E 18th St", city: "Oakland", state: "CA", zip_code: 94606, phone_number: "(510) 625-1700", category:"Seafood", website:"http://www.louisianafishandchips.net/", lat: 37.79970435200378, lng: -122.25139858853203, price:"$", hours: "12:00PM - 6:30PM")
+business5.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/lns2.jpg"), filename: "lns2.jpg")
 business5.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/lns3.jpg"), filename: "lns3.jpg")
 business5.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/lns.jpg"), filename: "lns.jpg")
-business5.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/lns2.jpg"), filename: "lns2.jpg")
 business5.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/lnsmap.png"), filename: "lnsmap.png")
 
 business6 = Business.create!(name: "Monster Pho", address: "360 40th St", city: "Oakland", state: "CA", zip_code: 94609, phone_number: "(510) 788-4459", category:"Vietnamese", website:"https://www.monsterpho.com", lat: 37.8308727322662, lng: -122.2577183573041, price:"$", hours: "11:00AM - 8:00PM")

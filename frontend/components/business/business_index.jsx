@@ -55,6 +55,18 @@ class BusinessIndex extends React.Component {
         }
     }
 
+    filterbyPrice(businesses, price) {
+        let businessesByPrice = [];
+
+        businesses.forEach(business => {
+            if (business.price === price) {
+                businessesByPrice.push(business)
+            }
+        })
+
+        return businessesByPrice;
+    }
+
     render() {
 
         if (!this.props.businesses) return null;
@@ -100,6 +112,12 @@ class BusinessIndex extends React.Component {
 
                     <aside className="biz-index-filters-aside">
                         <p className="biz-index-filters-header">Filters</p>
+                        <div className="biz-index-filters-price-container">
+                            <button  className="price-button-1">$</button>
+                            <button className="price-button-2">$$</button>
+                            <button className="price-button-2">$$$</button>
+                            <button className="price-button-4">$$$$</button>
+                        </div>
                     </aside>
 
                     <div className="biz-index-list-container">
