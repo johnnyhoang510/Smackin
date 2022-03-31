@@ -54,13 +54,8 @@ class EditReviewForm extends React.Component{
         // if (!this.props.reviewId) return null;
         // if (!this.props.currentUser) return null;
         
-        // console.log(this.props.review);
-        // console.log(this.props.business);
-        // console.log(this.state);
         const { review, business, businessId, reviewId, currentUser, errors } = this.props;
         
-        // console.log(business);
-        // console.log(review);
 
         let showErrors;
         if (errors.length) {

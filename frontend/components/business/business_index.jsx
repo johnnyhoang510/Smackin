@@ -3,7 +3,7 @@ import BusinessIndexItem from "./business_index_item";
 import BusinessMap from "../map/business_map";
 import SearchBarContainer from "../search_bar/search_bar_container";
 import { Link } from "react-router-dom";
-
+import FilterContainer from "../filter/filter_container";
 
 class BusinessIndex extends React.Component {
     constructor(props) {
@@ -22,7 +22,7 @@ class BusinessIndex extends React.Component {
 
     searchBusinesses() {
         //storing all categories for each business
-        let validCategories = [];
+        let validCategories = ['$', '$$', '$$$', '$$$$'];
         this.props.businesses.map(business => validCategories.push(business.category.toLowerCase()));
 
         let query;
@@ -36,9 +36,24 @@ class BusinessIndex extends React.Component {
         } else if (!validCategories.includes(query.toLowerCase())) { //if query is not in categories
             return filtered;
         } else {
-            filtered = allBusinesses.filter(business => business.category.toLowerCase() === query.toLowerCase());
+            filtered = allBusinesses.filter(business => business.category.toLowerCase() === query.toLowerCase() || business.price === query);
             return filtered;
         }
+    }
+
+    filterBusinesses() {
+        let validPrices = ['$', '$$', '$$$', '$$$$'];
+        let filter;
+        if (this.props.location.search) filter = (this.props.location.search.split('=')[1]).toString();
+
+        let biz = this.props.businesses;
+        let priceFiltered = [];
+
+        if (filter) {
+            priceFiltered = biz.filter(business => business.price === filter)
+        }
+
+        return priceFiltered;
     }
 
     noMatchedBusinesses() {
@@ -73,8 +88,8 @@ class BusinessIndex extends React.Component {
 
         if (!this.props.businesses) return null;
         // console.log(this.props.businesses);
-        // console.log(this.state);
         // console.log("render", this.searchBusinesses())
+        // console.log(this.filterBusinesses());
 
         const { businesses, fetchReviews, currentUser, logout } = this.props;
 
@@ -113,27 +128,20 @@ class BusinessIndex extends React.Component {
 
 
                     <aside className="biz-index-filters-aside">
-                        <p className="biz-index-filters-header">Filters</p>
-                        <div className="biz-index-filters-price-container">
-                            <button className="price-button-1">$</button>
-                            <button className="price-button-2">$$</button>
-                            <button className="price-button-2">$$$</button>
-                            <button className="price-button-4">$$$$</button>
-                        </div>
+                        <FilterContainer />
                     </aside>
 
                     <div className="biz-index-list-container">
                         <h1 className="biz-index-all-results">All Results</h1>
                         <ol className="biz-index-list">
-                            {this.searchBusinesses().map(business => (
-                                <BusinessIndexItem key={business.id} business={business} fetchReviews={fetchReviews} />
+                            {this.searchBusinesses().map( (business, idx) => (
+                                <BusinessIndexItem key={business.id} business={business} fetchReviews={fetchReviews} idx={idx + 1}/>
                             ))}
                         </ol>
 
                         {this.noMatchedBusinesses()}
 
                         <div className="biz-index-map-container">
-                            {/* buggy when using the search function */}
                             <BusinessMap businesses={this.searchBusinesses()} />
                         </div>
                     </div>

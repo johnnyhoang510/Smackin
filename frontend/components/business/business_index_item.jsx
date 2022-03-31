@@ -15,7 +15,7 @@ class BusinessIndexItem extends React.Component {
 
         if (!this.props.business.reviews) return null;
 
-        const {business} = this.props;
+        const {business, idx} = this.props;
 
         return (
 
@@ -29,7 +29,7 @@ class BusinessIndexItem extends React.Component {
                         <div className="biz-index-item-inner-container">
 
                             <div className="biz-index-item-name-container">
-                                <h1 className="biz-index-item-name">{business.id}. {business.name}</h1>
+                                <h1 className="biz-index-item-name">{idx}. {business.name}</h1>
                                 
                                 <div className="biz-index-item-rating-container">
                                     <p className="biz-index-item-rating">(star ratings go here)</p> 

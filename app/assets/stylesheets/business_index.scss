@@ -43,8 +43,6 @@
     margin-left: -65px;
 }
 
-/* logged in */
-
 
 /* not logged in */
 .biz-index-login-signup-buttons, .biz-index-check-loggedin-container {
@@ -108,7 +106,7 @@
 }
 
 .biz-index-signup-button:hover, .biz-index-logout-user:hover {
-    opacity: 0.75;
+    opacity: 0.8;
     text-shadow: rgba(224,7,7,1);
     transition: all 0.6s;
 }
@@ -127,12 +125,58 @@
     width: 200px;
 }
 
-.biz-index-filters-header {
+.filters-title {
     margin-left: 41px;
     line-height: 24px;
     color: rgba(45,46,47,1);
     font-size: 16px;
     font-weight: 700;
+}
+
+.filters-container {
+    display: flex;
+
+    margin-top: 30px;
+    margin-left: 30px;
+
+    button {
+        background: white;
+        color: rgba(45,46,47,1);
+        font-size: 11px;
+        width: 54px;
+        height: 30px;
+        font-weight: 700;
+        cursor: pointer;
+        &:hover {
+            background: rgb(226, 226, 230);
+            transition: background-color 0.4s ease 0s;
+        }
+        &:active {
+            border: 1px solid rgb(2, 122, 151);
+            color: rgb(2, 122, 151);
+        }
+        &:focus {
+            border: 1px solid rgb(2, 122, 151);
+            color: rgb(2, 122, 151);
+            background: rgb(226, 226, 230);
+        }
+    }
+}
+
+.filter-button-1 {
+    border: 1px solid rgba(200,201,202,1);
+    border-right: none;
+    border-radius: 16px 0 0 16px;
+}
+
+.filter-button-2, .filter-button-3 {
+    border: 1px solid rgba(200,201,202,1);
+    border-right: none;
+}
+
+.filter-button-4 {
+    border-radius: 0 16px 16px 0;
+    border: 1px solid rgba(200,201,202,1);
 }
 
 .biz-index-list-container {
