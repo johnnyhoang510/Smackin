@@ -39,17 +39,26 @@ class SearchBar extends React.Component {
         // if (!this.props.businesses) return null;
         
         return(
-            <div className="searchbar-container">
-                <input
-                className="searchbar-component"
-                    type="text"
-                    placeholder="testing..."
-                    onChange={this.update('query')}
-                    onKeyPress={this.handleSearchEnter}
-                    value={this.state.query}
-                />
-                {/* <button onClick={this.handleSearch} className="searchbar-button">Search</button> */}
-                <BsSearch onClick={this.handleSearch} className="searchbar-icon" />
+            <div>
+
+                <div className="searchbar-container">
+                    <p className="searchbar-find">Find</p>
+                        <input
+                        className="searchbar-component-find"
+                        type="text"
+                        placeholder="burgers, Thai, seafood..."
+                        onChange={this.update('query')}
+                        onKeyPress={this.handleSearchEnter}
+                        value={this.state.query}
+                        />
+                    <p className="searchbar-near">Near</p>
+                        <input
+                        className="searchbar-component-near"
+                        readOnly placeholder="Oakland, CA"
+                        />
+                    <BsSearch onClick={this.handleSearch} className="searchbar-icon" />
+                </div>
+
             </div>
         )
     }

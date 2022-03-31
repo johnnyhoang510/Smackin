@@ -117,36 +117,6 @@ class BusinessShowPage extends React.Component {
                         <p className="biz-show-city-state">{business.city}, {business.state} {business.zip_code}</p>
                     </div>
 
-                    {/* <div className="biz-show-hours-container">
-                        <div className="biz-show-hours-item">
-                            <p className="biz-show-hours-item-day">Mon</p>
-                            <p className="biz-show-hours-item-hours">{business.hours}</p>
-                        </div>
-                        <div className="biz-show-hours-item">
-                            <p className="biz-show-hours-item-day">Tue</p>
-                            <p className="biz-show-hours-item-hours">{business.hours}</p>
-                        </div>
-                        <div className="biz-show-hours-item">
-                            <p className="biz-show-hours-item-day">Wed</p>
-                            <p className="biz-show-hours-item-hours">{business.hours}</p>
-                        </div>
-                        <div className="biz-show-hours-item">
-                            <p className="biz-show-hours-item-day">Thu</p>
-                            <p className="biz-show-hours-item-hours">{business.hours}</p>
-                        </div>
-                        <div className="biz-show-hours-item">
-                            <p className="biz-show-hours-item-day">Fri</p>
-                            <p className="biz-show-hours-item-hours">{business.hours}</p>
-                        </div>
-                        <div className="biz-show-hours-item">
-                            <p className="biz-show-hours-item-day">Sat</p>
-                            <p className="biz-show-hours-item-hours">{business.hours}</p>
-                        </div>
-                        <div className="biz-show-hours-item">
-                            <p className="biz-show-hours-item-day">Sun</p>
-                            <p className="biz-show-hours-item-hours">{business.hours}</p>
-                        </div>
-                    </div> */}
 
                     <div className="biz-show-hours-day-container">
                         <div className="biz-show-day-container">
@@ -184,7 +154,7 @@ class BusinessShowPage extends React.Component {
                         </div>
                         <div className="biz-show-aside-info-directions">
                             <div className="biz-show-aside-directions-container">
-                                <a className="biz-show-aside-directions-link" href="#" target="_blank">Get Directions (need to source link)</a>
+                                <a className="biz-show-aside-directions-link" href={`https://maps.google.com/?q=${business.lat},${business.lng}`} target="_blank">Get Directions</a>
                             
                                 <div className="biz-show-aside-address-container">
                                     <p className="biz-show-aside-address">{business.address} {business.city}, {business.state}</p>
@@ -198,15 +168,13 @@ class BusinessShowPage extends React.Component {
                 </div>
 
 
-                {/* --- BROKEN. ONLY SHOWS REVIEWS WHEN LOGGED IN */}
-                {/* --- IT MIGHT BE FIXED NOW. PERHAPS */}
                 <div className="biz-show-rec-reviews">
                     <div className="biz-show-each-review">
                         <ReviewIndexContainer business={business}/>
                     </div>
                 </div>
 
-                <div className="biz-index-footer">
+                <footer className="biz-index-footer">
                     <div className="biz-index-footer-about">
                         <h3 className="biz-index-footer-title">About</h3>
                     </div>
@@ -226,7 +194,7 @@ class BusinessShowPage extends React.Component {
                         <p className="biz-index-footer-small-text"></p>
 
                     </div>
-                </div>
+                </footer>
 
             </div>
         )

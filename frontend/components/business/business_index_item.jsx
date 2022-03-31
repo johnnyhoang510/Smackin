@@ -24,13 +24,13 @@ class BusinessIndexItem extends React.Component {
             renderPhoto = "#"
         };
 
-        //-----------------remove this once reviews are all seeded
-        let showReview;
-        if (business.reviews.length) {
-            showReview = business.reviews[0].body;
-        } else {
-            showReview = "no reviews"
-        }
+        // //-----------------remove this once reviews are all seeded
+        // let showReview;
+        // if (business.reviews.length) {
+        //     showReview = business.reviews[0].body;
+        // } else {
+        //     showReview = "no reviews"
+        // }
 
         return (
 
@@ -60,7 +60,7 @@ class BusinessIndexItem extends React.Component {
                             <p className="biz-index-item-hours">Hours: {business.hours}</p>
                             <div className="biz-index-item-review-wrapper">
                                 <p className="biz-index-item-review-icon"><BiMessage/></p>
-                                <p className="biz-index-item-review-body">"{showReview}"</p>
+                                <p className="biz-index-item-review-body">"{business.reviews[0].body}"</p>
                             </div>
 
                         </div>
