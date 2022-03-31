@@ -16,21 +16,6 @@ class BusinessIndexItem extends React.Component {
         if (!this.props.business.reviews) return null;
 
         const {business} = this.props;
-        // console.log(business)
-        let renderPhoto;
-        if (business.photoURLs) {
-            renderPhoto = business.photoURLs[0];
-        } else {
-            renderPhoto = "#"
-        };
-
-        // //-----------------remove this once reviews are all seeded
-        // let showReview;
-        // if (business.reviews.length) {
-        //     showReview = business.reviews[0].body;
-        // } else {
-        //     showReview = "no reviews"
-        // }
 
         return (
 
@@ -39,7 +24,7 @@ class BusinessIndexItem extends React.Component {
                 <Link to={`/businesses/${business.id}`} className="biz-index-item">
 
                     <div className="biz-index-item-container">
-                        <img className="biz-index-photo" src={renderPhoto} alt="" />
+                        <img className="biz-index-photo" src={business.photoURLs[0]} alt="" />
 
                         <div className="biz-index-item-inner-container">
 

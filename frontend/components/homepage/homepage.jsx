@@ -11,6 +11,8 @@ class Homepage extends React.Component{
 
     render() {
 
+        window.scrollTo(0, 0);
+
         const { currentUser, logout } = this.props;
 
         const display = currentUser ? (
@@ -58,24 +60,48 @@ class Homepage extends React.Component{
 
                     <div className="homepage-best-businesses-photos-container">
 
-                        {/* will need to make each box a link when search query is done */}
-                        <div className="homepage-best-business-photo-box">
+                        <Link to="businesses?search=tacos" className="homepage-best-business-photo-box">
                             <img className="homepage-best-business-photo" src={window.mexicanPhoto} alt="tacos" />
                             <p className="homepage-best-business-photo-text">Mexican</p>
-                        </div>
-                        <div className="homepage-best-business-photo-box">
+                        </Link>
+                        <Link to="businesses?search=thai" className="homepage-best-business-photo-box">
                             <img className="homepage-best-business-photo" src={window.thaiPhoto} alt="thai-food" />
                             <p className="homepage-best-business-photo-text">Thai</p>
-                        </div>
-                        <div className="homepage-best-business-photo-box">
+                        </Link>
+                        <Link to="businesses?search=burgers" className="homepage-best-business-photo-box">
                             <img className="homepage-best-business-photo" src={window.burgerPhoto} alt="burger" />
                             <p className="homepage-best-business-photo-text">Burgers</p>
-                        </div>
-                        <div className="homepage-best-business-photo-box">
+                        </Link>
+                        <Link to="businesses?search=japanese" className="homepage-best-business-photo-box">
                             <img className="homepage-best-business-photo" src={window.japanesePhoto} alt="sushi" />
                             <p className="homepage-best-business-photo-text">Japanese</p>
-                        </div>
+                        </Link>
 
+                    </div>
+                </div>
+
+                <div className="smackin-oakland-container">
+                    <h2 className="smackin-oakland-title">Smackin' Oakland</h2>
+                    <div className="smackin-cities-container">
+                        <p className="smackin-city">Berkeley</p>
+                        <p className="smackin-city">San Francisco</p>
+                        <p className="smackin-city">Austin</p>
+                        <p className="smackin-city">Boston</p>
+                        <p className="smackin-city">New York</p>
+                        <p className="smackin-city">San Jose</p>
+                        <p className="smackin-city">Los Angeles</p>
+                        <p className="smackin-city">Chicago</p>
+                        <p className="smackin-city">Houston</p>
+                        <p className="smackin-city">Atlanta</p>
+                    </div>
+                </div>
+
+                <div className="homepage-hot-businesses-container">
+                    <h2 className="homepage-hot-businesses-title">Hot &amp; New Businesses</h2>
+                    <div className="homepage-hot-businesses-links-container">
+                        <Link to="/" className="homepage-hot-businesses-link"></Link>
+                        <Link to="/" className="homepage-hot-businesses-link"></Link>
+                        <Link to="/" className="homepage-hot-businesses-link"></Link>
                     </div>
                 </div>
 
