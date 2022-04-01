@@ -10,9 +10,9 @@
 # this is for attaching photos
 require 'open-uri'
 
-Review.destroy_all
 User.destroy_all
 Business.destroy_all
+Review.destroy_all
 
 # resets the IDs
 ActiveRecord::Base.connection.reset_pk_sequence!('users')
