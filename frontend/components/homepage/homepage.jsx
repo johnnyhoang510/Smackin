@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import SearchBarContainer from "../search_bar/search_bar_container";
+import { GiSmallFire } from "react-icons/gi";
 
 
 class Homepage extends React.Component{
@@ -99,9 +100,30 @@ class Homepage extends React.Component{
                 <div className="homepage-hot-businesses-container">
                     <h2 className="homepage-hot-businesses-title">Hot &amp; New Businesses</h2>
                     <div className="homepage-hot-businesses-links-container">
-                        <Link to="/" className="homepage-hot-businesses-link"></Link>
-                        <Link to="/" className="homepage-hot-businesses-link"></Link>
-                        <Link to="/" className="homepage-hot-businesses-link"></Link>
+                        <Link to="businesses/18" className="homepage-hot-businesses-link">
+                            <img src={window.izzaHot} alt="izza-restaurant" className="hot-new-photo"/>
+                            <p className="hot-new-title">Izza</p>
+                            <p className="hot-new-rating-review">(Star rating): 2 reviews</p>
+                            <p className="hot-new-category">Japanese</p>
+                            <p className="hot-new-city">Oakland</p>
+                            <p className="hot-new-opened"><GiSmallFire id="fire" />Opened {Math.floor(Math.random() * 10) + 1} weeks ago</p>
+                        </Link>
+                        <Link to="businesses/7" className="homepage-hot-businesses-link">
+                            <img src={window.jonggaHot} alt="jongga-restaurant" className="hot-new-photo" />
+                            <p className="hot-new-title">Jong Ga House</p>
+                            <p className="hot-new-rating-review">(Star rating): 2 reviews</p>
+                            <p className="hot-new-category">Korean</p>
+                            <p className="hot-new-city">Oakland</p>
+                            <p className="hot-new-opened"><GiSmallFire id="fire" />Opened {Math.floor(Math.random() * 10) + 1} weeks ago</p>
+                        </Link>
+                        <Link to="businesses/12" className="homepage-hot-businesses-link">
+                            <img src={window.farmhouseHot} alt="farmhouse-restaurant" className="hot-new-photo" />
+                            <p className="hot-new-title">Farmhouse Kitchen Thai Cuisine</p>
+                            <p className="hot-new-rating-review">(Star rating): 2 reviews</p>
+                            <p className="hot-new-category">Thai</p>
+                            <p className="hot-new-city">Oakland</p>
+                            <p className="hot-new-opened"><GiSmallFire id="fire" />Opened {Math.floor(Math.random() * 10) + 1} weeks ago</p>
+                        </Link>
                     </div>
                 </div>
 

@@ -15,23 +15,11 @@ class ReviewIndexItem extends React.Component {
         this.hideEllipsis = this.hideEllipsis.bind(this);
     }
 
-    // componentDidMount() {
-    //     this.props.fetchReview(this.props.business.id, this.props.review.id);
-    //     console.log("mount")
-    // }
-
-    // componentDidUpdate(prevProps) {
-    //     if (prevProps.businessId !== this.props.businessId) {
-    //         this.componentDidMount();
-    //     }
-    //     console.log("update")
-    // }
 
     handleDelete(e) {
         e.preventDefault();
         this.props.deleteReview(this.props.review.id, this.props.review.business_id)
         window.location.reload();
-        //need to add a delete modal
     }
 
     handleEllipsis(e) {

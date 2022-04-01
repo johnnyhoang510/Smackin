@@ -7,6 +7,8 @@
     
     <link href='https://fonts.googleapis.com/css?family=Dekko' rel='stylesheet'>
 
+    <link rel="icon" type="image/x-icon" href="<%= image_url('smackinlogo2.png') %>" />
+
     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['MAPS_API_KEY']}" %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
@@ -22,6 +24,10 @@
       window.thaiPhoto = "<%= image_url('farmhouse2.jpg') %>";
       window.mexicanPhoto = "<%= image_url('gordo3.jpg') %>";
       window.japanesePhoto = "<%= image_url('kansai.jpg') %>";
+
+      window.izzaHot = "<%= image_url('izzahot.jpg') %>";
+      window.jonggaHot = "<%= image_url('jonggahot.jpg') %>";
+      window.farmhouseHot = "<%= image_url('farmhousehot.jpg') %>";
     </script>
     <%= yield %>
   </body>

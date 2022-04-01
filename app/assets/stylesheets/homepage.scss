@@ -256,13 +256,67 @@
     display: flex;
     justify-content: center;
     margin-top: 15px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .homepage-hot-businesses-link {
-    border: 1px solid green;
+    border: 1px solid #e6e6e6;
     width: 270px;
     height: 295px;
     margin: 0 15px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.hot-new-photo {
+    width: 270px;
+    height: 165px;
+    object-fit: cover;
+    border-radius: 3px 3px 0 0;
+}
+
+.hot-new-title {
+    text-align: left;
+    color: #0073bb;
+    font-size: 16px;
+    font-weight: 600;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.hot-new-rating-review{
+    color: #666;
+    font-weight: 400;
+    text-align: left;
+    margin-left: 10px;
+    font-size: 14px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.hot-new-category, .hot-new-city {
+    color: #333;
+    font-weight: 400;
+    text-align: left;
+    margin-left: 10px;
+    font-size: 14px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.hot-new-opened {
+    text-align: left;
+    font-size: 14px;
+    color: #f15c00;
+    font-weight: 400;
+    margin-left: 10px;
+    margin-top: -8px;
+}
+
+#fire {
+    font-size: 16px;
+    padding-right: 6px;
+    padding-top: 5px;
 }
 
 

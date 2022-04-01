@@ -10,15 +10,14 @@ class MarkerManager {
     }
 
     updateMarkers(businesses) {
+        //businesses wont be array if query is undefined
+        if (!Array.isArray(businesses)) return null;
         let markerKeys = Object.keys(this.markers);
 
         markerKeys.forEach(markerKey => {
             this.markers[markerKey].setMap(null)
             delete this.markers[markerKey]
         })
-        // console.log("markerKeys", markerKeys)
-        // console.log("this.markers", this.markers)
-        // console.log("business obj", this.businessObjects)
 
         // set to obj for lookup time
         businesses.forEach(business => this.businessObjects[business.id] = business);
