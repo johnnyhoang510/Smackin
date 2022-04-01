@@ -95,7 +95,7 @@ class CreateReviewForm extends React.Component{
                         <p className="select-your-rating">Select your rating</p>
                     </div>
 
-                    <textarea rows="25" cols="70" className="create-review-form-textarea" onChange={this.update('body')} placeholder="If you want to find the world's best street burrito, look no further. Whenever I'm craving a California burrito, I immediately head here. For $12, they stuff in fries, guacamole, sour cream, and your choice of meat. The employees like to keep the line moving, which is great especially during lunch. Tip: call in your order to skip the line!" required></textarea>
+                    <textarea rows="25" cols="70" className="create-review-form-textarea" onChange={this.update('body')} placeholder="Doesn't look like much when you walk past, but I was practically dying of hunger so I popped in. The definition of a hole-in-the-wall. I got the regular hamburger and wow... there are no words. A classic burger done right. Crisp bun, juicy patty, stuffed with all the essentials (ketchup, shredded lettuce, tomato, and pickles). Not much else to say besides go see for yourself! You won't be disappointed." required></textarea>
                     <br />
                     <button type="submit" className="create-review-form-submit">Post Review</button>
                 </form>

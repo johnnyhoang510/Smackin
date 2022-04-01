@@ -41,20 +41,20 @@ class BusinessIndex extends React.Component {
         }
     }
 
-    filterBusinesses() {
-        let validPrices = ['$', '$$', '$$$', '$$$$'];
-        let filter;
-        if (this.props.location.search) filter = (this.props.location.search.split('=')[1]).toString();
+    // filterBusinesses() {
+    //     let validPrices = ['$', '$$', '$$$', '$$$$'];
+    //     let filter;
+    //     if (this.props.location.search) filter = (this.props.location.search.split('=')[1]).toString();
 
-        let biz = this.props.businesses;
-        let priceFiltered = [];
+    //     let biz = this.props.businesses;
+    //     let priceFiltered = [];
 
-        if (filter) {
-            priceFiltered = biz.filter(business => business.price === filter)
-        }
+    //     if (filter) {
+    //         priceFiltered = biz.filter(business => business.price === filter)
+    //     }
 
-        return priceFiltered;
-    }
+    //     return priceFiltered;
+    // }
 
     noMatchedBusinesses() {
         if (this.searchBusinesses().length === 0 && this.props.businesses) {
@@ -136,7 +136,7 @@ class BusinessIndex extends React.Component {
                         <ol className="biz-index-list">
                             {this.searchBusinesses().map( (business, idx) => (
                                 <BusinessIndexItem key={business.id} business={business} fetchReviews={fetchReviews} idx={idx + 1}/>
-                            ))}
+                                ))}
                         </ol>
 
                         {this.noMatchedBusinesses()}
@@ -146,6 +146,8 @@ class BusinessIndex extends React.Component {
                         </div>
                     </div>
                 </div>
+
+
 
                 <div className="biz-index-footer">
                     <div className="biz-index-footer-about">
