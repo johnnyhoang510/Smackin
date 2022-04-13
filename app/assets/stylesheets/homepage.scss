@@ -329,3 +329,20 @@
     background-color: #f7f7f7;
     margin-top: 100px;
 }
+
+.biz-index-footer-title, .biz-index-footer-title {
+    margin-bottom: 5px;
+}
+
+.footer-link {
+    padding: 5px;
+    color: #666;
+    font-size: 12px;
+    display: block;
+    margin-left: -5px;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}

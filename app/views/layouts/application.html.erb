@@ -4,6 +4,15 @@
     <title>Smackin</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+    <meta property="og:title" content="Smackin'" />
+    <meta property='og:image' content="<%= image_url('feature.png') %>"/>
+    <meta property="og:description"
+      content="Smackin' is a fullstack web application clone of Yelp. Users can create an account, utilize a searchbar/ filters to narrow results, write reviews, and view business locations with an integrated Google Maps API."
+    />
+    <meta property="og:url"
+      content="https://smackin.herokuapp.com/#/"
+    />
     
     <link href='https://fonts.googleapis.com/css?family=Dekko' rel='stylesheet'>
 

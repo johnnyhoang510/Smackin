@@ -174,27 +174,19 @@ class BusinessShowPage extends React.Component {
                     </div>
                 </div>
 
-                <footer className="biz-index-footer">
+                <div className="biz-homepage-footer">
                     <div className="biz-index-footer-about">
                         <h3 className="biz-index-footer-title">About</h3>
+                        <a className="footer-link" href="https://github.com/johnnyhoang510" target="_blank">Github</a>
+                        <a className="footer-link" href="https://www.linkedin.com/in/hoangjohnny/" target="_blank">LinkedIn</a>
                     </div>
 
                     <div className="biz-index-footer-discover">
                         <h3 className="biz-index-footer-title">Discover</h3>
+                        <a className="footer-link" href="" target="_blank">Portfolio</a>
+                        <a className="footer-link" href="https://angel.co/u/johnnyhoang510" target="_blank">AngelList</a>
                     </div>
-
-                    <div className="biz-index-footer-business">
-                        <h3 className="biz-index-footer-title">Smackin' for Business</h3>
-                    </div>
-
-                    <div className="biz-index-footer-languages-countries">
-                        <h3 className="biz-index-footer-title">Languages</h3>
-                        <p className="biz-index-footer-small-text"></p>
-                        <h3 className="biz-index-footer-title">Countries</h3>
-                        <p className="biz-index-footer-small-text"></p>
-
-                    </div>
-                </footer>
+                </div>
 
             </div>
         )
