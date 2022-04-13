@@ -17,10 +17,11 @@ class SessionForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.demoLogin = this.demoLogin.bind(this);
         this.clearErrors = this.clearErrors.bind(this);
+        this.submitHandler = this.submitHandler.bind(this);
     }
 
     handleSubmit(e) {
-        e.preventDefault();
+        // e.preventDefault();
         this.props.processForm(this.state);
     }
 
@@ -29,12 +30,18 @@ class SessionForm extends React.Component {
     }
 
     demoLogin(e) {
-        e.preventDefault();
         let user = {
             email: 'demouser@email.com',
             password: 'password'
         };
         this.props.demoLogin(user);        
+    }
+
+    submitHandler(e) {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            this.handleSubmit();
+        }
     }
 
     clearErrors() {
@@ -56,7 +63,7 @@ class SessionForm extends React.Component {
                 return (
                     <div>
                         <li className="session-form-error" key={`error-${idx}`}>{err}</li>
-                        <p onClick={this.clearErrors} className="session-errors-x"><BsX /></p>
+                        <p onClick={this.clearErrors} className="session-errors-x"><BsX className="error-x"/></p>
                     </div>
 
                 )            
@@ -75,7 +82,7 @@ class SessionForm extends React.Component {
                             </Link>
                         </header>
 
-                        <form className="form" onSubmit={this.handleSubmit}>
+                        <form className="form" onKeyDown={this.submitHandler}>
                             <h2 className="form-type-title">Log in to Smackin'</h2>
 
                             <div className="switch-form-header">
@@ -85,7 +92,7 @@ class SessionForm extends React.Component {
                             <p className="terms">By logging in, you agree to Smackin's Terms of Service and Private Policy.</p>
 
                             <div className="demo-user">
-                                <button className="demo-button" onClick={this.demoLogin}>Continue as Demo User</button>
+                                <button className="demo-button" onKeyDown={this.submitHandler} onClick={this.demoLogin}>Continue as Demo User</button>
                             </div>
                             <br />
 
@@ -109,7 +116,7 @@ class SessionForm extends React.Component {
                                 required
                             />
                             <br />
-                            <button className="signup-login-submit" type="submit">{formType}</button>
+                            <button className="signup-login-submit" type="submit" onClick={this.handleSubmit}>{formType}</button>
 
                             <h4 className="switch-form-text-2">New to Smackin'?
                                 <Link className="switch-form-2" to="/signup" onClick={this.clearErrors}>Sign Up</Link>
@@ -140,7 +147,7 @@ class SessionForm extends React.Component {
                             </Link>
                         </header>
 
-                        <form className="form" onSubmit={this.handleSubmit}>
+                        <form className="form" onKeyDown={this.submitHandler}>
                             <h2 className="form-type-title">Sign Up for Smackin'</h2>
 
                             <div className="switch-form-header">
@@ -149,7 +156,7 @@ class SessionForm extends React.Component {
                             </div>
 
                             <div className="demo-user">
-                                <button className="demo-button" onClick={this.demoLogin}>Continue as Demo User</button>
+                                <button className="demo-button" onKeyDown={this.submitHandler} onClick={this.demoLogin}>Continue as Demo User</button>
                             </div>
                             <br />
 
@@ -198,7 +205,7 @@ class SessionForm extends React.Component {
                                 required
                             />
                             <br />
-                            <button className="signup-login-submit" type="submit">{formType}</button>
+                            <button className="signup-login-submit" type="submit" onClick={this.handleSubmit}>{formType}</button>
                             <h4 className="switch-form-text">Already on Smackin'?
                                 <Link className="switch-form" to="/login" onClick={this.clearErrors}>Log in</Link>
                             </h4>
