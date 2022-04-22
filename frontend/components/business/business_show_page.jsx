@@ -208,7 +208,7 @@ class BusinessShowPage extends React.Component {
 
                     <div className="biz-index-footer-discover">
                         <h3 className="biz-index-footer-title">Discover</h3>
-                        <a className="footer-link" href="" target="_blank">Portfolio</a>
+                        <a className="footer-link" href="https://johnnyhoang510.github.io/portfolio-website/" target="_blank">Portfolio</a>
                         <a className="footer-link" href="https://angel.co/u/johnnyhoang510" target="_blank">AngelList</a>
                     </div>
                 </div>

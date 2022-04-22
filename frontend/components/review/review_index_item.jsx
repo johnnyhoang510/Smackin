@@ -48,6 +48,23 @@ class ReviewIndexItem extends React.Component {
         return reviewDate;
     }
 
+    checkStarRating() {
+        switch (this.props.review.rating) {
+            case 5:
+                return "review-item-rating-5"
+            case 4:
+                return "review-item-rating-4"
+            case 3:
+                return "review-item-rating-3"
+            case 2:
+                return "review-item-rating-2"
+            case 1:
+                return "review-item-rating-1"
+            default:
+                break;
+        }
+    }
+
     render() {
         // console.log(this.props);
         if (!this.props.review) return null;
@@ -96,7 +113,8 @@ class ReviewIndexItem extends React.Component {
                         
 
                     <div className="review-item-rating-container">
-                        <p className="review-item-rating">(Star-Rating): {review.rating}</p>
+                        <p id="review-index-item-star-rating" className={this.checkStarRating()}></p>
+                        {/* <p className="review-item-rating">{review.rating}</p> */}
                         {/* giving an error after editing a review */}
                         {/* <p className="review-item-create-date">{this.reviewCreateDate()}</p> */}
                         {/* <p className="review-item-create-date">{review.created_at}</p> */}

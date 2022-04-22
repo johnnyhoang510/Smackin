@@ -11,6 +11,36 @@ class BusinessIndexItem extends React.Component {
         this.props.fetchReviews(this.props.business.id)
     }
 
+    checkAvgStarRating() {
+        let rating = 0;
+        this.props.business.reviews.map(review => (
+            rating += review.rating
+        ))
+        let avgRating = (rating / this.props.business.reviews.length).toFixed(1);
+
+        if (avgRating >= 4.8) {
+            return "biz-index-item-rating-5";
+        } else if (avgRating >= 4.3 && avgRating <= 4.7) {
+            return "biz-index-item-rating-4-5";
+        } else if (avgRating >= 3.8 && avgRating <= 4.2) {
+            return "biz-index-item-rating-4";
+        } else if (avgRating >= 3.3 && avgRating <= 3.7) {
+            return "biz-index-item-rating-3-5";
+        } else if (avgRating >= 2.8 && avgRating <= 3.2) {
+            return "biz-index-item-rating-3";
+        } else if (avgRating >= 2.3 && avgRating <= 2.7) {
+            return "biz-index-item-rating-2-5";
+        } else if (avgRating >= 1.8 && avgRating <= 2.2) {
+            return "biz-index-item-rating-2";
+        } else if (avgRating >= 1.3 && avgRating <= 1.7) {
+            return "biz-index-item-rating-1-5";
+        } else if (avgRating >= 0.5 && avgRating <= 1.2) {
+            return "biz-index-item-rating-1";
+        } else if (avgRating >= 0 && avgRating <= 0.4) {
+            return "biz-index-item-rating-0";
+        }
+    }
+
     render() {
 
         if (!this.props.business.reviews) return null;
@@ -32,7 +62,7 @@ class BusinessIndexItem extends React.Component {
                                 <h1 className="biz-index-item-name">{idx}. {business.name}</h1>
                                 
                                 <div className="biz-index-item-rating-container">
-                                    <p className="biz-index-item-rating">(star ratings go here)</p> 
+                                    <p id="biz-index-item-avgRating" className={this.checkAvgStarRating()}></p> 
                                     <p className="biz-index-item-numReviews">{business.reviews.length}</p> 
                                 </div>
                             </div>

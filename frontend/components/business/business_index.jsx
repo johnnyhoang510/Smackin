@@ -48,21 +48,6 @@ class BusinessIndex extends React.Component {
     }
 
 
-    noMatchedBusinesses() {
-        if (this.searchBusinesses().length === 0 && this.props.businesses) {
-            return <div className="biz-index-no-results-container">
-                        <h1 className="biz-index-no-results-header">No results found for your search</h1>
-                        <h3 className="biz-index-no-results-suggestions">Suggestions for improving your result:</h3>
-
-                        <ul className="biz-index-suggestions-list">
-                           <li className="biz-index-suggestion-item">Check the spelling or try alternate spellings</li> 
-                           <li>Try a more general search, e.g. "burgers" instead of "bacon burgers"</li> 
-                        </ul>
-                    </div>
-        }
-    }
-
-
     render() {
 
         window.scrollTo(0, 0)
@@ -122,8 +107,6 @@ class BusinessIndex extends React.Component {
                                 }
                         </ol>
 
-                        {/* {this.noMatchedBusinesses()} */}
-
                         <div className="biz-index-map-container">
                             <BusinessMap businesses={this.searchBusinesses()} />
                         </div>
@@ -141,7 +124,7 @@ class BusinessIndex extends React.Component {
 
                     <div className="biz-index-footer-discover">
                         <h3 className="biz-index-footer-title">Discover</h3>
-                        <a className="footer-link" href="" target="_blank">Portfolio</a>
+                        <a className="footer-link" href="https://johnnyhoang510.github.io/portfolio-website/" target="_blank">Portfolio</a>
                         <a className="footer-link" href="https://angel.co/u/johnnyhoang510" target="_blank">AngelList</a>
                     </div>
                 </div>
