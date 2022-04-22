@@ -29,6 +29,36 @@ class BusinessShowPage extends React.Component {
             this.componentDidMount();
         }
     }
+
+    checkAvgStarRating() {
+        let rating = 0;
+        this.props.business.reviews.map(review => (
+            rating += review.rating
+        ))
+        let avgRating = (rating / this.props.business.reviews.length).toFixed(1);
+        
+        if (avgRating >= 4.8) {
+            return "biz-show-rating-5";
+        } else if (avgRating >= 4.3 && avgRating <= 4.7) {
+            return "biz-show-rating-4-5";
+        } else if (avgRating >= 3.8 && avgRating <= 4.2) {
+            return "biz-show-rating-4";
+        } else if (avgRating >= 3.3 && avgRating <= 3.7) {
+            return "biz-show-rating-3-5";
+        } else if (avgRating >= 2.8 && avgRating <= 3.2) {
+            return "biz-show-rating-3";
+        } else if (avgRating >= 2.3 && avgRating <= 2.7) {
+            return "biz-show-rating-2-5";
+        } else if (avgRating >= 1.8 && avgRating <= 2.2) {
+            return "biz-show-rating-2";
+        } else if (avgRating >= 1.3 && avgRating <= 1.7) {
+            return "biz-show-rating-1-5";
+        } else if (avgRating >= 0.5 && avgRating <= 1.2) {
+            return "biz-show-rating-1";
+        } else if (avgRating >= 0 && avgRating <= 0.4) {
+            return "biz-show-rating-0";
+        }
+    }
     
 
     render() {
@@ -36,12 +66,7 @@ class BusinessShowPage extends React.Component {
 
         if (!business) return null;
 
-        let rating = 0;
-        business.reviews.map(review => (
-            rating += review.rating
-        ))
-        let avgRating = (rating / business.reviews.length).toFixed(1);
-
+        // console.log(this.checkAvgStarRating());
 
         const checkLoggedIn = currentUser ? (
             <div className="biz-index-check-loggedin-container">
@@ -85,7 +110,7 @@ class BusinessShowPage extends React.Component {
                     <h1 className="biz-show-name">{business.name}</h1>
 
                     <div className="biz-show-reviews-section">
-                        <p className="biz-show-avgRating">Average rating: {avgRating}</p>
+                        <p id="biz-show-avgRating" className={this.checkAvgStarRating()}></p>
                         <p className="biz-show-numReviews">{business.reviews.length} reviews</p>
                     </div>
 

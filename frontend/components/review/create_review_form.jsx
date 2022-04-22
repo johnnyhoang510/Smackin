@@ -9,7 +9,6 @@ class CreateReviewForm extends React.Component{
             rating: 0,
             body: '',
             user_id: this.props.user_id,
-            // business_id is a string? is that normal
             business_id: this.props.match.params.businessId
         }
 
@@ -19,6 +18,10 @@ class CreateReviewForm extends React.Component{
 
     componentDidMount() {
         this.props.fetchBusiness(this.props.match.params.businessId)
+    }
+
+    componentWillUnmount() {
+        this.props.clearReviewErrors();
     }
 
     handleSubmit(e) {
@@ -34,22 +37,45 @@ class CreateReviewForm extends React.Component{
     }
 
     update(field) {
-        return e => this.setState({ [field]: e.currentTarget.value })
+        if (field === 'rating') {
+            return e => this.setState({ [field]: parseInt(e.currentTarget.value) })
+        } else {
+            return e => this.setState({ [field]: e.currentTarget.value })
+        }
+    }
+
+    checkedText() {  
+        switch (this.state.rating) {
+            case 0:
+                return "Select your rating"
+            case 1:
+                return "Not good"
+            case 2:
+                return "Could've been better"
+            case 3:
+                return "OK"
+            case 4:
+                return "Good"
+            case 5:
+                return "Great"
+            default:
+                break;
+        }
     }
 
     render() {
 
-        const { business, errors, currentUser } = this.props;
+        const { business, errors, currentUser, clearReviewErrors } = this.props;
         // console.log(errors)
         // console.log(this.state);
         // console.log(this.props);
         if (!business) return null;
 
         let showErrors;
-        if (errors.length) {
-            showErrors = errors.map( (err, idx) => (
-                <li key={`error-${idx}`}>{err}</li>
-            ))
+        if (errors.length || this.state.rating === 0) {
+            showErrors = errors.responseJSON
+        } else {
+            showErrors = null;
         };
 
         return(
@@ -64,7 +90,7 @@ class CreateReviewForm extends React.Component{
 
                 <div className="create-form-user-container">
                     <h2 className="create-form-welcome-user">Welcome, {currentUser.first_name}!</h2>
-                    <button onClick={this.handleLogout} className="create-form-logout-button">Log Out</button>
+                    <button onClick={this.handleLogout} onClick={clearReviewErrors} className="create-form-logout-button">Log Out</button>
                 </div>
             </header>
 
@@ -76,35 +102,33 @@ class CreateReviewForm extends React.Component{
                     <div className="create-review-form-rating-wrapper">
 
                         <div className="create-form-stars-container">
-                            <input id="rating-1" type="radio"  value="1" onChange={this.update('rating')} name="rating"/>
+                            <input id="rating-1" type="radio"  value="5" onChange={this.update('rating')} name="rating"/>
                             <label htmlFor="rating-1" id="create-review-form-rating"><BsStarFill className="review-star" /></label>
 
-                            <input id="rating-2" type="radio"  value="2" onChange={this.update('rating')} name="rating"/>
+                            <input id="rating-2" type="radio"  value="4" onChange={this.update('rating')} name="rating"/>
                             <label htmlFor="rating-2" id="create-review-form-rating"><BsStarFill className="review-star" /></label>
 
                             <input id="rating-3" type="radio"  value="3" onChange={this.update('rating')} name="rating"/>
                             <label htmlFor="rating-3" id="create-review-form-rating"><BsStarFill className="review-star" /></label>
 
-                            <input id="rating-4" type="radio"  value="4" onChange={this.update('rating')} name="rating"/>
+                            <input id="rating-4" type="radio"  value="2" onChange={this.update('rating')} name="rating"/>
                             <label htmlFor="rating-4" id="create-review-form-rating"><BsStarFill className="review-star" /></label>
 
-                            <input id="rating-5" type="radio"  value="5" onChange={this.update('rating')} name="rating"/>
+                            <input id="rating-5" type="radio"  value="1" onChange={this.update('rating')} name="rating"/>
                             <label htmlFor="rating-5" id="create-review-form-rating"><BsStarFill className="review-star" /></label>
                         </div>
                         
-                        <p className="select-your-rating">Select your rating</p>
+                        <p className="select-your-rating">{this.checkedText()}</p>
                     </div>
 
                     <textarea rows="25" cols="70" className="create-review-form-textarea" onChange={this.update('body')} placeholder="Doesn't look like much when you walk past, but I was practically dying of hunger so I popped in. The definition of a hole-in-the-wall. I got the regular hamburger and wow... there are no words. A classic burger done right. Crisp bun, juicy patty, stuffed with all the essentials (ketchup, shredded lettuce, tomato, and pickles). Not much else to say besides go see for yourself! You won't be disappointed." required></textarea>
+                    <div className="create-review-form-errors">
+                            <p className="create-review-show-errors">{showErrors}</p>
+                    </div>
                     <br />
                     <button type="submit" className="create-review-form-submit">Post Review</button>
                 </form>
 
-                <div className="create-review-form-errors">
-                    <ul className="create-review-show-errors">
-                        {showErrors}
-                    </ul>
-                </div>
             </div>
 
         </div>

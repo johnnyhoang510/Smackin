@@ -106,7 +106,7 @@ class Homepage extends React.Component{
                             <p className="hot-new-rating-review">(Star rating): 2 reviews</p>
                             <p className="hot-new-category">Japanese</p>
                             <p className="hot-new-city">Oakland</p>
-                            <p className="hot-new-opened"><GiSmallFire id="fire" />Opened {Math.floor(Math.random() * 10) + 1} weeks ago</p>
+                            <p className="hot-new-opened"><GiSmallFire id="fire" />Opened {Math.floor(Math.random() * 4) + 2} weeks ago</p>
                         </Link>
                         <Link to="businesses/7" className="homepage-hot-businesses-link">
                             <img src={window.jonggaHot} alt="jongga-restaurant" className="hot-new-photo" />
@@ -114,7 +114,7 @@ class Homepage extends React.Component{
                             <p className="hot-new-rating-review">(Star rating): 2 reviews</p>
                             <p className="hot-new-category">Korean</p>
                             <p className="hot-new-city">Oakland</p>
-                            <p className="hot-new-opened"><GiSmallFire id="fire" />Opened {Math.floor(Math.random() * 10) + 1} weeks ago</p>
+                            <p className="hot-new-opened"><GiSmallFire id="fire" />Opened {Math.floor(Math.random() * 4) + 2} weeks ago</p>
                         </Link>
                         <Link to="businesses/12" className="homepage-hot-businesses-link">
                             <img src={window.farmhouseHot} alt="farmhouse-restaurant" className="hot-new-photo" />
@@ -122,7 +122,7 @@ class Homepage extends React.Component{
                             <p className="hot-new-rating-review">(Star rating): 2 reviews</p>
                             <p className="hot-new-category">Thai</p>
                             <p className="hot-new-city">Oakland</p>
-                            <p className="hot-new-opened"><GiSmallFire id="fire" />Opened {Math.floor(Math.random() * 10) + 1} weeks ago</p>
+                            <p className="hot-new-opened"><GiSmallFire id="fire" />Opened {Math.floor(Math.random() * 4) + 2} weeks ago</p>
                         </Link>
                     </div>
                 </div>
