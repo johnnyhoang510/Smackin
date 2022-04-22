@@ -251,9 +251,43 @@
     color: rgba(110,112,114,1);
 }
 
-.biz-index-item-rating {
-    margin-left: 20px;
-    margin-bottom: 10px;
+#biz-index-item-avgRating {
+    background-image: url(review-stars.png);
+    -webkit-appearance: none;
+    height: 18px;
+    width: 103px;
+    margin-left: 21px;
+}
+
+.biz-index-item-rating-5 {
+    background-position: 0px -402px;
+}
+.biz-index-item-rating-4-5 {
+    background-position: 0px -384px;
+}
+.biz-index-item-rating-4 {
+    background-position: 0px -366px;
+}
+.biz-index-item-rating-3-5 {
+    background-position: 0px -348px;
+}
+.biz-index-item-rating-3 {
+    background-position: 0px -330px;
+}
+.biz-index-item-rating-2-5 {
+    background-position: 0px -312px;
+}
+.biz-index-item-rating-2 {
+    background-position: 0px -294px;
+}
+.biz-index-item-rating-1-5 {
+    background-position: 0px -276px;
+}
+.biz-index-item-rating-1 {
+    background-position: 0px -258px;
+}
+.biz-index-item-rating-0 {
+    background-position: 0px -240px;
 }
 
 .biz-index-item-numReviews {

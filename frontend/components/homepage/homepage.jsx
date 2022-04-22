@@ -103,25 +103,34 @@ class Homepage extends React.Component{
                         <Link to="businesses/18" className="homepage-hot-businesses-link">
                             <img src={window.izzaHot} alt="izza-restaurant" className="hot-new-photo"/>
                             <p className="hot-new-title">Izza</p>
-                            <p className="hot-new-rating-review">(Star rating): 2 reviews</p>
+                            <div className="homepage-star-rating-container">
+                                <p id="homepage-star-rating" className="homepage-star-rating-4"></p>
+                                <p className="hot-new-rating-review">2 reviews</p>
+                            </div>
                             <p className="hot-new-category">Japanese</p>
-                            <p className="hot-new-city">Oakland</p>
+                            <p className="hot-new-city">Oakland, CA</p>
                             <p className="hot-new-opened"><GiSmallFire id="fire" />Opened {Math.floor(Math.random() * 4) + 2} weeks ago</p>
                         </Link>
                         <Link to="businesses/7" className="homepage-hot-businesses-link">
                             <img src={window.jonggaHot} alt="jongga-restaurant" className="hot-new-photo" />
                             <p className="hot-new-title">Jong Ga House</p>
-                            <p className="hot-new-rating-review">(Star rating): 2 reviews</p>
+                            <div className="homepage-star-rating-container">
+                                <p id="homepage-star-rating" className="homepage-star-rating-4-5"></p>
+                                <p className="hot-new-rating-review">2 reviews</p>
+                            </div>
                             <p className="hot-new-category">Korean</p>
-                            <p className="hot-new-city">Oakland</p>
+                            <p className="hot-new-city">Oakland, CA</p>
                             <p className="hot-new-opened"><GiSmallFire id="fire" />Opened {Math.floor(Math.random() * 4) + 2} weeks ago</p>
                         </Link>
                         <Link to="businesses/12" className="homepage-hot-businesses-link">
                             <img src={window.farmhouseHot} alt="farmhouse-restaurant" className="hot-new-photo" />
                             <p className="hot-new-title">Farmhouse Kitchen Thai Cuisine</p>
-                            <p className="hot-new-rating-review">(Star rating): 2 reviews</p>
+                            <div className="homepage-star-rating-container">
+                                <p id="homepage-star-rating" className="homepage-star-rating-4-5"></p>
+                                <p className="hot-new-rating-review">2 reviews</p>
+                            </div>
                             <p className="hot-new-category">Thai</p>
-                            <p className="hot-new-city">Oakland</p>
+                            <p className="hot-new-city">Oakland, CA</p>
                             <p className="hot-new-opened"><GiSmallFire id="fire" />Opened {Math.floor(Math.random() * 4) + 2} weeks ago</p>
                         </Link>
                     </div>
@@ -136,7 +145,7 @@ class Homepage extends React.Component{
 
                     <div className="biz-index-footer-discover">
                         <h3 className="biz-index-footer-title">Discover</h3>
-                        <a className="footer-link" href="" target="_blank">Portfolio</a>
+                        <a className="footer-link" href="https://johnnyhoang510.github.io/portfolio-website/" target="_blank">Portfolio</a>
                         <a className="footer-link" href="https://angel.co/u/johnnyhoang510" target="_blank">AngelList</a>
                     </div>
                 </div>

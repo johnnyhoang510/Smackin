@@ -38,9 +38,33 @@
     padding-top: 6px;
 }
 
-.review-item-rating {
-    padding-right: 7px;
+#review-index-item-star-rating {
+    background-image: url(review-stars.png);
+    -webkit-appearance: none;
+    height: 18px;
+    width: 103px;
+    margin-top: -2px;
+    margin-right: 5px;
+    margin-left: 1px;
 }
+
+.review-item-rating-5 {
+    background-position: 0px -402px;
+}
+.review-item-rating-4 {
+    background-position: 0px -366px;
+}
+.review-item-rating-3 {
+    background-position: 0px -330px;
+}
+.review-item-rating-2 {
+    background-position: 0px -294px;
+}
+.review-item-rating-1 {
+    background-position: 0px -258px;
+}
+
+
 
 .review-item-create-date {
     color: rgba(110,112,114,1);

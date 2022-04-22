@@ -284,14 +284,34 @@
     margin-top: 10px;
 }
 
+.homepage-star-rating-container {
+    display: flex;
+    margin-top: 11px;
+    margin-left: 9px;
+}
+
+#homepage-star-rating {
+    background-image: url(review-stars.png);
+    -webkit-appearance: none;
+    height: 14px;
+    width: 86px;
+    margin-top: -2px;
+    margin-right: 5px;
+    margin-left: 1px;
+}
+
+.homepage-star-rating-4 {
+    background-position: 0px -518px;
+}
+.homepage-star-rating-4-5 {
+    background-position: 0px -532px;
+}
+
 .hot-new-rating-review{
     color: #666;
     font-weight: 400;
-    text-align: left;
-    margin-left: 10px;
     font-size: 14px;
-    margin-top: 8px;
-    margin-bottom: 8px;
+    margin-top: -2px;
 }
 
 .hot-new-category, .hot-new-city {
