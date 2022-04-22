@@ -192,13 +192,13 @@ class BusinessShowPage extends React.Component {
                         </div>
 
                         <div className="biz-show-hours-container">
-                            <p className="biz-show-hours">{business.hours} {this.checkOpenOrClosed(1)}</p>
-                            <p className="biz-show-hours">{business.hours} {this.checkOpenOrClosed(2)}</p>
-                            <p className="biz-show-hours">{business.hours} {this.checkOpenOrClosed(3)}</p>
-                            <p className="biz-show-hours">{business.hours} {this.checkOpenOrClosed(4)}</p>
+                            <p className="biz-show-hours">{business.hours}  &ensp; {this.checkOpenOrClosed(1)}</p>
+                            <p className="biz-show-hours">{business.hours}  &ensp; {this.checkOpenOrClosed(2)}</p>
+                            <p className="biz-show-hours">{business.hours}  &ensp; {this.checkOpenOrClosed(3)}</p>
+                            <p className="biz-show-hours">{business.hours}  &ensp; {this.checkOpenOrClosed(4)}</p>
                             <p className="biz-show-hours">{business.hours}  &ensp; {this.checkOpenOrClosed(5)}</p>
-                            <p className="biz-show-hours">{business.hours} {this.checkOpenOrClosed(6)}</p>
-                            <p className="biz-show-hours">{business.hours} {this.checkOpenOrClosed(0)}</p>
+                            <p className="biz-show-hours">{business.hours}  &ensp; {this.checkOpenOrClosed(6)}</p>
+                            <p className="biz-show-hours">{business.hours}  &ensp; {this.checkOpenOrClosed(0)}</p>
                         </div>
                     </div>
 
