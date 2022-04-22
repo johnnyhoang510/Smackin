@@ -15,26 +15,28 @@ class SessionForm extends React.Component {
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.demoLogin = this.demoLogin.bind(this);
+        this.handleDemoLogin = this.handleDemoLogin.bind(this);
         this.clearErrors = this.clearErrors.bind(this);
         this.submitHandler = this.submitHandler.bind(this);
     }
 
     handleSubmit(e) {
         // e.preventDefault();
-        this.props.processForm(this.state);
+        this.props.processForm(this.state)
+            .then(() => this.props.history.goBack());
     }
 
     update(field) {
         return e => this.setState({ [field]: e.currentTarget.value })
     }
 
-    demoLogin(e) {
+    handleDemoLogin(e) {
         let user = {
             email: 'demouser@email.com',
             password: 'password'
         };
-        this.props.demoLogin(user);        
+        this.props.handleDemoLogin(user)
+            .then(() => this.props.history.goBack());        
     }
 
     submitHandler(e) {
@@ -92,7 +94,7 @@ class SessionForm extends React.Component {
                             <p className="terms">By logging in, you agree to Smackin's Terms of Service and Private Policy.</p>
 
                             <div className="demo-user">
-                                <button className="demo-button" onKeyDown={this.submitHandler} onClick={this.demoLogin}>Continue as Demo User</button>
+                                <button className="demo-button" onKeyDown={this.submitHandler} onClick={this.handleDemoLogin}>Continue as Demo User</button>
                             </div>
                             <br />
 
@@ -156,7 +158,7 @@ class SessionForm extends React.Component {
                             </div>
 
                             <div className="demo-user">
-                                <button className="demo-button" onKeyDown={this.submitHandler} onClick={this.demoLogin}>Continue as Demo User</button>
+                                <button className="demo-button" onKeyDown={this.submitHandler} onClick={this.handleDemoLogin}>Continue as Demo User</button>
                             </div>
                             <br />
 
