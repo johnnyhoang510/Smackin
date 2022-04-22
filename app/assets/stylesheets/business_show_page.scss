@@ -50,9 +50,43 @@
     margin-top: 12px;
 }
 
-.biz-show-avgRating {
-    color: #fff;
-    font-size: 16px;
+#biz-show-avgRating {
+    background-image: url(review-stars.png);
+    -webkit-appearance: none;
+    height: 24px;
+    width: 132px;
+    margin-top: -6px;
+}
+
+.biz-show-rating-5 {
+    background-position: 0px -216px;
+}
+.biz-show-rating-4-5 {
+    background-position: 0px -192px;
+}
+.biz-show-rating-4 {
+    background-position: 0px -168px;
+}
+.biz-show-rating-3-5 {
+    background-position: 0px -144px;
+}
+.biz-show-rating-3 {
+    background-position: 0px -120px;
+}
+.biz-show-rating-2-5 {
+    background-position: 0px -96px;
+}
+.biz-show-rating-2 {
+    background-position: 0px -72px;
+}
+.biz-show-rating-1-5 {
+    background-position: 0px -48px;
+}
+.biz-show-rating-1 {
+    background-position: 0px -24px;
+}
+.biz-show-rating-0 {
+    background-position: 0px 0px;
 }
 
 .biz-show-numReviews {
@@ -234,6 +268,15 @@
     font-size: 14px;
     line-height: 20px;
     font-weight: 700;
+}
+
+.review-index-rec-reviews {
+    font-size: 20px;
+    font-weight: 700;
+    color: rgba(45,46,47,1);
+    letter-spacing: -0.4px;
+    line-height: 28px;
+    margin: 30px 0 42px 52px;
 }
 
 .biz-show-aside-container {
