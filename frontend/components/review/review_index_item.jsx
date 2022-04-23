@@ -19,7 +19,7 @@ class ReviewIndexItem extends React.Component {
     handleDelete(e) {
         e.preventDefault();
         this.props.deleteReview(this.props.review.id, this.props.review.business_id)
-        window.location.reload();
+            .then(() => window.location.reload())
     }
 
     handleEllipsis(e) {
@@ -76,7 +76,6 @@ class ReviewIndexItem extends React.Component {
         let editReviewButton;
         let deleteReviewButton;
         if (currentUser.id === review.user_id) {
-            //link not working properly. still can key in url other reviews that dont belong to user
             editReviewButton = <Link to={`/businesses/${review.business_id}/reviews/${review.id}/edit`} className="hidden-review-link-1">Edit Review</Link>;
             deleteReviewButton = <button onClick={this.handleDelete} className="hidden-review-link-2">Delete Review</button>;
         } else if (!currentUser) {
@@ -133,11 +132,3 @@ class ReviewIndexItem extends React.Component {
 
 
 export default ReviewIndexItem;
-
-
-// this.state false
-// handledropDown setstate
-
-// hidedropDown
-// if (e.target(e.relatedTarget)) return null
-// this.setState display false
