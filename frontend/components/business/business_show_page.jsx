@@ -138,7 +138,7 @@ class BusinessShowPage extends React.Component {
                 </div>
 
                 <div className="biz-show-background-photos">
-                    {business.photoURLs.slice(0,3).map( (photo_url, idx) => <img key={idx} className="biz-show-photo" src={photo_url} alt="" />)}
+                    {business.photoURLs.slice(0,3).map( (photo_url, idx) => <img key={idx} className="biz-show-photo" src={photo_url} alt="business-photo" />)}
                 </div>
                 <div className="biz-show-photo-gradient">
                 </div>

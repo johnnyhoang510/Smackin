@@ -34,7 +34,7 @@ business1.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.c
 business1.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/trueburger.jpg"), filename: "trueburger.jpg")
 business1.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/trueburgermap.png"), filename: "trueburgermap.png")
 
-business2 = Business.create!(name: "Tacos Mi Rancho", address: "1434 1st Ave", city: "Oakland", state: "CA", zip_code: 94606, phone_number: "(510) 395-1403", category:"Tacos", website:"https://www.tacos.com", lat: 37.799534, lng: -122.256362, price:"$$", hours: "09:00 AM-12:00 AM")
+business2 = Business.create!(name: "Tacos Mi Rancho", address: "1434 1st Ave", city: "Oakland", state: "CA", zip_code: 94606, phone_number: "(510) 395-1403", category:"Tacos", website:"https://www.tacos.com", lat: 37.799534, lng: -122.256362, price:"$$", hours: "09:00 AM-11:30 PM")
 business2.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/rancho5.jpg"), filename: "rancho5.jpg")
 business2.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/rancho.jpg"), filename: "rancho.jpg")
 business2.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/rancho2.jpg"), filename: "rancho2.jpg")
@@ -70,7 +70,7 @@ business7.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.c
 business7.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/jongga3.jpg"), filename: "jongga3.jpg")
 business7.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/jonggamap.png"), filename: "jonggamap.png")
 
-business8 = Business.create!(name: "Mad Oak", address: "135 12th St", city: "Oakland", state: "CA", zip_code: 94607, phone_number: "(510) 843-7416", category:"Bars", website:"https://www.madoakbar.com", lat: 37.80006416808729, lng: -122.26469191551965, price:"$$", hours: "03:00 PM-12:00 AM")
+business8 = Business.create!(name: "Mad Oak", address: "135 12th St", city: "Oakland", state: "CA", zip_code: 94607, phone_number: "(510) 843-7416", category:"Bars", website:"https://www.madoakbar.com", lat: 37.80006416808729, lng: -122.26469191551965, price:"$$", hours: "03:00 PM-11:30 PM")
 business8.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/madoak4.jpg"), filename: "madoak4.jpg")
 business8.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/madoak.jpg"), filename: "madoak.jpg")
 business8.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/madoak2.jpg"), filename: "madoak2.jpg")
@@ -88,13 +88,13 @@ business10.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.
 business10.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/yokee3.jpg"), filename: "yokee3.jpg")
 business10.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/yokeemap.png"), filename: "yokeemap.png")
 
-business11 = Business.create!(name: "Tacos El Gordo", address: "4201 International Blvd", city: "Oakland", state: "CA", zip_code: 94601, phone_number: "(510) 501-5103", category:"Tacos", website:"https://www.elgordobayarea.com", lat: 37.772695507925334, lng: -122.2159801020264, price:"$", hours: "06:00 PM-01:45 AM")
+business11 = Business.create!(name: "Tacos El Gordo", address: "4201 International Blvd", city: "Oakland", state: "CA", zip_code: 94601, phone_number: "(510) 501-5103", category:"Tacos", website:"https://www.elgordobayarea.com", lat: 37.772695507925334, lng: -122.2159801020264, price:"$", hours: "06:00 PM-11:30 PM")
 business11.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/gordo4.jpg"), filename: "gordo4.jpg")
 business11.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/gordo2.jpg"), filename: "gordo2.jpg")
 business11.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/gordo3.jpg"), filename: "gordo3.jpg")
 business11.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/gordomap.png"), filename: "gordomap.png")
 
-business12 = Business.create!(name: "Farmhouse Kitchen Thai Cuisine", address: "336 Water St", city: "Oakland", state: "CA", zip_code: 94607, phone_number: "(510) 419-0541", category:"Thai", website:"https://farmhousethai.com/oakland/", lat: 37.79439751978787, lng: -122.27544737319042, price:"$$", hours: "11:30 AM-01:30 PM")
+business12 = Business.create!(name: "Farmhouse Kitchen Thai Cuisine", address: "336 Water St", city: "Oakland", state: "CA", zip_code: 94607, phone_number: "(510) 419-0541", category:"Thai", website:"https://farmhousethai.com/oakland/", lat: 37.79439751978787, lng: -122.27544737319042, price:"$$", hours: "11:30 AM-09:30 PM")
 business12.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/farmhouse4.jpg"), filename: "farmhouse4.jpg")
 business12.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/farmhouse2.jpg"), filename: "farmhouse2.jpg")
 business12.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/farmhouse3.jpg"), filename: "farmhouse3.jpg")
@@ -130,7 +130,7 @@ business17.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.
 business17.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/burma3.jpg"), filename: "burma3.jpg")
 business17.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/burmamap.png"), filename: "burmamap.png")
 
-business18 = Business.create!(name: "Izza", address: "4419 Telegraph Ave", city: "Oakland", state: "CA", zip_code: 94609, phone_number: "(510) 607-7361", category:"Japanese", website:"https://www.izza.menu11.com", lat: 37.83266725896303, lng: -122.26384788853136, price:"$$", hours: "11:30 AM-12:00 AM")
+business18 = Business.create!(name: "Izza", address: "4419 Telegraph Ave", city: "Oakland", state: "CA", zip_code: 94609, phone_number: "(510) 607-7361", category:"Japanese", website:"https://www.izza.menu11.com", lat: 37.83266725896303, lng: -122.26384788853136, price:"$$", hours: "11:30 AM-11:30 PM")
 business18.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/izza4.jpg"), filename: "izza4.jpg")
 business18.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/izza2.jpg"), filename: "izza2.jpg")
 business18.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/izza3.jpg"), filename: "izza3.jpg")

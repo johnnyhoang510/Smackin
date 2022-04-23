@@ -1,12 +1,12 @@
 class Api::BusinessesController < ApplicationController
     def index
-        @businesses = Business.all
+        @businesses = Business.includes(:reviews).all
         render :index
     end
 
 
     def show
-        @business = Business.find(params[:id])
+        @business = Business.includes(:reviews).find(params[:id])
 
         if @business
             render :show
