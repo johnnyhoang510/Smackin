@@ -10,7 +10,7 @@ class MarkerManager {
     }
 
     updateMarkers(businesses) {
-        //businesses wont be array if query is undefined
+        //this will stop markers from being set if there is no search query from fetchBusinesses
         if (!Array.isArray(businesses)) return null;
         let markerKeys = Object.keys(this.markers);
 
@@ -80,6 +80,10 @@ class MarkerManager {
 
         marker.addListener("mouseout", () => {
             infoWindow.close()
+        })
+
+        marker.addListener("click", () => {
+            window.location.href = `/#/businesses/${business.id}`
         })
     }
 
