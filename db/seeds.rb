@@ -40,7 +40,7 @@ business2.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.c
 business2.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/rancho2.jpg"), filename: "rancho2.jpg")
 business2.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/ranchomap.png"), filename: "ranchomap.png")
 
-business3 = Business.create!(name: "Smokin Woods BBQ", address: "4307 Telegraph Ave", city: "Oakland", state: "CA", zip_code: 94609, phone_number: "(510) 423-8634", category:"Barbeque", website:"https://www.smokinwoodsbbq.com", lat: 37.831919065169, lng: -122.26410305981324, price:"$$", hours: "12:00 PM-09:00PM")
+business3 = Business.create!(name: "Smokin Woods BBQ", address: "4307 Telegraph Ave", city: "Oakland", state: "CA", zip_code: 94609, phone_number: "(510) 423-8634", category:"Barbeque", website:"https://www.smokinwoodsbbq.com", lat: 37.831919065169, lng: -122.26410305981324, price:"$$", hours: "12:00 PM-09:00 PM")
 business3.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/smokinwoods2.jpg"), filename: "smokinwoods2.jpg")
 business3.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/smokinwoods.jpg"), filename: "smokinwoods.jpg")
 business3.photos.attach(io: open("https://smackin-seeds.s3.us-west-1.amazonaws.com/smokinwoods3.jpg"), filename: "smokinwoods3.jpg")

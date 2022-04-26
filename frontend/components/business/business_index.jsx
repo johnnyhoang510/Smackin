@@ -18,31 +18,38 @@ class BusinessIndex extends React.Component {
 
     searchBusinesses() {
         //storing all categories for each business
-        let validCategories = ['$', '$$', '$$$', '$$$$'];
-        this.props.businesses.map(business => validCategories.push(business.category.toLowerCase()));
+        // let validCategories = ['$', '$$', '$$$', '$$$$'];
+        // this.props.businesses.map(business => validCategories.push(business.category.toLowerCase()));
 
-        let noResults = <div className="biz-index-no-results-container">
-            <h1 className="biz-index-no-results-header">No results found for your search</h1>
-            <h3 className="biz-index-no-results-suggestions">Suggestions for improving your result:</h3>
+        // let noResults = <div className="biz-index-no-results-container">
+        //     <h1 className="biz-index-no-results-header">No results found for your search</h1>
+        //     <h3 className="biz-index-no-results-suggestions">Suggestions for improving your result:</h3>
 
-            <ul className="biz-index-suggestions-list">
-                <li className="biz-index-suggestion-item">Check the spelling or try alternate spellings</li>
-                <li>Try a more general search, e.g. "burgers" instead of "bacon burgers"</li>
-            </ul>
-        </div>
+        //     <ul className="biz-index-suggestions-list">
+        //         <li className="biz-index-suggestion-item">Check the spelling or try alternate spellings</li>
+        //         <li>Try a more general search, e.g. "burgers" instead of "bacon burgers"</li>
+        //     </ul>
+        // </div>
 
         let query;
         if (this.props.location.search) query = (this.props.location.search.split('=')[1]).toString();
+        // console.log(query)
 
         const allBusinesses = this.props.businesses;
         let filtered = [];
 
         if (!query || query === '0') { //if nothing is searched, show all businesses
             return allBusinesses;
-        } else if (!validCategories.includes(query.toLowerCase())) { //if query is not in categories
-            return noResults;
+        // } else if (!validCategories.includes(query.toLowerCase())) { //if query is not in categories
+        //     return noResults;
         } else {
-            filtered = allBusinesses.filter(business => business.category.toLowerCase() === query.toLowerCase() || business.price === query);
+            // filtered = allBusinesses.filter(business => business.category.toLowerCase() === query.toLowerCase() || business.price === query);
+            // filtered.push(this.props.fetchBusinesses(query))
+            // console.log(this.props.fetchBusinesses(query))
+            // this.props.fetchBusinesses(query)
+            //     .then(() => filtered.push(this.props.businesses))
+            // filtered = this.props.businesses
+            // console.log(filtered)
             return filtered;
         }
     }
@@ -99,16 +106,19 @@ class BusinessIndex extends React.Component {
                     <div className="biz-index-list-container">
                         <h1 className="biz-index-all-results">All Results</h1>
                         <ol className="biz-index-list">
-                            {this.searchBusinesses().length ?
+                            {/* {this.searchBusinesses().length ?
                                 this.searchBusinesses().map( (business, idx) => (
                                     <BusinessIndexItem key={business.id} business={business} fetchReviews={fetchReviews} idx={idx + 1}/>
-                                    )) : this.searchBusinesses()
+                                    )) : null
                                     // if array, map thru it. otherwise, invoke func again to render the error
-                                }
+                                } */}
+                                {businesses.map( (business, idx) => (
+                                    <BusinessIndexItem key={business.id} business={business} fetchReviews={fetchReviews} idx={idx + 1} />
+                                ))}
                         </ol>
 
                         <div className="biz-index-map-container">
-                            <BusinessMap businesses={this.searchBusinesses()} />
+                            <BusinessMap businesses={businesses} />
                         </div>
                     </div>
                 </div>

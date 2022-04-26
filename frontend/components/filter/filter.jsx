@@ -5,18 +5,14 @@ class Filter extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            price: ''
-        }
-
         this.handleFilter = this.handleFilter.bind(this);
     }
 
     handleFilter(e) {
         e.preventDefault();
-        let button = e.currentTarget.value;
-        // console.log(button)
-        this.props.history.push(`/businesses?filter=${button}`)
+        let price = e.currentTarget.value;
+        // console.log(price)
+        this.props.history.push(`/businesses/search/${price}`)
     }
 
     render() {
