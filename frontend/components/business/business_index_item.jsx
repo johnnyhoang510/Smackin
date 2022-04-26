@@ -49,7 +49,7 @@ class BusinessIndexItem extends React.Component {
 
         return (
 
-            <div className="biz-index-item-wrapper">
+            <div>
     
                 <Link to={`/businesses/${business.id}`} className="biz-index-item">
 

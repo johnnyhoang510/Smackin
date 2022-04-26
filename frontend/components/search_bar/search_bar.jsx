@@ -23,13 +23,13 @@ class SearchBar extends React.Component {
     handleSearch(e) {
         e.preventDefault();
         let searchQuery = this.state.query
-        this.props.history.push(`search/${searchQuery === '' ? 0 : searchQuery}`);
+        this.props.history.push(`/businesses/search/${searchQuery === '' ? 0 : searchQuery}`);
     }
 
     handleSearchEnter(e) {
         if (e.key === "Enter") {
             let searchQuery = this.state.query
-            this.props.history.push(`search/${searchQuery === '' ? 0 : searchQuery}`);
+            this.props.history.push(`/businesses/search/${searchQuery === '' ? 0 : searchQuery}`);
         }
     }
 

@@ -3,7 +3,8 @@ class Api::BusinessesController < ApplicationController
 
         if params[:query]
             @businesses = Business.includes(:reviews)
-                .where("category ILIKE ? OR name ILIKE ?","%#{params[:query]}%", "%#{params[:query]}%")
+                .where("category ILIKE ? OR name ILIKE ? OR price ILIKE ?",
+                    "%#{params[:query]}%", "%#{params[:query]}%", "#{params[:query]}")
             if @businesses.length > 0
                 render :index
             else

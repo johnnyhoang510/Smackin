@@ -38,10 +38,16 @@ export const clearErrors = () => {
 // thunk action creators
 export const fetchBusinesses = (query) => (dispatch) => {
     return BusinessAPIUtil.fetchBusinesses(query)
-        .then(businesses => dispatch(receiveAllBusinesses(businesses)))
+        .then(
+            businesses => dispatch(receiveAllBusinesses(businesses)),
+            err => dispatch(receiveBusinessErrors(err.responseJSON))
+        )
 };
 
 export const fetchBusiness = (businessId) => (dispatch) => {
     return BusinessAPIUtil.fetchBusiness(businessId)
-        .then(business => dispatch(receiveBusiness(business)))
+        .then(
+            business => dispatch(receiveBusiness(business)),
+            err => dispatch(receiveBusinessErrors(err.responseJSON))
+        )
 };

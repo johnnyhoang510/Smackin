@@ -20,7 +20,7 @@ const App = () => {
                 <ProtectedRoute exact path="/businesses/:businessId/reviews/new" component={CreateReviewFormContainer} />
                 <AuthRoute path="/login" component={LoginFormContainer} />
                 <AuthRoute path="/signup" component={SignupFormContainer} />
-                <Route path="/search/:query" component={SearchIndexContainer} />
+                <Route path="/businesses/search/:query" component={SearchIndexContainer} />
                 <Route exact path="/businesses" component={BusinessIndexContainer} />
                 <Route exact path="/businesses/:businessId" component={BusinessShowPageContainer} />
                 <Route exact path="/" component={HomepageContainer} />
