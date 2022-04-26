@@ -13,7 +13,7 @@ const mSTP = (state, ownProps) => {
 
 const mDTP = (dispatch) => {
     return {
-        fetchBusinesses: () => dispatch(fetchBusinesses())
+        fetchBusinesses: (query) => dispatch(fetchBusinesses(query))
     }
 };
 

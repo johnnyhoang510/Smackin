@@ -9,6 +9,7 @@ import BusinessIndexContainer from "../components/business/business_index_contai
 import BusinessShowPageContainer from "../components/business/business_show_page_container";
 import CreateReviewFormContainer from "../components/review/create_review_form_container";
 import EditReviewFormContainer from "../components/review/edit_review_form_container";
+import SearchIndexContainer from "../components/search_bar/search_index_container";
 
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
                 <ProtectedRoute exact path="/businesses/:businessId/reviews/new" component={CreateReviewFormContainer} />
                 <AuthRoute path="/login" component={LoginFormContainer} />
                 <AuthRoute path="/signup" component={SignupFormContainer} />
+                <Route path="/search/:query" component={SearchIndexContainer} />
                 <Route exact path="/businesses" component={BusinessIndexContainer} />
                 <Route exact path="/businesses/:businessId" component={BusinessShowPageContainer} />
                 <Route exact path="/" component={HomepageContainer} />

@@ -36,8 +36,8 @@ export const clearErrors = () => {
 
 
 // thunk action creators
-export const fetchBusinesses = () => (dispatch) => {
-    return BusinessAPIUtil.fetchBusinesses()
+export const fetchBusinesses = (query) => (dispatch) => {
+    return BusinessAPIUtil.fetchBusinesses(query)
         .then(businesses => dispatch(receiveAllBusinesses(businesses)))
 };
 

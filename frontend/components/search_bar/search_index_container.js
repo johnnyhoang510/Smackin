@@ -1,8 +1,8 @@
 import { connect } from "react-redux";
-import BusinessIndex from "./business_index";
-import { fetchBusinesses } from "../../actions/business_actions";
 import { fetchReviews } from "../../actions/review_actions";
+import { fetchBusinesses } from "../../actions/business_actions";
 import { logout } from "../../actions/session_actions";
+import SearchIndex from "./search_index";
 
 
 const mSTP = (state) => {
@@ -21,5 +21,4 @@ const mDTP = (dispatch) => {
     }
 };
 
-
-export default connect(mSTP, mDTP)(BusinessIndex);
+export default connect(mSTP, mDTP)(SearchIndex);
