@@ -119,4 +119,4 @@ class SearchIndex extends React.Component {
 };
 
 
-export default SearchIndex
+export default SearchIndex;

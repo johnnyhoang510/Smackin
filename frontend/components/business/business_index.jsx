@@ -68,12 +68,6 @@ class BusinessIndex extends React.Component {
                     <div className="biz-index-list-container">
                         <h1 className="biz-index-all-results">All Results</h1>
                         <ol className="biz-index-list">
-                            {/* {this.searchBusinesses().length ?
-                                this.searchBusinesses().map( (business, idx) => (
-                                    <BusinessIndexItem key={business.id} business={business} fetchReviews={fetchReviews} idx={idx + 1}/>
-                                    )) : null
-                                    // if array, map thru it. otherwise, invoke func again to render the error
-                                } */}
                                 {businesses.map( (business, idx) => (
                                     <BusinessIndexItem key={business.id} business={business} fetchReviews={fetchReviews} idx={idx + 1} />
                                 ))}
