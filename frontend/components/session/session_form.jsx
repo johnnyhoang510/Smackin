@@ -106,7 +106,7 @@ class SessionForm extends React.Component {
                                 value={this.state.email}
                                 onChange={this.update('email')}
                                 placeholder="Email"
-                                required
+                                
                             />
                             <br />
 
@@ -115,7 +115,7 @@ class SessionForm extends React.Component {
                                 value={this.state.password}
                                 onChange={this.update('password')}
                                 placeholder="Password"
-                                required
+                                
                             />
                             <br />
                             <button className="signup-login-submit" type="submit" onClick={this.handleSubmit}>{formType}</button>
@@ -170,14 +170,14 @@ class SessionForm extends React.Component {
                                 value={this.state.first_name}
                                 onChange={this.update('first_name')}
                                 placeholder="First Name"
-                                required
+                                
                             />
                             <input className="last-name-input"
                                 type="text"
                                 value={this.state.last_name}
                                 onChange={this.update('last_name')}
                                 placeholder="Last Name"
-                                required
+                                
                             />
 
                             <br />
@@ -186,7 +186,7 @@ class SessionForm extends React.Component {
                                 value={this.state.email}
                                 onChange={this.update('email')}
                                 placeholder="Email"
-                                required
+                                
                             />
                             <br />
 
@@ -195,7 +195,7 @@ class SessionForm extends React.Component {
                                 value={this.state.password}
                                 onChange={this.update('password')}
                                 placeholder="Password"
-                                required
+                                
                             />
                             <br />
 
@@ -204,7 +204,7 @@ class SessionForm extends React.Component {
                                 value={this.state.zip_code}
                                 onChange={this.update('zip_code')}
                                 placeholder="Zip Code"
-                                required
+                                
                             />
                             <br />
                             <button className="signup-login-submit" type="submit" onClick={this.handleSubmit}>{formType}</button>
