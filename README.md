@@ -22,7 +22,7 @@ Smackin' was built using the following technologies:
 ### User Authentication
 
 * Users can signup a new account and/or login to an existing account
-* Users can login as a demo user for quicker access
-* Errors are rendered in the event of invalid credentials
+* Users can login as a demo user for quicker access around the site
+* Errors are rendered in the event of inputting invalid credentials
 
 ![smack_user_auth](https://user-images.githubusercontent.com/94396944/165590973-46f6f1a9-e6ed-495b-b8ce-3d6568017b5c.gif)
