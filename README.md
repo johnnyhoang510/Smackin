@@ -9,10 +9,20 @@ Smackin' is a fullstack, single page app clone of Yelp. Users will be able to ut
 
 Smackin' was built using the following technologies:
 </br>
-* <b>Frontend: React/Redux</b>
+* <b>Frontend: React/Redux and JavaScript/JSX</b>
 * <b>Backend: Ruby on Rails</b>
 * <b>Database: PostgreSQL</b>
 * <b>Design/Styling: HTML and CSS</b>
 * <b>Image Hosting: AWS</b>
 * <b>Third Party API: Google Maps JavaScript API</b>
 * <b>Hosting: Heroku</b>
+
+## Key Features
+
+### User Authentication
+
+* Users can signup a new account and/or login to an existing account
+* Users can login as a demo user for quicker access
+* Errors are rendered in the event of invalid credentials
+
+![smack_user_auth](https://user-images.githubusercontent.com/94396944/165590973-46f6f1a9-e6ed-495b-b8ce-3d6568017b5c.gif)
