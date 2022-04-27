@@ -4,54 +4,16 @@ import BusinessMap from "../map/business_map";
 import SearchBarContainer from "../search_bar/search_bar_container";
 import { Link } from "react-router-dom";
 import FilterContainer from "../filter/filter_container";
+import Footer from "../footer/footer";
 
 class BusinessIndex extends React.Component {
     constructor(props) {
         super(props);
 
-        this.searchBusinesses = this.searchBusinesses.bind(this)
     }
 
     componentDidMount() {
         this.props.fetchBusinesses();
-    }
-
-    searchBusinesses() {
-        //storing all categories for each business
-        // let validCategories = ['$', '$$', '$$$', '$$$$'];
-        // this.props.businesses.map(business => validCategories.push(business.category.toLowerCase()));
-
-        // let noResults = <div className="biz-index-no-results-container">
-        //     <h1 className="biz-index-no-results-header">No results found for your search</h1>
-        //     <h3 className="biz-index-no-results-suggestions">Suggestions for improving your result:</h3>
-
-        //     <ul className="biz-index-suggestions-list">
-        //         <li className="biz-index-suggestion-item">Check the spelling or try alternate spellings</li>
-        //         <li>Try a more general search, e.g. "burgers" instead of "bacon burgers"</li>
-        //     </ul>
-        // </div>
-
-        let query;
-        if (this.props.location.search) query = (this.props.location.search.split('=')[1]).toString();
-        // console.log(query)
-
-        const allBusinesses = this.props.businesses;
-        let filtered = [];
-
-        if (!query || query === '0') { //if nothing is searched, show all businesses
-            return allBusinesses;
-        // } else if (!validCategories.includes(query.toLowerCase())) { //if query is not in categories
-        //     return noResults;
-        } else {
-            // filtered = allBusinesses.filter(business => business.category.toLowerCase() === query.toLowerCase() || business.price === query);
-            // filtered.push(this.props.fetchBusinesses(query))
-            // console.log(this.props.fetchBusinesses(query))
-            // this.props.fetchBusinesses(query)
-            //     .then(() => filtered.push(this.props.businesses))
-            // filtered = this.props.businesses
-            // console.log(filtered)
-            return filtered;
-        }
     }
 
 
@@ -123,21 +85,7 @@ class BusinessIndex extends React.Component {
                     </div>
                 </div>
 
-
-
-                <div className="biz-homepage-footer">
-                    <div className="biz-index-footer-about">
-                        <h3 className="biz-index-footer-title">About</h3>
-                        <a className="footer-link" href="https://github.com/johnnyhoang510" target="_blank">Github</a>
-                        <a className="footer-link" href="https://www.linkedin.com/in/hoangjohnny/" target="_blank">LinkedIn</a>
-                    </div>
-
-                    <div className="biz-index-footer-discover">
-                        <h3 className="biz-index-footer-title">Discover</h3>
-                        <a className="footer-link" href="https://johnnyhoang510.github.io/portfolio-website/" target="_blank">Portfolio</a>
-                        <a className="footer-link" href="https://angel.co/u/johnnyhoang510" target="_blank">AngelList</a>
-                    </div>
-                </div>
+            <Footer />
 
             </div>
 

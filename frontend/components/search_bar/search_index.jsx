@@ -4,6 +4,7 @@ import BusinessMap from "../map/business_map";
 import SearchBarContainer from "./search_bar_container";
 import { Link } from "react-router-dom";
 import FilterContainer from "../filter/filter_container";
+import Footer from "../footer/footer";
 
 
 class SearchIndex extends React.Component {
@@ -110,19 +111,7 @@ class SearchIndex extends React.Component {
                     </div>
                 </div>
 
-                <div className="biz-homepage-footer">
-                    <div className="biz-index-footer-about">
-                        <h3 className="biz-index-footer-title">About</h3>
-                        <a className="footer-link" href="https://github.com/johnnyhoang510" target="_blank">Github</a>
-                        <a className="footer-link" href="https://www.linkedin.com/in/hoangjohnny/" target="_blank">LinkedIn</a>
-                    </div>
-
-                    <div className="biz-index-footer-discover">
-                        <h3 className="biz-index-footer-title">Discover</h3>
-                        <a className="footer-link" href="https://johnnyhoang510.github.io/portfolio-website/" target="_blank">Portfolio</a>
-                        <a className="footer-link" href="https://angel.co/u/johnnyhoang510" target="_blank">AngelList</a>
-                    </div>
-                </div>
+                <Footer />
 
             </div>
         )
