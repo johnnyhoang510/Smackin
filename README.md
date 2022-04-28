@@ -53,6 +53,8 @@ Originally, the searching and filtering of businesses was done on the front-end.
 
 When this controller action hits, it will either send back a JSON object with filtered results or all the businesses if a query is not passed in. This approach will allow one thunk action to handle multiple scenarios. Additionally, I wanted to address the N+1 query problem, so I utilized the Rails "includes" method for eager loading, limiting the amount of queries that need to be executed.
 ```ruby
+    #businesses_controller.rb
+    
     def index
         if params[:query]
             @businesses = Business.includes(:reviews)
