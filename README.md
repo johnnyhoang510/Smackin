@@ -35,7 +35,16 @@ Smackin' was built using the following technologies:
 * Errors will render if a rating or body of text aren't provided
 * Submitted reviews will affect the business's overall rating, as well as any deleted reviews
 
-![smackin_reviews](https://user-images.githubusercontent.com/94396944/165647919-95420649-da43-4efa-ae4c-6d1daaa1fc05.gif)
+![smackinreviews](https://user-images.githubusercontent.com/94396944/165649733-8b688e70-6246-4939-9bc5-1997374d039e.gif)
 
+
+### Searchbar and Filters
+
+* Users can search for businesses by category/name and also filter businesses by price
+* Markers on the map will update according to any search query or filter
+* Errors will render for an invalid search
+* Users can click on any of the markers to be redirected to that business's show page
+
+![searchfilters](https://user-images.githubusercontent.com/94396944/165652983-150775a3-8ffd-41fd-9c71-40e2ce66ff2d.gif)
 
 
