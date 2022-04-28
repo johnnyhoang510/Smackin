@@ -47,4 +47,9 @@ Smackin' was built using the following technologies:
 
 ![searchfilters](https://user-images.githubusercontent.com/94396944/165652983-150775a3-8ffd-41fd-9c71-40e2ce66ff2d.gif)
 
+### Future Improvements
+
+* User profile where they can view all of their reviews
+* Allow users to upload photos when writing a review
+* Have a search feature within the reviews index
 
