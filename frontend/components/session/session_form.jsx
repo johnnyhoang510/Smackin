@@ -31,6 +31,7 @@ class SessionForm extends React.Component {
     }
 
     handleDemoLogin(e) {
+        e.preventDefault();
         let user = {
             email: 'demouser@email.com',
             password: 'password'
