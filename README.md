@@ -87,9 +87,9 @@ When this controller action hits, it will either send back a JSON object with fi
 <img width="1371" alt="openclosed" src="https://user-images.githubusercontent.com/94396944/165822079-3f8d8fbb-a3b1-4d82-96c6-1831f591ae22.png">
 </br>
 
-I wanted to be able to dynamically show whether a business was open or not depending on the current time and day. In order to implement this feature, I first used a helper function this.convertTime(), which takes a time string parameter such as "11:30 AM-09:30 PM" and correctly converts it to military time. 
+I wanted to be able to dynamically show whether a business was open or not depending on the current time and day. In order to implement this feature, I first used a helper function this.convertTime(), which takes a time string parameter such as "11:30 AM-09:30 PM" and correctly converts both the opening and closing hours to military time. 
 
-From there, I grabbed the hours and minutes of both the opening and closing hours, and compared them to the current day's hours and minutes. At the end, the function will return a span element indicating whether it is open or closed, or null if the day passed in the parameter does not match the current day.
+From there, I grabbed the hours and minutes of both of the times, and compared them to the current day's hours and minutes. At the end, the function will return a span element indicating whether it is open or closed, or null if the day passed in the parameter does not match the current day.
 
 ```js
 checkOpenOrClosed(day) {
