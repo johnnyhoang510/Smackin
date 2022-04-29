@@ -1,6 +1,6 @@
 # Welcome to Smackin'!
 
-[Live Link](https://smackin.herokuapp.com/)
+[Live Link](https://smackin.herokuapp.com/#/)
 
 Smackin' is a fullstack, single page app clone of Yelp. Users will be able to utilize many familiar features, such as signing up, logging in, creating reviews, etc. 
 <a href ="https://github.com/johnnyhoang510/Smackin"><img width="1300" alt="feature" src="https://user-images.githubusercontent.com/94396944/165564489-e07b7ef3-6da6-442c-96d8-ad54e1cba40d.png"></a>
