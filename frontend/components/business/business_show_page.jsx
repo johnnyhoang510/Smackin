@@ -95,6 +95,11 @@ class BusinessShowPage extends React.Component {
         }
     }
     
+    addressDirections(address, city, state, zipCode) {
+        let addressArr = address.split(' ').concat(city, state, zipCode);
+        let newAddress = addressArr.join('+');
+        return `https://www.google.com/maps/place/${newAddress}`;
+    }
 
     render() {
         const { business, currentUser, logout } = this.props;
@@ -104,7 +109,6 @@ class BusinessShowPage extends React.Component {
 
         const checkLoggedIn = currentUser ? (
             <div className="biz-index-check-loggedin-container">
-                {/* <Link to="/" className="biz-index-your-reviews">Your Reviews</Link> */}
                 <h2 className="biz-index-welcome-user">Welcome, {currentUser.first_name}!</h2>
                 <button className="biz-index-logout-user" onClick={logout}>Log out</button>
             </div>
@@ -173,7 +177,7 @@ class BusinessShowPage extends React.Component {
 
                     <div className="biz-show-location-hours-map-container">
                         <h1 className="biz-show-location-hours-title">Location &amp; Hours</h1>
-                        <a href={`https://maps.google.com/?q=${business.lat},${business.lng}`} target="_blank"><img src={business.photoURLs[business.photoURLs.length - 1]} alt="map" className="biz-show-map" /></a>
+                        <a href={this.addressDirections(business.address, business.city, business.state, business.zip_code)} target="_blank"><img src={business.photoURLs[business.photoURLs.length - 1]} alt="map" className="biz-show-map" /></a>
                         <p className="biz-show-address">{business.address}</p>
                         <p className="biz-show-city-state">{business.city}, {business.state} {business.zip_code}</p>
                     </div>
@@ -215,7 +219,7 @@ class BusinessShowPage extends React.Component {
                         </div>
                         <div className="biz-show-aside-info-directions">
                             <div className="biz-show-aside-directions-container">
-                                <a className="biz-show-aside-directions-link" href={`https://maps.google.com/?q=${business.lat},${business.lng}`} target="_blank">Get Directions</a>
+                                <a className="biz-show-aside-directions-link" href={this.addressDirections(business.address, business.city, business.state, business.zip_code)} target="_blank">Get Directions</a>
                             
                                 <div className="biz-show-aside-address-container">
                                     <p className="biz-show-aside-address">{business.address} {business.city}, {business.state}</p>
