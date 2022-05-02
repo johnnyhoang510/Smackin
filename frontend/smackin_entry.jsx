@@ -25,18 +25,18 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     //TESTING START
-    window.signup = signup;
-    window.login = login;
-    window.logout = logout;
-    window.getState = store.getState;
-    window.dispatch = store.dispatch;
-    window.fetchBusiness = fetchBusiness;
-    window.fetchBusinesses = fetchBusinesses;
-    window.fetchReviews = fetchReviews;
-    window.fetchReview = fetchReview;
-    window.createReview = createReview;
-    window.updateReview = updateReview;
-    window.deleteReview = deleteReview;
+    // window.signup = signup;
+    // window.login = login;
+    // window.logout = logout;
+    // window.getState = store.getState;
+    // window.dispatch = store.dispatch;
+    // window.fetchBusiness = fetchBusiness;
+    // window.fetchBusinesses = fetchBusinesses;
+    // window.fetchReviews = fetchReviews;
+    // window.fetchReview = fetchReview;
+    // window.createReview = createReview;
+    // window.updateReview = updateReview;
+    // window.deleteReview = deleteReview;
     //TESTING END
 
     ReactDOM.render(<Root store={store} />, root)
