@@ -51,7 +51,7 @@ Smackin' was built using the following technologies:
 
 Originally, the searching and filtering of businesses was done on the front-end. I decided I wanted users to be able to search for more than just the category and with the help of Ruby on Rails Active Record Queries, I was able to broaden the search in the backend to also include price and the name of the business. 
 
-When this controller action hits, it will either send back a JSON object with filtered results or all the businesses if a query is not passed in. This approach will allow one thunk action to handle multiple scenarios. Additionally, I wanted to address the N+1 query problem, so I utilized the Rails "includes" method for eager loading, limiting the amount of queries that need to be executed.
+When this action hits, it will either send back a JSON object with filtered results or all the businesses if a query is not passed in. This approach will allow one action to handle multiple scenarios. Additionally, I wanted to address the N+1 query problem, so I utilized the Rails "includes" method for eager loading, limiting the amount of queries that need to be executed.
 ```ruby
     #businesses_controller.rb
     
