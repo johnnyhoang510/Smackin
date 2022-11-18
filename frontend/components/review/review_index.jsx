@@ -1,31 +1,23 @@
 import React from "react";
+import { useEffect } from "react";
+import { fetchReviews } from "../../actions/review_actions";
 import ReviewIndexItem from "./review_index_item";
 
+const ReviewIndex = (props) => {
+    const { reviews, updateReview, deleteReview, currentUser, fetchReview, business, rating, numReviews, handleDeleteReview } = props;
 
-class ReviewIndex extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+    useEffect(() => {
+        fetchReviews(business.id)
+    }, []);
 
-    componentDidMount() {
-        // business being passed down from show page
-        this.props.fetchReviews(this.props.business.id)
-    }
+    let checkCurrentUser;
+    if (currentUser) {
+        checkCurrentUser = currentUser
+    } else {
+        checkCurrentUser = {};
+    };
 
-    render() {
-
-        //if no current user, this will allow reviews to still render
-        let checkCurrentUser;
-        if (this.props.currentUser) {
-            checkCurrentUser = this.props.currentUser
-        } else {
-            checkCurrentUser = {};
-        }
-
-        const { reviews, updateReview, deleteReview, currentUser, fetchReview, business, rating, numReviews, handleDeleteReview } = this.props;
-
-        if (!reviews) return null;
-
+    if (reviews) {
         return (
             <div>
                 <h3 className="review-index-rec-reviews">Recommended Reviews</h3>
@@ -36,7 +28,9 @@ class ReviewIndex extends React.Component {
                 </div>
             </div>
         )
-    }
+    } else {
+        return null;
+    };
 };
 
 
