@@ -22,19 +22,16 @@ class ReviewIndex extends React.Component {
             checkCurrentUser = {};
         }
 
-        // console.log(checkCurrentUser);
-
-        const { reviews, updateReview, deleteReview, currentUser, fetchReview, business } = this.props;
+        const { reviews, updateReview, deleteReview, currentUser, fetchReview, business, rating, numReviews, handleDeleteReview } = this.props;
 
         if (!reviews) return null;
-        // console.log(reviews)
 
         return (
             <div>
                 <h3 className="review-index-rec-reviews">Recommended Reviews</h3>
                 <div className="review-index-wrapper">
                     {reviews.map(review => (
-                        <ReviewIndexItem review={review} key={review.id} updateReview={updateReview} deleteReview={deleteReview} currentUser={checkCurrentUser} business={business} fetchReview={fetchReview} />
+                        <ReviewIndexItem review={review} key={review.id} rating={rating} numReviews={numReviews} handleDeleteReview={handleDeleteReview} updateReview={updateReview} deleteReview={deleteReview} currentUser={checkCurrentUser} business={business} fetchReview={fetchReview} />
                     ))}
                 </div>
             </div>

@@ -7,8 +7,9 @@ import Footer from "../footer/footer";
 import { useState, useEffect } from "react";
 
 const BusinessShowPage = (props) => {
-    const { business, businessId, currentUser, reviews, fetchBusiness, fetchReviews, logout } = props;
+    const { business, businessId, currentUser, reviews, fetchBusiness, fetchReviews, logout, deleteReview } = props;
     const [rating, setRating] = useState(0);
+    const [numReviews, setNumReviews] = useState(0)
 
     useEffect(() => {
         fetchBusiness(props.match.params.businessId)
@@ -17,6 +18,8 @@ const BusinessShowPage = (props) => {
 
     useEffect(() => {
         fetchBusiness(props.match.params.businessId);
+        fetchReviews(props.match.params.businessId);
+        getAvgRating();
     }, [businessId])
     
     const getAvgRating = async () => {
@@ -24,6 +27,7 @@ const BusinessShowPage = (props) => {
 
         const response = await fetchBusiness(props.match.params.businessId);
         const biz = response.business;
+        setNumReviews(biz.reviews.length)
 
         for (let review of biz.reviews) {
             reviewRating += review.rating
@@ -31,7 +35,12 @@ const BusinessShowPage = (props) => {
 
         const avgRating = (reviewRating / biz.reviews.length).toFixed(1);
         setRating(avgRating)
-        return avgRating
+    }
+
+    const handleDeleteReview = (reviewId, businessId) => {
+        deleteReview(reviewId, businessId)
+            .then(() => setNumReviews(numReviews - 1))
+            .then(() => getAvgRating())
     }
 
     const checkAvgStarRating = () => {
@@ -116,7 +125,7 @@ const BusinessShowPage = (props) => {
 
     const today = new Date();
 
-    if (business) {
+    if (business && reviews) {
         return(
 
             <div className="biz-show-container">
@@ -145,7 +154,7 @@ const BusinessShowPage = (props) => {
 
                     <div className="biz-show-reviews-section">
                         <p id="biz-show-avgRating" className={checkAvgStarRating()}></p>
-                        <p className="biz-show-numReviews">{business.reviews.length} reviews</p>
+                        <p className="biz-show-numReviews">{numReviews} reviews</p>
                     </div>
 
                     <div className="biz-show-details-info">
@@ -224,7 +233,7 @@ const BusinessShowPage = (props) => {
 
                 <div className="biz-show-rec-reviews">
                     <div className="biz-show-each-review">
-                        <ReviewIndexContainer business={business}/>
+                        <ReviewIndexContainer business={business} rating={rating} numReviews={numReviews} handleDeleteReview={handleDeleteReview} />
                     </div>
                 </div>
 

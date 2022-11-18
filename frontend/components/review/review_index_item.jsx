@@ -5,17 +5,10 @@ import { FaEllipsisH } from "react-icons/fa"
 import { useState, useRef } from "react";
 import useOutsideClick from "../../util/use_outside_click";
 
-//TODO: ADD STATE TO RATING SO WHEN REVIEW IS DELETED, TRIGGERS A RERENDER
-
 const ReviewIndexItem = (props) => {
-    const { business, currentUser, deleteReview, review } = props;
+    const { business, currentUser, review, handleDeleteReview } = props;
     const [show, setShow] = useState(false);
     const ref = useRef();
-
-    const handleDelete = (e) => {
-        e.preventDefault();
-        deleteReview(review.id, review.business_id)
-    }
 
     useOutsideClick(ref, () => {
         if (show) setShow(false);
@@ -25,16 +18,6 @@ const ReviewIndexItem = (props) => {
         if (!currentUser || currentUser.id !== review.user_id) {
             return "hidden-ellipsis"
         }
-    }
-
-    const reviewCreateDate = () => {
-        let date = review.created_at;
-        let newDate = date.split("-");
-        let month = newDate[1];
-        let day = newDate[2].slice(0, 2);
-        let year = newDate[0];
-        const reviewDate = `${month}/${day}/${year}`
-        return reviewDate;
     }
 
     const checkStarRating = () => {
@@ -53,18 +36,27 @@ const ReviewIndexItem = (props) => {
                 break;
         }
     }
+
+
+    const beautifyDate = (date) => {
+        if (!date) return null;
+        const dateSplit = date.split("T")[0];
+        const [year, month, day] = dateSplit.split("-")
+
+        return `${month}/${day}/${year}`
+    }
     
     let editReviewButton;
     let deleteReviewButton;
     if (currentUser.id === review.user_id) {
         editReviewButton = <Link to={`/businesses/${review.business_id}/reviews/${review.id}/edit`} className="hidden-review-link-1">Edit Review</Link>;
-        deleteReviewButton = <button onClick={(e) => handleDelete(e)} className="hidden-review-link-2">Delete Review</button>;
+        deleteReviewButton = <button onClick={() => handleDeleteReview(review.id, business.id)} className="hidden-review-link-2">Delete Review</button>;
     } else if (!currentUser) {
         editReviewButton = null;
         deleteReviewButton = null;
     }
 
-    if (review && currentUser) {
+    if (review && business) {
         return(
             <div>
                 <div className="review-item-container">
@@ -89,9 +81,7 @@ const ReviewIndexItem = (props) => {
 
                     <div className="review-item-rating-container">
                         <p id="review-index-item-star-rating" className={checkStarRating()}></p>
-                        {/* <p className="review-item-rating">{review.rating}</p> */}
-                        {/* giving an error after editing a review */}
-                        {/* <p className="review-item-create-date">{this.reviewCreateDate()}</p> */}
+                        <p className="review-item-create-date">{beautifyDate(review.created_at)}</p>
                         {/* <p className="review-item-create-date">{review.created_at}</p> */}
                     </div>
 
