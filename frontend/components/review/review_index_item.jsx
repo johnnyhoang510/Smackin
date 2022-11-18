@@ -2,44 +2,33 @@ import React from "react";
 import { BiUserCircle } from 'react-icons/bi';
 import { Link } from "react-router-dom";
 import { FaEllipsisH } from "react-icons/fa"
+import { useState, useRef } from "react";
+import useOutsideClick from "../../util/use_outside_click";
 
-class ReviewIndexItem extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            display: false
-        }
+//TODO: ADD STATE TO RATING SO WHEN REVIEW IS DELETED, TRIGGERS A RERENDER
 
-        this.handleDelete = this.handleDelete.bind(this);
-        this.handleEllipsis = this.handleEllipsis.bind(this);
-        this.hideEllipsis = this.hideEllipsis.bind(this);
-    }
+const ReviewIndexItem = (props) => {
+    const { business, currentUser, deleteReview, review } = props;
+    const [show, setShow] = useState(false);
+    const ref = useRef();
 
-
-    handleDelete(e) {
+    const handleDelete = (e) => {
         e.preventDefault();
-        this.props.deleteReview(this.props.review.id, this.props.review.business_id)
-            .then(() => window.location.reload())
+        deleteReview(review.id, review.business_id)
     }
 
-    handleEllipsis(e) {
-        this.setState({ display: !this.state.display })
-    }
+    useOutsideClick(ref, () => {
+        if (show) setShow(false);
+    })
 
-    hideEllipsis(e) {
-        // e.preventDefault();
-        if (e.target.contains(e.relatedTarget)) return null;
-        this.setState({ display: false})
-    }
-
-    checkCurrentUser() {
-        if (!this.props.currentUser || this.props.currentUser.id !== this.props.review.user_id) {
+    const checkCurrentUser = () => {
+        if (!currentUser || currentUser.id !== review.user_id) {
             return "hidden-ellipsis"
         }
     }
 
-    reviewCreateDate() {
-        let date = this.props.review.created_at;
+    const reviewCreateDate = () => {
+        let date = review.created_at;
         let newDate = date.split("-");
         let month = newDate[1];
         let day = newDate[2].slice(0, 2);
@@ -48,8 +37,8 @@ class ReviewIndexItem extends React.Component {
         return reviewDate;
     }
 
-    checkStarRating() {
-        switch (this.props.review.rating) {
+    const checkStarRating = () => {
+        switch (review.rating) {
             case 5:
                 return "review-item-rating-5"
             case 4:
@@ -64,29 +53,19 @@ class ReviewIndexItem extends React.Component {
                 break;
         }
     }
+    
+    let editReviewButton;
+    let deleteReviewButton;
+    if (currentUser.id === review.user_id) {
+        editReviewButton = <Link to={`/businesses/${review.business_id}/reviews/${review.id}/edit`} className="hidden-review-link-1">Edit Review</Link>;
+        deleteReviewButton = <button onClick={(e) => handleDelete(e)} className="hidden-review-link-2">Delete Review</button>;
+    } else if (!currentUser) {
+        editReviewButton = null;
+        deleteReviewButton = null;
+    }
 
-    render() {
-        // console.log(this.props);
-        if (!this.props.review) return null;
-        if (!this.props.currentUser) return null;
-        
-        const { review, currentUser, updateReview, deleteReview, business } = this.props;
-
-
-        let editReviewButton;
-        let deleteReviewButton;
-        if (currentUser.id === review.user_id) {
-            editReviewButton = <Link to={`/businesses/${review.business_id}/reviews/${review.id}/edit`} className="hidden-review-link-1">Edit Review</Link>;
-            deleteReviewButton = <button onClick={this.handleDelete} className="hidden-review-link-2">Delete Review</button>;
-        } else if (!currentUser) {
-            editReviewButton = null;
-            deleteReviewButton = null;
-        }
-
-
+    if (review && currentUser) {
         return(
-
-
             <div>
                 <div className="review-item-container">
                     <div className="review-item-profile-container">
@@ -98,21 +77,18 @@ class ReviewIndexItem extends React.Component {
                         </div>
                     </div>
                     
-                    <div id={this.checkCurrentUser()} className="review-ellipsis-container">
-                        <FaEllipsisH onClick={this.handleEllipsis} className="review-ellipsis" />
-                            { this.state.display ? (
-                            <div className="review-links-container">
+                    <div id={checkCurrentUser()} className="review-ellipsis-container">
+                        <FaEllipsisH onClick={() => setShow(!show)} className="review-ellipsis" />
+                            { show && (
+                                <div ref={ref} className="review-links-container">
                                     {editReviewButton}
                                     {deleteReviewButton}
-                                </div>
-                            ) : 
-                            null
-                        }
+                                </div> )
+                            }
                     </div>
-                        
 
                     <div className="review-item-rating-container">
-                        <p id="review-index-item-star-rating" className={this.checkStarRating()}></p>
+                        <p id="review-index-item-star-rating" className={checkStarRating()}></p>
                         {/* <p className="review-item-rating">{review.rating}</p> */}
                         {/* giving an error after editing a review */}
                         {/* <p className="review-item-create-date">{this.reviewCreateDate()}</p> */}
@@ -123,10 +99,11 @@ class ReviewIndexItem extends React.Component {
                         <p className="review-item-body">{review.body}</p>
                     </div>
 
-
                 </div>
             </div>
         )
+    } else {
+        return null;
     }
 };
 
