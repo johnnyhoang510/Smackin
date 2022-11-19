@@ -1,53 +1,59 @@
 import React from "react";
-import { BsSearch } from "react-icons/bs"
+import { useEffect } from "react";
+import { useState } from "react";
+import { BsSearch } from "react-icons/bs";
+import BusinessIndex from "../business/business_index_container";
 
-class SearchBar extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            query: ''
+const SearchBar = (props) => {
+    const { fetchBusinesses } = props;
+    const [businesses, setBusinesses] = useState([]);
+    const [query, setQuery] = useState("");
+
+    useEffect(() => {
+        fetchBusinesses()
+            .then(res => setBusinesses(Object.values(res.businesses)))
+            // .then(() => props.history.push('/businesses'))
+    }, [])
+
+    const getBusinesses = async () => {
+        try {
+            const response = await fetchBusinesses(query);
+            setBusinesses(Object.values(response.businesses))
+        } catch (error) {
+            console.log(error)
         }
-
-        this.handleSearch = this.handleSearch.bind(this);
-        this.handleSearchEnter = this.handleSearchEnter.bind(this);
-    };
-
-    // componentDidMount() {
-    //     this.props.fetchBusinesses();
-    // }
-
-    update(field) {
-        return e => this.setState({ [field]: e.currentTarget.value })
     }
 
-    handleSearch(e) {
+
+    const handleSearch = (e) => {
         e.preventDefault();
-        let searchQuery = this.state.query
-        if (searchQuery === '') {
-            searchQuery = `/businesses`
-        } else {
-            searchQuery = `/businesses/search/${searchQuery}`
-        }
-        this.props.history.push(`${searchQuery}`)
+        // let searchQuery = query
+        // if (searchQuery === '') {
+        //     searchQuery = `/businesses`
+        // } else {
+        //     searchQuery = `/businesses/search/${searchQuery}`
+        // }
+        // props.history.push(`/businesses/search?q=${query}`)
+        getBusinesses();
     }
 
-    handleSearchEnter(e) {
+    const handleSearchEnter = (e) => {
+        // if (e.key === "Enter") {
+        //     let searchQuery = query;
+        //     if (searchQuery === '') {
+        //         searchQuery = `/businesses`
+        //     } else {
+        //         searchQuery = `/businesses/search/${searchQuery}`
+        //     }
+        //     props.history.push(`${searchQuery}`)
+        // }
         if (e.key === "Enter") {
-            let searchQuery = this.state.query;
-            if (searchQuery === '') {
-                searchQuery = `/businesses`
-            } else {
-                searchQuery = `/businesses/search/${searchQuery}`
-            }
-            this.props.history.push(`${searchQuery}`)
+            // props.history.push(`/businesses/search?q=${query}`)
+            getBusinesses()
         }
     }
+        if (businesses) {
 
-    render() {
-
-        // console.log(this.props);
-        // if (!this.props.businesses) return null;
-        
         return(
             <div>
 
@@ -57,21 +63,24 @@ class SearchBar extends React.Component {
                         className="searchbar-component-find"
                         type="text"
                         placeholder="burgers, Thai, seafood..."
-                        onChange={this.update('query')}
-                        onKeyPress={this.handleSearchEnter}
-                        value={this.state.query}
+                        onChange={(e) => setQuery(e.currentTarget.value)}
+                        onKeyPress={(e) => handleSearchEnter(e)}
+                        value={query}
                         />
                     <p className="searchbar-near">Near</p>
                         <input
                         className="searchbar-component-near"
                         readOnly placeholder="Oakland, CA"
                         />
-                    <BsSearch onClick={this.handleSearch} className="searchbar-icon" />
+                    <BsSearch onClick={(e) => handleSearch(e)} className="searchbar-icon" />
                 </div>
 
+                <BusinessIndex query={query} businesses={businesses} />
             </div>
         )
-    }
+        } else {
+            return null;
+        }
 };
 
 

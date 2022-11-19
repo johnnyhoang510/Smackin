@@ -61,7 +61,7 @@ const ReviewIndexItem = (props) => {
             <div>
                 <div className="review-item-container">
                     <div className="review-item-profile-container">
-                        <p className="review-item-user-icon"><BiUserCircle /></p>
+                        <p className="review-item-user-icon"><BiUserCircle/></p>
 
                         <div className="review-item-name-container">
                             <p className="review-item-users-name">{review.user_first_name} {`${review.user_last_name}`[0]}.</p>
@@ -70,7 +70,7 @@ const ReviewIndexItem = (props) => {
                     </div>
                     
                     <div id={checkCurrentUser()} className="review-ellipsis-container">
-                        <FaEllipsisH onClick={() => setShow(!show)} className="review-ellipsis" />
+                        <FaEllipsisH onClick={() => setShow(!show)} className="review-ellipsis"/>
                             { show && (
                                 <div ref={ref} className="review-links-container">
                                     {editReviewButton}
@@ -82,7 +82,6 @@ const ReviewIndexItem = (props) => {
                     <div className="review-item-rating-container">
                         <p id="review-index-item-star-rating" className={checkStarRating()}></p>
                         <p className="review-item-create-date">{beautifyDate(review.created_at)}</p>
-                        {/* <p className="review-item-create-date">{review.created_at}</p> */}
                     </div>
 
                     <div className="review-item-body-container">

@@ -5,48 +5,42 @@ import SearchBarContainer from "../search_bar/search_bar_container";
 import { Link } from "react-router-dom";
 import FilterContainer from "../filter/filter_container";
 import Footer from "../footer/footer";
+import { useEffect } from "react";
+import { useState } from "react";
 
-class BusinessIndex extends React.Component {
-    constructor(props) {
-        super(props);
+const BusinessIndex = (props) => {
+    const { businesses, query, fetchBusinesses, fetchReviews, logout, currentUser } = props;
+    // const [businesses, setBusinesses] = useState([]);
+    // const [query, setQuery] = useState("");
 
-    }
+    // useEffect(() => {
+    //     getBusinesses();
+    // }, [])
 
-    componentDidMount() {
-        this.props.fetchBusinesses();
-    }
+    // const getBusinesses = async () => {
+    //     const response = await fetchBusinesses(query);
+    //     setBusinesses(Object.values(response.businesses))
+    // }
 
+    const checkLoggedIn = currentUser ? (
+        <div className="biz-index-check-loggedin-container">
+            {/* <Link to="/" className="biz-index-your-reviews">Your Reviews</Link> */}
+            <h2 className="biz-index-welcome-user">Welcome, {currentUser.first_name}!</h2>
+            <button className="biz-index-logout-user" onClick={logout}>Log out</button>
+        </div>
+    ) : (
+        <div className="biz-index-login-signup-buttons">
+            <Link className="biz-index-login-button" to='/login'>Log In</Link>
+            <Link className="biz-index-signup-button" to='/signup'>Sign Up</Link>
+        </div>
+    )
 
-    render() {
-
-        window.scrollTo(0, 0)
-
-        if (!this.props.businesses) return null;
-        // console.log(this.props.businesses);
-
-
-        const { businesses, fetchReviews, currentUser, logout } = this.props;
-
-        const checkLoggedIn = currentUser ? (
-            <div className="biz-index-check-loggedin-container">
-                {/* <Link to="/" className="biz-index-your-reviews">Your Reviews</Link> */}
-                <h2 className="biz-index-welcome-user">Welcome, {currentUser.first_name}!</h2>
-                <button className="biz-index-logout-user" onClick={logout}>Log out</button>
-            </div>
-        ) : (
-            <div className="biz-index-login-signup-buttons">
-                <Link className="biz-index-login-button" to='/login'>Log In</Link>
-                <Link className="biz-index-signup-button" to='/signup'>Sign Up</Link>
-            </div>
-        )
-
-
+    if (businesses) {
         return(
             <div>
-
                 <div className="biz-index-container">
 
-                    <div className="biz-index-navbar">
+                    {/* <div className="biz-index-navbar">
                         <Link to="/" className="biz-index-back-to-homepage">
                             <h3 className="biz-index-homepage-text">smackin'</h3>
                             <img className="biz-index-logo" src={window.logo} alt="logo" />
@@ -57,9 +51,7 @@ class BusinessIndex extends React.Component {
                         </div>
 
                         {checkLoggedIn}
-
-                    </div>
-
+                    </div> */}
 
                     <aside className="biz-index-filters-aside">
                         <FilterContainer />
@@ -78,12 +70,11 @@ class BusinessIndex extends React.Component {
                         </div>
                     </div>
                 </div>
-
             <Footer />
-
             </div>
-
         )
+    } else {
+        return null;
     }
 };
 
