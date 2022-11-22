@@ -5,6 +5,7 @@ import SearchBarContainer from "../search_bar/search_bar_container";
 import { BsFillCheckCircleFill, BsInfoCircleFill, BsStar, BsArrowUpRightSquare, BsTelephoneOutbound, BsArrow90DegRight } from "react-icons/bs";
 import Footer from "../footer/footer";
 import { useState, useEffect } from "react";
+import { displayUserHomeAndIndex } from "../../util/display_current_user";
 
 const BusinessShowPage = (props) => {
     const { business, businessId, currentUser, reviews, fetchBusiness, fetchReviews, logout, deleteReview } = props;
@@ -82,8 +83,8 @@ const BusinessShowPage = (props) => {
         const closingTime = convertTime(business.hours.split('-')[1]);
 
         const currentDate = new Date();
-        
         const openingDate = new Date(currentDate.getTime());
+
         openingDate.setHours(openingTime.split(":")[0]);
         openingDate.setMinutes(openingTime.split(":")[1]);
 
@@ -111,23 +112,10 @@ const BusinessShowPage = (props) => {
         return `https://www.google.com/maps/place/${newAddress}`;
     }
 
-    const checkLoggedIn = currentUser ? (
-        <div className="biz-index-check-loggedin-container">
-            <h2 className="biz-index-welcome-user">Welcome, {currentUser.first_name}!</h2>
-            <button className="biz-index-logout-user" onClick={logout}>Log out</button>
-        </div>
-    ) : (
-        <div className="biz-index-login-signup-buttons">
-            <Link className="biz-index-login-button" to='/login'>Log In</Link>
-            <Link className="biz-index-signup-button" to='/signup'>Sign Up</Link>
-        </div>
-    )
-
     const today = new Date();
 
     if (business && reviews) {
         return(
-
             <div className="biz-show-container">
                 <div className="biz-index-navbar">
                     <Link to="/" className="biz-index-back-to-homepage">
@@ -139,8 +127,7 @@ const BusinessShowPage = (props) => {
                         <SearchBarContainer />
                     </div>
 
-                    {checkLoggedIn}
-
+                    {displayUserHomeAndIndex(currentUser, logout)}
                 </div>
 
                 <div className="biz-show-background-photos">
@@ -238,7 +225,6 @@ const BusinessShowPage = (props) => {
                 </div>
 
                 <Footer />
-
             </div>
         )
     } else {
