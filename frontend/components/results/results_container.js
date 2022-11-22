@@ -1,15 +1,15 @@
 import { connect } from "react-redux";
-import BusinessIndex from "./business_index";
+import Results from "./results"
+import { withRouter } from "react-router";
 import { fetchBusinesses } from "../../actions/business_actions";
 import { fetchReviews } from "../../actions/review_actions";
 import { logout } from "../../actions/session_actions";
 
 
-const mSTP = (state) => {
+const mSTP = (state, ownProps) => {
     return {
         businesses: Object.values(state.entities.businesses),
-        currentUser: state.entities.users[state.session.id],
-        errors: state.errors.business
+        currentUser: state.entities.users[state.session.id]
     }
 };
 
@@ -23,4 +23,9 @@ const mDTP = (dispatch) => {
 };
 
 
-export default connect(mSTP, mDTP)(BusinessIndex);
+export default withRouter(
+    connect(
+        mSTP,
+        mDTP)(
+            Results)
+);

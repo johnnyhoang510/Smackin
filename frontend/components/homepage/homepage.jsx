@@ -39,7 +39,7 @@ class Homepage extends React.Component{
 
                     <div className="homepage-links-container">
                         <div className="homepage-biz-wrapper">
-                            <Link to="/businesses" className="homepage-biz-link">Browse Businesses</Link>
+                            <Link to="/results" className="homepage-biz-link">Browse Businesses</Link>
                         </div>
 
                         <div className="homepage-check-login">
