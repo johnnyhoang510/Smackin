@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export const displayUserHomeAndIndex = (user, callback) => {
+export const displayUserOnBusiness = (user, callback) => {
     let userInfo;
 
     user ? userInfo = 
@@ -21,7 +21,7 @@ export const displayUserHomeAndIndex = (user, callback) => {
     return userInfo
 };
 
-export const displayUserReviewForm = (user, callback) => {
+export const displayUserInReviewForm = (user, callback) => {
     const header = 
         <header className="create-form-header">
             <Link to="/" className="create-form-title-logo-wrapper">

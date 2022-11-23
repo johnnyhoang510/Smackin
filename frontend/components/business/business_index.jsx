@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import FilterContainer from "../filter/filter_container";
 import Footer from "../footer/footer";
 import { useEffect } from "react";
-import { displayUserOrButtons } from "../../util/display_current_user";
+import { displayUserOnBusiness } from "../../util/display_current_user";
 
 const BusinessIndex = (props) => {
     const { businesses, fetchBusinesses, fetchReviews, logout, currentUser } = props;
@@ -30,7 +30,7 @@ const BusinessIndex = (props) => {
                             <SearchBarContainer /> 
                         </div>
 
-                        {displayUserOrButtons(currentUser, logout)}
+                        {displayUserOnBusiness(currentUser, logout)}
                     </div>
 
                     <aside className="biz-index-filters-aside">

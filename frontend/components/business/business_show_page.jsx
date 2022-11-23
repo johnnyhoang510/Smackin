@@ -5,7 +5,7 @@ import SearchBarContainer from "../search_bar/search_bar_container";
 import { BsFillCheckCircleFill, BsInfoCircleFill, BsStar, BsArrowUpRightSquare, BsTelephoneOutbound, BsArrow90DegRight } from "react-icons/bs";
 import Footer from "../footer/footer";
 import { useState, useEffect } from "react";
-import { displayUserHomeAndIndex } from "../../util/display_current_user";
+import { displayUserOnBusiness } from "../../util/display_current_user";
 
 const BusinessShowPage = (props) => {
     const { business, businessId, currentUser, reviews, fetchBusiness, fetchReviews, logout, deleteReview } = props;
@@ -127,7 +127,7 @@ const BusinessShowPage = (props) => {
                         <SearchBarContainer />
                     </div>
 
-                    {displayUserHomeAndIndex(currentUser, logout)}
+                    {displayUserOnBusiness(currentUser, logout)}
                 </div>
 
                 <div className="biz-show-background-photos">
