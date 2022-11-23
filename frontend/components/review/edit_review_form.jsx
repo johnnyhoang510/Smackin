@@ -1,69 +1,59 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { BsStarFill } from "react-icons/bs";
+import { useState, useEffect } from "react";
 
+const EditReviewForm = (props) => {
+    const { review, business, businessId, currentUser, errors, fetchReview, user_id, updateReview, fetchBusiness, clearReviewErrors } = props;
+    const [rating, setRating] = useState(0);
+    const [body, setBody] = useState("");
 
-class EditReviewForm extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-            id: '',
-            rating: 0,
-            body: '',
-            user_id: '',
-            business_id: ''
-        };
+    useEffect(() => {
+        fetchBusiness(props.match.params.businessId)
+        fetchReview(props.match.params.businessId, props.match.params.reviewId);
 
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleLogout = this.handleLogout.bind(this);
-        this.checkState = this.checkState.bind(this);
-    };
-
-    componentDidMount() {
-        this.props.fetchReview(this.props.match.params.businessId, this.props.match.params.reviewId)
-            .then((e) => this.checkState());
-
-        this.props.fetchBusiness(this.props.match.params.businessId);
-    };
-
-    componentDidUpdate(prevProps) {
-        if (prevProps !== this.props) {
-            this.setState( this.props.review )
+        return () => {
+            clearReviewErrors();
         }
-    }
+        
+    }, [])
 
-    checkState(e) {
-        this.setState({
-            id: this.props.review.id,
-            body: this.props.review.body,
-            rating: this.props.review.rating,
-            user_id: this.props.user_id,
-            business_id: this.props.business_id
-        })
-    }
+    useEffect(() => {
+        if (review) {
+            setRating(review.rating)
+            setBody(review.body)
+        }
+    }, [review])
 
-    handleSubmit(e) {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        this.props.updateReview(this.state, this.props.businessId)
-            .then(() => this.props.history.push(`/businesses/${this.props.business.id}`))
+        const editedReview = {
+            id: review.id,
+            rating,
+            body,
+            user_id,
+            business_id: business.id
+        }
+        updateReview(editedReview, businessId)
+            .then(() => props.history.push(`/businesses/${business.id}`))
     };
 
-    handleLogout(e) {
+    const handleLogout = (e) => {
         e.preventDefault();
-        this.props.logout()
-            .then(() => this.props.history.push(`/businesses/${this.props.business.id}`))
+        logout()
+            .then(() => props.history.push(`/businesses/${this.props.business.id}`))
     }
 
-    update(field) {
+    const update = (e, field) => {
         if (field === 'rating') {
-            return e => this.setState({ [field]: parseInt(e.currentTarget.value) })
+            setRating(parseInt(e.currentTarget.value))
         } else {
-            return e => this.setState({ [field]: e.currentTarget.value })
+            setBody(e.currentTarget.value)
         }
-    };
+    }
 
-    checkedText() {
-        switch (this.state.rating) {
+    const checkedText = () => {
+        switch (rating) {
             case 1:
                 return "Not good"
             case 2:
@@ -79,27 +69,16 @@ class EditReviewForm extends React.Component{
         }
     }
 
+    let showErrors;
+    if (errors.length) {
+        showErrors = errors.map((err, idx) => (
+            <li key={`err-${idx}`}>{err}</li>
+        ))
+    };
 
-
-    render() {
-        // console.log(this.props);
-        if (!this.props.review) return null;
-        if (!this.props.business) return null;
-        
-        const { review, business, businessId, reviewId, currentUser, errors } = this.props;
-        
-
-        let showErrors;
-        if (errors.length) {
-            showErrors = errors.map((err, idx) => (
-                <li key={`err-${idx}`}>{err}</li>
-            ))
-        };
-
-        
+    if (business && review) {
         return(
             <div>
-
                 <header className="edit-form-header">
                     <Link to="/" className="edit-form-title-logo-wrapper">
                         <h1 className="edit-form-title">smackin'</h1>
@@ -108,7 +87,7 @@ class EditReviewForm extends React.Component{
 
                     <div className="edit-form-user-container">
                         <h2 className="edit-form-welcome-user">Welcome, {currentUser.first_name}!</h2>
-                        <button onClick={this.handleLogout} className="edit-form-logout-button">Log Out</button>
+                        <button onClick={handleLogout} className="edit-form-logout-button">Log Out</button>
                     </div>
                 </header>
 
@@ -116,30 +95,30 @@ class EditReviewForm extends React.Component{
 
                     <h1 className="edit-review-form-title">{business.name}</h1>
 
-                    <form className="edit-review-form" onSubmit={this.handleSubmit}>
+                    <form className="edit-review-form" onSubmit={handleSubmit}>
                         <div className="edit-review-form-rating-wrapper">
 
                             <div className="edit-form-stars-container">
-                                <input id="rating-1" type="radio" value="5" onChange={this.update('rating')} name="rating" checked={this.state.rating === 5 ? true : false}/>
+                                <input id="rating-1" type="radio" value="5" onChange={(e) => update(e, 'rating')} name="rating" checked={rating === 5 ? true : false}/>
                                 <label htmlFor="rating-1" id="edit-review-form-rating"><BsStarFill className="review-star"/></label>
 
-                                <input id="rating-2" type="radio" value="4" onChange={this.update('rating')} name="rating" checked={this.state.rating === 4 ? true : false}/>
+                                <input id="rating-2" type="radio" value="4" onChange={(e) => update(e, 'rating')} name="rating" checked={rating === 4 ? true : false}/>
                                 <label htmlFor="rating-2" id="edit-review-form-rating"><BsStarFill className="review-star" /></label>
 
-                                <input id="rating-3" type="radio" value="3" onChange={this.update('rating')} name="rating" checked={this.state.rating === 3 ? true : false}/>
+                                <input id="rating-3" type="radio" value="3" onChange={(e) => update(e, 'rating')} name="rating" checked={rating === 3 ? true : false}/>
                                 <label htmlFor="rating-3" id="edit-review-form-rating"><BsStarFill className="review-star" /></label>
 
-                                <input id="rating-4" type="radio" value="2" onChange={this.update('rating')} name="rating" checked={this.state.rating === 2 ? true : false}/>
+                                <input id="rating-4" type="radio" value="2" onChange={(e) => update(e, 'rating')} name="rating" checked={rating === 2 ? true : false}/>
                                 <label htmlFor="rating-4" id="edit-review-form-rating"><BsStarFill className="review-star" /></label>
 
-                                <input id="rating-5" type="radio" value="1" onChange={this.update('rating')} name="rating" checked={this.state.rating === 1 ? true : false}/>
+                                <input id="rating-5" type="radio" value="1" onChange={(e) => update(e, 'rating')} name="rating" checked={rating === 1 ? true : false}/>
                                 <label htmlFor="rating-5" id="edit-review-form-rating"><BsStarFill className="review-star" /></label>
                             </div>
 
-                            <p className="select-your-rating">{this.checkedText()}</p>
+                            <p className="select-your-rating">{checkedText()}</p>
                         </div>
 
-                        <textarea rows="25" cols="70" className="edit-review-form-textarea" onChange={this.update('body')} defaultValue={`${this.state.body}`} required />
+                        <textarea rows="25" cols="70" className="edit-review-form-textarea" onChange={(e) => update(e, 'body')} defaultValue={`${body}`} required />
                         <br />
                         <button type="submit" className="edit-review-form-submit">Edit Review</button>
                     </form>
@@ -152,6 +131,8 @@ class EditReviewForm extends React.Component{
                 </div>
             </div>
         )
+    } else {
+        return null;
     }
 };
 
