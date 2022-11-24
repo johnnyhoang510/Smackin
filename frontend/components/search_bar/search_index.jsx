@@ -1,16 +1,13 @@
 import React from "react";
+import NavBarContainer from "../navbar/navbar_container";
 import BusinessIndexItem from "../business/business_index_item";
 import BusinessMap from "../map/business_map";
-import SearchBarContainer from "./search_bar_container";
-import { Link } from "react-router-dom";
 import FilterContainer from "../filter/filter_container";
 import Footer from "../footer/footer";
-import { useEffect } from "react";
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
 
 const SearchIndex = (props) => {
-    const { currentUser, errors, logout, clearErrors, fetchReviews, fetchBusinesses } = props;
+    const { errors, clearErrors, fetchReviews, fetchBusinesses } = props;
     let [businesses, setBusinesses] = useState([]);
     
     useEffect(() => {
@@ -54,18 +51,6 @@ const SearchIndex = (props) => {
             <li key={idx} className="biz-index-suggestion-item">{sugg}</li>
         ))
     }
-        
-    const checkLoggedIn = currentUser ? (
-        <div className="biz-index-check-loggedin-container">
-            <h2 className="biz-index-welcome-user">Welcome, {currentUser.first_name}!</h2>
-            <button className="biz-index-logout-user" onClick={logout}>Log out</button>
-        </div>
-    ) : (
-        <div className="biz-index-login-signup-buttons">
-            <Link className="biz-index-login-button" to='/login'>Log In</Link>
-            <Link className="biz-index-signup-button" to='/signup'>Sign Up</Link>
-        </div>
-    )
 
     if (businesses) {
         return (
@@ -73,18 +58,7 @@ const SearchIndex = (props) => {
 
                 <div className="biz-index-container">
 
-                    <div className="biz-index-navbar">
-                        <Link to="/" className="biz-index-back-to-homepage">
-                            <h3 className="biz-index-homepage-text">smackin'</h3>
-                            <img className="biz-index-logo" src={window.logo} alt="logo" />
-                        </Link>
-
-                        <div className="biz-index-searchbar">
-                            <SearchBarContainer />
-                        </div>
-
-                        {checkLoggedIn}
-                    </div>
+                    <NavBarContainer />
 
                     <aside className="biz-index-filters-aside">
                         <FilterContainer />

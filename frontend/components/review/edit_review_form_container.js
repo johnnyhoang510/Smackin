@@ -6,7 +6,6 @@ import { logout } from "../../actions/session_actions";
 
 
 const mSTP = (state, ownProps) => {
-    // console.log(ownProps);
     return {
         review: state.entities.reviews[ownProps.match.params.reviewId],
         business: state.entities.businesses[ownProps.match.params.businessId],

@@ -1,15 +1,13 @@
 import React from "react";
+import NavBarContainer from "../navbar/navbar_container";
 import BusinessIndexItem from "./business_index_item";
 import BusinessMap from "../map/business_map";
-import SearchBarContainer from "../search_bar/search_bar_container";
-import { Link } from "react-router-dom";
 import FilterContainer from "../filter/filter_container";
 import Footer from "../footer/footer";
 import { useEffect } from "react";
-import { displayUserOnBusiness } from "../../util/display_current_user";
 
 const BusinessIndex = (props) => {
-    const { businesses, fetchBusinesses, fetchReviews, logout, currentUser } = props;
+    const { businesses, fetchBusinesses, fetchReviews } = props;
 
     useEffect(() => {
         fetchBusinesses()
@@ -20,18 +18,7 @@ const BusinessIndex = (props) => {
             <div>
                 <div className="biz-index-container">
 
-                    <div className="biz-index-navbar">
-                        <Link to="/" className="biz-index-back-to-homepage">
-                            <h3 className="biz-index-homepage-text">smackin'</h3>
-                            <img className="biz-index-logo" src={window.logo} alt="logo" />
-                        </Link>
-
-                        <div className="biz-index-searchbar">
-                            <SearchBarContainer /> 
-                        </div>
-
-                        {displayUserOnBusiness(currentUser, logout)}
-                    </div>
+                    <NavBarContainer />
 
                     <aside className="biz-index-filters-aside">
                         <FilterContainer />

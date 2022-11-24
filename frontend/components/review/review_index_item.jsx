@@ -36,8 +36,7 @@ const ReviewIndexItem = (props) => {
                 break;
         }
     }
-
-
+    
     const beautifyDate = (date) => {
         if (!date) return null;
         const dateSplit = date.split("T")[0];

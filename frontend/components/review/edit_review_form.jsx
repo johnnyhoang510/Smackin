@@ -1,10 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { BsStarFill } from "react-icons/bs";
+import { displayUserInReviewForm } from "../../util/display_current_user";
 import { useState, useEffect } from "react";
 
 const EditReviewForm = (props) => {
-    const { review, business, businessId, currentUser, errors, fetchReview, user_id, updateReview, fetchBusiness, clearReviewErrors } = props;
+    const { review, business, businessId, currentUser, errors, fetchReview, user_id, updateReview, fetchBusiness, clearReviewErrors, logout } = props;
     const [rating, setRating] = useState(0);
     const [body, setBody] = useState("");
 
@@ -15,7 +15,6 @@ const EditReviewForm = (props) => {
         return () => {
             clearReviewErrors();
         }
-        
     }, [])
 
     useEffect(() => {
@@ -41,7 +40,7 @@ const EditReviewForm = (props) => {
     const handleLogout = (e) => {
         e.preventDefault();
         logout()
-            .then(() => props.history.push(`/businesses/${this.props.business.id}`))
+            .then(() => props.history.push(`/businesses/${business.id}`))
     }
 
     const update = (e, field) => {
@@ -79,17 +78,7 @@ const EditReviewForm = (props) => {
     if (business && review) {
         return(
             <div>
-                <header className="edit-form-header">
-                    <Link to="/" className="edit-form-title-logo-wrapper">
-                        <h1 className="edit-form-title">smackin'</h1>
-                        <img className="edit-form-logo" src={window.logo} alt="logo" />
-                    </Link>
-
-                    <div className="edit-form-user-container">
-                        <h2 className="edit-form-welcome-user">Welcome, {currentUser.first_name}!</h2>
-                        <button onClick={handleLogout} className="edit-form-logout-button">Log Out</button>
-                    </div>
-                </header>
+                {displayUserInReviewForm(currentUser, handleLogout)}
 
                 <div className="edit-review-form-container">
 

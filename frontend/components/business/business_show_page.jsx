@@ -40,8 +40,13 @@ const BusinessShowPage = (props) => {
 
     const handleDeleteReview = (reviewId, businessId) => {
         deleteReview(reviewId, businessId)
-            .then(() => setNumReviews(numReviews - 1))
+            .then(() => {
+                if (numReviews > 0) {
+                    setNumReviews(numReviews - 1)
+                }
+            })
             .then(() => getAvgRating())
+            .then(() => window.scrollTo(0, 0))
     }
 
     const checkAvgStarRating = () => {
