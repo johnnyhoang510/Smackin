@@ -6,14 +6,13 @@ import { signup, clearErrors, login } from "../../actions/session_actions";
 const mSTP = (state) => {
     return {
         errors: state.errors.session,
-        formType: 'Sign Up'
     }
 };
 
 
 const mDTP = (dispatch) => {
     return {
-        processForm: (user) => dispatch(signup(user)),
+        signup: (user) => dispatch(signup(user)),
         demoLogin: (user) => dispatch(login(user)),
         clearErrors: () => dispatch(clearErrors())
     }

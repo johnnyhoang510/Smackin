@@ -15,29 +15,26 @@ const LoginForm = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
         const user = {
             email,
             password
         }
 
         login(user)
-            .then(() => {
-                clearErrors();
-                props.history.push("/")
-            });
+            .then(() => props.history.push("/"));
     }
 
     const handleDemoLogin = (e) => {
         e.preventDefault();
+
         const demoUser = {
             email: 'demouser@email.com',
             password: 'password'
         };
+
         demoLogin(demoUser)
-            .then(() => {
-                clearErrors();
-                props.history.push("/")
-            });
+            .then(() => props.history.push("/"));
     }
 
     const submitHandler = (e) => {
@@ -53,7 +50,7 @@ const LoginForm = (props) => {
             return (
                 <div>
                     <li className="session-form-error" key={`error-${idx}`}>{err}</li>
-                    <p onClick={clearErrors} className="session-errors-x"><BsX className="error-x" /></p>
+                    <p onClick={() => clearErrors()} className="session-errors-x"><BsX className="error-x" /></p>
                 </div>
 
             )
@@ -75,7 +72,7 @@ const LoginForm = (props) => {
 
                     <div className="switch-form-header">
                         <h3 className="switch-form-subtitle">New to Smackin'?</h3>
-                        <Link className="switch-form-link" to="/signup" onClick={() => clearErrors()}>Sign Up</Link>
+                        <Link className="switch-form-link" to="/signup" >Sign Up</Link>
                     </div>
                     <p className="terms">By logging in, you agree to Smackin's Terms of Service and Private Policy.</p>
 
@@ -89,6 +86,8 @@ const LoginForm = (props) => {
                     <br />
                     <input className="login-input"
                         type="email"
+                        pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/"
+                        required
                         value={email}
                         onChange={(e) => setEmail(e.currentTarget.value)}
                         placeholder="Email"
@@ -105,7 +104,7 @@ const LoginForm = (props) => {
                     <button className="signup-login-submit" type="submit" onClick={(e) => handleSubmit(e)}>Log In</button>
 
                     <h4 className="switch-form-text-2">New to Smackin'?
-                        <Link className="switch-form-2" to="/signup" onClick={clearErrors}>Sign Up</Link>
+                        <Link className="switch-form-2" to="/signup" >Sign Up</Link>
                     </h4>
                 </form>
                 
