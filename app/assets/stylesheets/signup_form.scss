@@ -8,8 +8,20 @@
     align-items: center;
 }
 
+.signup-form-image-wrapper {
+    display: flex;
+    width: 80%;
+}
+
+.signup-form-pic {
+    height: 330px;
+    width: 330px;
+    object-fit: cover;
+    margin-top: 190px;
+}
+
 .form-signup {
-    width: 50%;
+    width: 70%;
 }
 
 .signup-form-header {
@@ -76,7 +88,7 @@
     cursor: pointer;
 }
 
-.demo-button:hover {
+.demo-button-signup:hover {
     color: white;
     background-color: #d32323;
     /* background-color: #666; */
@@ -194,7 +206,7 @@
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 12px;
     color: #999;
-    margin-left: 48%;
+    margin-left: 53%;
     padding-top: 10px;
 }
 
