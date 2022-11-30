@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { BsX } from "react-icons/bs";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 const SignupForm = (props) => {
     const { signup, errors, demoLogin, clearErrors } = props;
@@ -13,21 +13,18 @@ const SignupForm = (props) => {
     const [zipCode, setZipCode] = useState("");
     const [errorsClass, setErrorsClass] = useState("signup-errors-container");
 
-    console.log(errors.length)
-
     useEffect(() => {
         clearErrors();
     }, [])
 
     useEffect(() => {
-        if (errors.length === 5) {
-            setErrorsClass("signup-with-errors") 
+
+        if (errors.length === 0) {
+            setErrorsClass("signup-errors-container")
         } else if (errors.length === 1) {
             setErrorsClass("signup-with-errors-1")
-        } else if (errors.length === 2) {
-            setErrorsClass("signup-with-errors-2")
         } else {
-            setErrorsClass("signup-errors-container")
+            setErrorsClass("signup-with-errors")
         }
     })
 
@@ -133,7 +130,6 @@ const SignupForm = (props) => {
                     <br />
                     <input className="signup-input"
                         type="email"
-                        pattern=".+@globex\.com"
                         value={email}
                         onChange={(e) => setEmail(e.currentTarget.value)}
                         placeholder="Email"
