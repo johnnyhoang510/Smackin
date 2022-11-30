@@ -40,10 +40,7 @@ const SignupForm = (props) => {
         }
 
         signup(user)
-            .then(() => {
-                clearErrors();
-                props.history.push("/")
-            })
+            .then(() => props.history.goBack());
     }
 
     const handleDemoLogin = (e) => {
@@ -55,10 +52,7 @@ const SignupForm = (props) => {
         };
 
         demoLogin(demoUser)
-            .then(() => {
-                clearErrors();
-                props.history.push("/")
-            });
+            .then(() => props.history.goBack());
     }
 
     const submitHandler = (e) => {

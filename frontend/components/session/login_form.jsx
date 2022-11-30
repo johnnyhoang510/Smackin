@@ -32,7 +32,8 @@ const LoginForm = (props) => {
         }
 
         login(user)
-            .then(() => props.history.push("/"));
+            // .then(() => props.history.push("/"));
+            .then(() => props.history.goBack());
     }
 
     const handleDemoLogin = (e) => {
@@ -44,7 +45,8 @@ const LoginForm = (props) => {
         };
 
         demoLogin(demoUser)
-            .then(() => props.history.push("/"));
+            // .then(() => props.history.push("/"));
+            .then(() => props.history.goBack());
     }
 
     const submitHandler = (e) => {

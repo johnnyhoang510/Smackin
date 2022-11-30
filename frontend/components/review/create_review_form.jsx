@@ -9,6 +9,7 @@ const CreateReviewForm = (props) => {
     const [body, setBody] = useState("");
 
     useEffect(() => {
+        window.scrollTo(0, 0)
         fetchBusiness(props.match.params.businessId)
 
         return () => {
@@ -105,7 +106,7 @@ const CreateReviewForm = (props) => {
                             <p className="select-your-rating">{ratingText()}</p>
                         </div>
 
-                        <textarea rows="25" cols="70" className="create-review-form-textarea" onChange={(e) => update(e, 'body')} placeholder="Doesn't look like much when you walk past, but I was practically dying of hunger so I popped in. The definition of a hole-in-the-wall. I got the regular hamburger and wow... there are no words. A classic burger done right. Crisp bun, juicy patty, stuffed with all the essentials (ketchup, shredded lettuce, tomato, and pickles). Not much else to say besides go see for yourself! You won't be disappointed." required></textarea>
+                        <textarea autoFocus rows="25" cols="70" className="create-review-form-textarea" onChange={(e) => update(e, 'body')} placeholder="Doesn't look like much when you walk past, but I was practically dying of hunger so I popped in. The definition of a hole-in-the-wall. I got the regular hamburger and wow... there are no words. A classic burger done right. Crisp bun, juicy patty, stuffed with all the essentials (ketchup, shredded lettuce, tomato, and pickles). Not much else to say besides go see for yourself! You won't be disappointed." required></textarea>
                         <div className="create-review-form-errors">
                                 <p className="create-review-show-errors">{showErrors}</p>
                         </div>

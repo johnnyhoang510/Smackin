@@ -10,7 +10,8 @@ const BusinessIndex = (props) => {
     const { businesses, fetchBusinesses, fetchReviews } = props;
 
     useEffect(() => {
-        fetchBusinesses()
+        window.scrollTo(0, 0);
+        fetchBusinesses();
     }, [])
 
     if (businesses) {

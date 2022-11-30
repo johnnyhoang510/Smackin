@@ -1,7 +1,3 @@
-// this is for custom markers
-// const iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
-
-
 class MarkerManager {
     constructor(map) {
         this.map = map;
@@ -19,24 +15,17 @@ class MarkerManager {
             delete this.markers[markerKey]
         })
 
-        // set to obj for lookup time
         businesses.forEach(business => this.businessObjects[business.id] = business);
 
-        //to set markers
         businesses.forEach( (business,idx) => {
             if (!this.markers[business.id]) {
                 this.businessObjects[business.id] = business;
                 this.createMarkerfromBusiness(business, (idx + 1))
             }
         })
-
-        
     }
 
-
-    // helper func to create marker and set it on map
     createMarkerfromBusiness(business, index) {
-        
         let position = new google.maps.LatLng(business.lat, business.lng);
         let marker = new google.maps.Marker({
             position,
@@ -67,7 +56,8 @@ class MarkerManager {
                         '</div>'
 
         const infoWindow = new google.maps.InfoWindow({
-            content
+            content,
+            disableAutoPan: true
         });
 
         marker.addListener("mouseover", () => {

@@ -9,7 +9,8 @@ const EditReviewForm = (props) => {
     const [body, setBody] = useState("");
 
     useEffect(() => {
-        fetchBusiness(props.match.params.businessId)
+        window.scrollTo(0,0);
+        fetchBusiness(props.match.params.businessId);
         fetchReview(props.match.params.businessId, props.match.params.reviewId);
 
         return () => {
@@ -107,7 +108,7 @@ const EditReviewForm = (props) => {
                             <p className="select-your-rating">{checkedText()}</p>
                         </div>
 
-                        <textarea rows="25" cols="70" className="edit-review-form-textarea" onChange={(e) => update(e, 'body')} defaultValue={`${body}`} required />
+                        <textarea autoFocus rows="25" cols="70" className="edit-review-form-textarea" onChange={(e) => update(e, 'body')} defaultValue={`${body}`} required />
                         <br />
                         <button type="submit" className="edit-review-form-submit">Edit Review</button>
                     </form>

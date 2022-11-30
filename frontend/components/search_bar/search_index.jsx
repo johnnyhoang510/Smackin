@@ -11,6 +11,7 @@ const SearchIndex = (props) => {
     let [businesses, setBusinesses] = useState([]);
     
     useEffect(() => {
+        window.scrollTo(0,0);
         getBusinesses();
 
     }, [])
