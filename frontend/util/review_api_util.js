@@ -1,10 +1,16 @@
+export const fetchReviewsByUser = (userId) => {
+    return $.ajax({
+        method: "GET",
+        url: `/api/users/${userId}/reviews`
+    })
+}
+
 export const fetchReviews = (businessId) => {
     return $.ajax({
         method: "GET",
         url: `/api/businesses/${businessId}/reviews`
     })
 };
-
 
 export const fetchReview = (businessId, reviewId) => {
     return $.ajax({
