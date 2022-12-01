@@ -1,5 +1,4 @@
 import React from "react";
-import NavBarContainer from "./navbar/navbar_container";
 import { Route, Switch } from "react-router";
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import HomepageContainer from "../components/homepage/homepage_container"
@@ -20,9 +19,9 @@ const App = () => {
                 <ProtectedRoute exact path="/businesses/:businessId/reviews/new" component={CreateReviewFormContainer} />
                 <AuthRoute path="/login" component={LoginFormContainer} />
                 <AuthRoute path="/signup" component={SignupFormContainer} />
-                <Route path="/businesses/search/:query" component={SearchIndexContainer} />
-                <Route exact path="/businesses" component={BusinessIndexContainer} />
+                <Route path="/businesses/search/:query" component={SearchIndexContainer} replace/>
                 <Route exact path="/businesses/:businessId" component={BusinessShowPageContainer} />
+                <Route exact path="/businesses" component={BusinessIndexContainer} />
                 <Route exact path="/" component={HomepageContainer} />
             </Switch>
         </div>

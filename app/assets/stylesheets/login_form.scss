@@ -1,0 +1,234 @@
+.login {
+    max-width: 100%;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-form-image-wrapper {
+    display: flex;
+    width: 80%
+}
+
+.login-form-pic {
+    height: 330px;
+    width: 330px;
+    object-fit: cover;
+    margin-top: 190px;
+}
+
+.form-login {
+    width: 70%;
+}
+
+.login-form-header {
+    display: flex;
+    justify-content: center;
+    background-color: #d32323;
+    height: 34px;
+    width: 100%;
+    padding: 12px 0;
+}
+
+.login-form-header-link {
+    display: flex;
+    text-decoration: none;
+    color: white;
+    font-size: 24px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+
+}
+
+.login-form-header-logo {
+    text-decoration: none;
+    color: white;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    width: 30px;
+    height: 30px;
+    margin-top: -4px;
+}
+
+
+.form-type-title {
+    display: flex;
+    justify-content: center;
+    color: #d32323;
+    margin-top: 185px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+}
+
+.switch-form-header {
+    color: #333;
+    display: flex;
+    justify-content: center;
+}
+
+.switch-form-subtitle {
+    display: flex;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    margin: 0 0 12px;
+    font-weight: 700;
+    padding-top: 10px;
+}
+
+.switch-form-link {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    padding-left: 5px;
+    color: #0073bb;
+    font-weight: 700;
+    padding-top: 10px;
+}
+
+.switch-form-link:hover {
+    text-decoration: underline;
+}
+
+.terms-login {
+    display: flex;
+    justify-content: center;
+    color: #333;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    margin-bottom: 12px;
+    width: 53%;
+    margin-left: 23%;
+    text-align: center;
+    line-height: 1.5em;
+}
+
+.demo-user {
+    display: flex;
+    justify-content: center;
+}
+
+.demo-button {
+    color: #666;
+    background-color: white;
+    border: 1px solid #ccc;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    border-radius: 4px;
+    width: 50%;
+    height: 35px;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.demo-button:hover {
+    color: white;
+    background-color: #d32323;
+    /* background-color: #666; */
+    transition: all 1s;
+    border-color: white;
+}
+
+.login-form-divider {
+    display: flex;
+    justify-content: center;
+    color: #666;
+    font-size: 14px;
+    margin: 10px 0px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.login-input {
+    display: block;
+    width: 48%;
+    margin-left: 25%;
+    height: 30px;
+    background-color: white;
+    border: 1px solid #ccc;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    border-radius: 4px;
+    padding-left: 8px;
+}
+
+.signup-login-submit {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    display: block;
+    background-color: #d32323;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    width: 50%;
+    margin-left: 25%;
+    font-size: 17px;
+    font-weight: 700;
+    height: 42px;
+    border: 1px solid #d32323;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.signup-login-submit:hover {
+    opacity: 0.88;
+    transition: all 0.6s;
+}
+
+.switch-form-login {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    color: #999;
+    margin-left: 54%;
+    padding-top: 10px;
+}
+
+.switch-form-2 {
+    text-decoration: none;
+    color: #0073bb;
+    padding-left: 5px;
+}
+
+.login-no-errors {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: -65px;
+    width: 94%;
+}
+
+.login-errors-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: -125px;
+    width: 94%;
+}
+
+.login-error-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #fcd6d3;
+    padding: 13px 10px 1px 10px;
+    margin-bottom: 3px;
+    border-radius: 3px;
+}
+
+
+.login-form-error {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #333;
+    font-size: 16px;
+    line-height: 1.5em;
+}
+
+.login-errors-x {
+    font-size: 36px;
+    color: #666;
+}
+
+.login-errors-x:hover {
+    cursor: pointer;
+}

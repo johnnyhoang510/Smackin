@@ -8,7 +8,8 @@ import { logout } from "../../actions/session_actions";
 const mSTP = (state) => {
     return {
         businesses: Object.values(state.entities.businesses),
-        currentUser: state.entities.users[state.session.id]
+        currentUser: state.entities.users[state.session.id],
+        errors: state.errors.business
     }
 };
 

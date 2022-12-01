@@ -1,22 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { BiMessage } from "react-icons/bi"
+import { useEffect } from "react";
 
-class BusinessIndexItem extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+const BusinessIndexItem = (props) => {
+    const { business, idx, fetchReviews } = props;
 
-    componentDidMount() {
-        this.props.fetchReviews(this.props.business.id)
-    }
+    useEffect(() => {
+        fetchReviews(business.id)
+    }, [])
 
-    checkAvgStarRating() {
+    const checkAvgStarRating = () => {
         let rating = 0;
-        this.props.business.reviews.map(review => (
+        business.reviews.map(review => (
             rating += review.rating
         ))
-        let avgRating = (rating / this.props.business.reviews.length).toFixed(1);
+        const avgRating = (rating / business.reviews.length).toFixed(1);
 
         if (avgRating >= 4.8) {
             return "biz-index-item-rating-5";
@@ -41,16 +40,9 @@ class BusinessIndexItem extends React.Component {
         }
     }
 
-    render() {
-
-        if (!this.props.business.reviews) return null;
-
-        const {business, idx} = this.props;
-
+    if (business) {
         return (
-
             <div>
-    
                 <Link to={`/businesses/${business.id}`} className="biz-index-item">
 
                     <div className="biz-index-item-container">
@@ -62,7 +54,7 @@ class BusinessIndexItem extends React.Component {
                                 <h1 className="biz-index-item-name">{idx}. {business.name}</h1>
                                 
                                 <div className="biz-index-item-rating-container">
-                                    <p id="biz-index-item-avgRating" className={this.checkAvgStarRating()}></p> 
+                                    <p id="biz-index-item-avgRating" className={checkAvgStarRating()}></p> 
                                     <p className="biz-index-item-numReviews">{business.reviews.length}</p> 
                                 </div>
                             </div>
@@ -77,13 +69,13 @@ class BusinessIndexItem extends React.Component {
                                 <p className="biz-index-item-review-icon"><BiMessage/></p>
                                 <p className="biz-index-item-review-body">"{business.reviews[0].body}"</p>
                             </div>
-
                         </div>
-
                     </div>
                 </Link>
             </div>
         )
+    } else {
+        return null;
     }
 };
 

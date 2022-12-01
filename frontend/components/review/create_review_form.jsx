@@ -1,51 +1,55 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { BsStarFill } from "react-icons/bs";
+import { displayUserInReviewForm } from "../../util/display_current_user";
+import { useState, useEffect } from "react";
 
-class CreateReviewForm extends React.Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            rating: 0,
-            body: '',
-            user_id: this.props.user_id,
-            business_id: this.props.match.params.businessId
+const CreateReviewForm = (props) => {
+    const { business, errors, currentUser, clearReviewErrors, fetchBusiness, user_id, createReview, logout } = props;
+    const [rating, setRating] = useState(0);
+    const [body, setBody] = useState("");
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+        fetchBusiness(props.match.params.businessId)
+
+        return () => {
+            clearReviewErrors();
         }
+    }, [])
 
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleLogout = this.handleLogout.bind(this);
-    }
+    useEffect(() => {
+        fetchBusiness(props.match.params.businessId)
 
-    componentDidMount() {
-        this.props.fetchBusiness(this.props.match.params.businessId)
-    }
+    }, [props.match.params.businessId])
 
-    componentWillUnmount() {
-        this.props.clearReviewErrors();
-    }
-
-    handleSubmit(e) {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        this.props.createReview(this.state, this.props.business.id)
-            .then(() => this.props.history.push(`/businesses/${this.props.business.id}`))
+        const newReview = {
+            rating,
+            body,
+            user_id,
+            business_id: business.id
+        }
+        createReview(newReview, business.id)
+            .then(() => props.history.push(`/businesses/${business.id}`))
     }
 
-    handleLogout(e) {
+    const handleLogout = (e) => {
         e.preventDefault();
-        this.props.logout()
-            .then(() => this.props.history.push(`/businesses/${this.props.business.id}`))
+        logout()
+            .then(() => props.history.push(`/businesses/${business.id}`))
     }
 
-    update(field) {
+    const update = (e, field) => {
         if (field === 'rating') {
-            return e => this.setState({ [field]: parseInt(e.currentTarget.value) })
+            setRating(parseInt(e.currentTarget.value))
         } else {
-            return e => this.setState({ [field]: e.currentTarget.value })
+            setBody(e.currentTarget.value)
         }
     }
 
-    checkedText() {  
-        switch (this.state.rating) {
+    const ratingText = () => {  
+        switch (rating) {
             case 0:
                 return "Select your rating"
             case 1:
@@ -63,77 +67,57 @@ class CreateReviewForm extends React.Component{
         }
     }
 
-    render() {
+    let showErrors;
+    if (errors.length || rating === 0) {
+        showErrors = errors.responseJSON
+    } else {
+        showErrors = null;
+    };
 
-        const { business, errors, currentUser, clearReviewErrors } = this.props;
-        // console.log(errors)
-        // console.log(this.state);
-        // console.log(this.props);
-        if (!business) return null;
-
-        let showErrors;
-        if (errors.length || this.state.rating === 0) {
-            showErrors = errors.responseJSON
-        } else {
-            showErrors = null;
-        };
-
+    if (business) {
         return(
+            <div>
+                {displayUserInReviewForm(currentUser, handleLogout)}
 
-        <div>
+                <div className="create-review-form-container">
 
-            <header className="create-form-header">
-                <Link to="/" className="create-form-title-logo-wrapper">
-                    <h1 className="create-form-title">smackin'</h1>
-                    <img className="create-form-logo" src={window.logo} alt="logo" />
-                </Link>
+                    <h1 className="create-review-form-title">{business.name}</h1>
 
-                <div className="create-form-user-container">
-                    <h2 className="create-form-welcome-user">Welcome, {currentUser.first_name}!</h2>
-                    <button onClick={this.handleLogout} onClick={clearReviewErrors} className="create-form-logout-button">Log Out</button>
-                </div>
-            </header>
+                    <form className="create-review-form" onSubmit={handleSubmit}>
+                        <div className="create-review-form-rating-wrapper">
 
-            <div className="create-review-form-container">
+                            <div className="create-form-stars-container">
+                                <input id="rating-1" type="radio"  value="5" onChange={(e) => update(e, 'rating')} name="rating"/>
+                                <label htmlFor="rating-1" id="create-review-form-rating"><BsStarFill className="review-star" /></label>
 
-                <h1 className="create-review-form-title">{business.name}</h1>
+                                <input id="rating-2" type="radio"  value="4" onChange={(e) => update(e, 'rating')} name="rating"/>
+                                <label htmlFor="rating-2" id="create-review-form-rating"><BsStarFill className="review-star" /></label>
 
-                <form className="create-review-form" onSubmit={this.handleSubmit}>
-                    <div className="create-review-form-rating-wrapper">
+                                <input id="rating-3" type="radio"  value="3" onChange={(e) => update(e, 'rating')} name="rating"/>
+                                <label htmlFor="rating-3" id="create-review-form-rating"><BsStarFill className="review-star" /></label>
 
-                        <div className="create-form-stars-container">
-                            <input id="rating-1" type="radio"  value="5" onChange={this.update('rating')} name="rating"/>
-                            <label htmlFor="rating-1" id="create-review-form-rating"><BsStarFill className="review-star" /></label>
+                                <input id="rating-4" type="radio"  value="2" onChange={(e) => update(e, 'rating')} name="rating"/>
+                                <label htmlFor="rating-4" id="create-review-form-rating"><BsStarFill className="review-star" /></label>
 
-                            <input id="rating-2" type="radio"  value="4" onChange={this.update('rating')} name="rating"/>
-                            <label htmlFor="rating-2" id="create-review-form-rating"><BsStarFill className="review-star" /></label>
-
-                            <input id="rating-3" type="radio"  value="3" onChange={this.update('rating')} name="rating"/>
-                            <label htmlFor="rating-3" id="create-review-form-rating"><BsStarFill className="review-star" /></label>
-
-                            <input id="rating-4" type="radio"  value="2" onChange={this.update('rating')} name="rating"/>
-                            <label htmlFor="rating-4" id="create-review-form-rating"><BsStarFill className="review-star" /></label>
-
-                            <input id="rating-5" type="radio"  value="1" onChange={this.update('rating')} name="rating"/>
-                            <label htmlFor="rating-5" id="create-review-form-rating"><BsStarFill className="review-star" /></label>
+                                <input id="rating-5" type="radio"  value="1" onChange={(e) => update(e, 'rating')} name="rating"/>
+                                <label htmlFor="rating-5" id="create-review-form-rating"><BsStarFill className="review-star" /></label>
+                            </div>
+                            
+                            <p className="select-your-rating">{ratingText()}</p>
                         </div>
-                        
-                        <p className="select-your-rating">{this.checkedText()}</p>
-                    </div>
 
-                    <textarea rows="25" cols="70" className="create-review-form-textarea" onChange={this.update('body')} placeholder="Doesn't look like much when you walk past, but I was practically dying of hunger so I popped in. The definition of a hole-in-the-wall. I got the regular hamburger and wow... there are no words. A classic burger done right. Crisp bun, juicy patty, stuffed with all the essentials (ketchup, shredded lettuce, tomato, and pickles). Not much else to say besides go see for yourself! You won't be disappointed." required></textarea>
-                    <div className="create-review-form-errors">
-                            <p className="create-review-show-errors">{showErrors}</p>
-                    </div>
-                    <br />
-                    <button type="submit" className="create-review-form-submit">Post Review</button>
-                </form>
-
+                        <textarea autoFocus rows="25" cols="70" className="create-review-form-textarea" onChange={(e) => update(e, 'body')} placeholder="Doesn't look like much when you walk past, but I was practically dying of hunger so I popped in. The definition of a hole-in-the-wall. I got the regular hamburger and wow... there are no words. A classic burger done right. Crisp bun, juicy patty, stuffed with all the essentials (ketchup, shredded lettuce, tomato, and pickles). Not much else to say besides go see for yourself! You won't be disappointed." required></textarea>
+                        <div className="create-review-form-errors">
+                                <p className="create-review-show-errors">{showErrors}</p>
+                        </div>
+                        <br />
+                        <button type="submit" className="create-review-form-submit">Post Review</button>
+                    </form>
+                </div>
             </div>
-
-        </div>
-
         )
+    } else {
+        return null;
     }
 };
 

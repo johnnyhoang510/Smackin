@@ -17,9 +17,10 @@ class User < ApplicationRecord
     attr_reader :password
 
     validates :first_name, :last_name, :zip_code, presence: true
-    validates :email, presence: true, uniqueness: true
+    validates :zip_code, numericality: { only_numeric: true, message: "is invalid. Please only use numeric values." }
     validates :password_digest, presence: { message: 'Password can\'t be blank' }
     validates :password, length: {minimum: 6, allow_nil: true}
+    validates :email, presence: true, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create, message: 'is invalid. Please make sure it is in the correct format. (ex: "bob@email.com")' }
 
     after_initialize :ensure_session_token
 

@@ -1,88 +1,65 @@
 import React from "react";
+import NavBarContainer from "../navbar/navbar_container";
 import BusinessIndexItem from "../business/business_index_item";
 import BusinessMap from "../map/business_map";
-import SearchBarContainer from "./search_bar_container";
-import { Link } from "react-router-dom";
 import FilterContainer from "../filter/filter_container";
 import Footer from "../footer/footer";
+import { useState, useEffect } from "react";
 
+const SearchIndex = (props) => {
+    const { errors, clearErrors, fetchReviews, fetchBusinesses } = props;
+    let [businesses, setBusinesses] = useState([]);
+    
+    useEffect(() => {
+        window.scrollTo(0,0);
+        getBusinesses();
 
-class SearchIndex extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+    }, [])
 
-    componentDidMount() {
-        this.props.fetchBusinesses(this.props.match.params.query);
-    }
+    useEffect(() => {
+        getBusinesses();
 
-    componentDidUpdate(prevProps) {
-        if (prevProps.match.params.query !== this.props.match.params.query) {
-            this.componentDidMount();
-            this.props.clearErrors();
+        return () => {
+            clearErrors();
+        }
+        
+    }, [props.match.params.query])
+
+    const getBusinesses = async () => {
+        try {
+            const response = await fetchBusinesses(props.match.params.query);
+            setBusinesses(Object.values(response.businesses))
+        } catch (error) {
+            console.log(error)
         }
     }
 
-    componentWillUnmount() {
-        this.props.clearErrors();
+    let showErrors;
+    let noResults;
+    let suggestions;
+    let suggestionsLi;
+    
+    if (errors.length) {
+        businesses = [];
+
+        showErrors = errors.map( (err, idx) => (
+            <li key={idx}>{err}</li>
+        ))
+
+        noResults = "Suggestions for improving your result:"
+        suggestions = ['Check the spelling or try alternate spellings', 'Try a more general search, e.g. "burgers" instead of "bacon burgers']
+        suggestionsLi = suggestions.map( (sugg, idx) => (
+            <li key={idx} className="biz-index-suggestion-item">{sugg}</li>
+        ))
     }
 
-    render() {
-        if (!this.props.businesses) return null;
-        
-        const { fetchReviews, currentUser, logout } = this.props;
-        
-        let showErrors;
-        let noResults;
-        let suggestions;
-        let suggestionsLi;
-        let businesses = this.props.businesses;
-        
-        if (this.props.errors.length) {
-            businesses = [];
-
-            showErrors = this.props.errors.map( (err, idx) => (
-                <li key={idx}>{err}</li>
-            ))
-
-            noResults = "Suggestions for improving your result:"
-            suggestions = ['Check the spelling or try alternate spellings', 'Try a more general search, e.g. "burgers" instead of "bacon burgers']
-            suggestionsLi = suggestions.map( (sugg, idx) => (
-                <li key={idx} className="biz-index-suggestion-item">{sugg}</li>
-            ))
-        }
-        
-
-        const checkLoggedIn = currentUser ? (
-            <div className="biz-index-check-loggedin-container">
-                <h2 className="biz-index-welcome-user">Welcome, {currentUser.first_name}!</h2>
-                <button className="biz-index-logout-user" onClick={logout}>Log out</button>
-            </div>
-        ) : (
-            <div className="biz-index-login-signup-buttons">
-                <Link className="biz-index-login-button" to='/login'>Log In</Link>
-                <Link className="biz-index-signup-button" to='/signup'>Sign Up</Link>
-            </div>
-        )
-
+    if (businesses) {
         return (
             <div className="biz-index-item-wrapper">
 
                 <div className="biz-index-container">
 
-                    <div className="biz-index-navbar">
-                        <Link to="/" className="biz-index-back-to-homepage">
-                            <h3 className="biz-index-homepage-text">smackin'</h3>
-                            <img className="biz-index-logo" src={window.logo} alt="logo" />
-                        </Link>
-
-                        <div className="biz-index-searchbar">
-                            <SearchBarContainer />
-                        </div>
-
-                        {checkLoggedIn}
-
-                    </div>
+                    <NavBarContainer />
 
                     <aside className="biz-index-filters-aside">
                         <FilterContainer />
@@ -112,9 +89,10 @@ class SearchIndex extends React.Component {
                 </div>
 
                 <Footer />
-
             </div>
         )
+    } else {
+        return null;
     }
 };
 

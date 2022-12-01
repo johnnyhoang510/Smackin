@@ -1,62 +1,80 @@
 import React from "react";
-import NavBarContainer from "../navbar/navbar_container";
 import { Link } from "react-router-dom";
 import ReviewIndexContainer from "../review/review_index_container";
 import SearchBarContainer from "../search_bar/search_bar_container";
 import { BsFillCheckCircleFill, BsInfoCircleFill, BsStar, BsArrowUpRightSquare, BsTelephoneOutbound, BsArrow90DegRight } from "react-icons/bs";
 import Footer from "../footer/footer";
+import { useState, useEffect } from "react";
+import { displayUserOnBusiness } from "../../util/display_current_user";
 
-class BusinessShowPage extends React.Component {
-    constructor(props) {
-        super(props);
+const BusinessShowPage = (props) => {
+    const { business, businessId, currentUser, reviews, fetchBusiness, fetchReviews, logout, deleteReview } = props;
+    const [rating, setRating] = useState(0);
+    const [numReviews, setNumReviews] = useState(0)
 
-    }
+    useEffect(() => {
+        fetchBusiness(props.match.params.businessId)
+        getAvgRating();
+    }, [])
+
+    useEffect(() => {
+        fetchBusiness(props.match.params.businessId);
+        fetchReviews(props.match.params.businessId);
+        getAvgRating();
+    }, [businessId])
     
-    componentDidMount() {
-        this.props.fetchBusiness(this.props.match.params.businessId);
-        window.scrollTo(0, 0)
-    };
+    const getAvgRating = async () => {
+        let reviewRating = 0;
 
-    
-    componentDidUpdate(prevProps) {
-        if (prevProps.businessId !== this.props.businessId) {
-            this.componentDidMount();
+        const response = await fetchBusiness(props.match.params.businessId);
+        const biz = response.business;
+        setNumReviews(biz.reviews.length)
+
+        for (let review of biz.reviews) {
+            reviewRating += review.rating
         }
+
+        const avgRating = (reviewRating / biz.reviews.length).toFixed(1);
+        setRating(avgRating)
     }
 
-    checkAvgStarRating() {
-        let rating = 0;
-        this.props.business.reviews.map(review => (
-            rating += review.rating
-        ))
-        let avgRating = (rating / this.props.business.reviews.length).toFixed(1);
-        
-        if (avgRating >= 4.8) {
+    const handleDeleteReview = (reviewId, businessId) => {
+        deleteReview(reviewId, businessId)
+            .then(() => {
+                if (numReviews > 0) {
+                    setNumReviews(numReviews - 1)
+                }
+            })
+            .then(() => getAvgRating())
+            .then(() => window.scrollTo(0, 0))
+    }
+
+    const checkAvgStarRating = () => {
+        if (rating >= 4.8) {
             return "biz-show-rating-5";
-        } else if (avgRating >= 4.3 && avgRating <= 4.7) {
+        } else if (rating >= 4.3 && rating <= 4.7) {
             return "biz-show-rating-4-5";
-        } else if (avgRating >= 3.8 && avgRating <= 4.2) {
+        } else if (rating >= 3.8 && rating <= 4.2) {
             return "biz-show-rating-4";
-        } else if (avgRating >= 3.3 && avgRating <= 3.7) {
+        } else if (rating >= 3.3 && rating <= 3.7) {
             return "biz-show-rating-3-5";
-        } else if (avgRating >= 2.8 && avgRating <= 3.2) {
+        } else if (rating >= 2.8 && rating <= 3.2) {
             return "biz-show-rating-3";
-        } else if (avgRating >= 2.3 && avgRating <= 2.7) {
+        } else if (rating >= 2.3 && rating <= 2.7) {
             return "biz-show-rating-2-5";
-        } else if (avgRating >= 1.8 && avgRating <= 2.2) {
+        } else if (rating >= 1.8 && rating <= 2.2) {
             return "biz-show-rating-2";
-        } else if (avgRating >= 1.3 && avgRating <= 1.7) {
+        } else if (rating >= 1.3 && rating <= 1.7) {
             return "biz-show-rating-1-5";
-        } else if (avgRating >= 0.5 && avgRating <= 1.2) {
+        } else if (rating >= 0.5 && rating <= 1.2) {
             return "biz-show-rating-1";
-        } else if (avgRating >= 0 && avgRating <= 0.4) {
+        } else if (rating >= 0 && rating <= 0.4) {
             return "biz-show-rating-0";
         }
     }
 
-    convertTime(time12h) {
-        const [time, modifier] = time12h.split(' ');
-
+    const convertTime = (time12h) => {
+        let [time, modifier] = time12h.split(' ');
         let [hours, minutes] = time.split(':');
 
         if (hours === '12') hours = "00";
@@ -65,67 +83,45 @@ class BusinessShowPage extends React.Component {
         return `${hours}:${minutes}`;
     }
 
-    checkOpenOrClosed(day) {
-        let openingTime = this.convertTime(this.props.business.hours.split('-')[0]);
-        let closingTime = this.convertTime(this.props.business.hours.split('-')[1]);
+    const checkOpenOrClosed = (day) => {
+        const openingTime = convertTime(business.hours.split('-')[0]);
+        const closingTime = convertTime(business.hours.split('-')[1]);
 
-        let currentDate = new Date();
-        
-        let openingDate = new Date(currentDate.getTime());
+        const currentDate = new Date();
+        const openingDate = new Date(currentDate.getTime());
+
         openingDate.setHours(openingTime.split(":")[0]);
         openingDate.setMinutes(openingTime.split(":")[1]);
 
-        let closingDate = new Date(currentDate.getTime());
+        const closingDate = new Date(currentDate.getTime());
         closingDate.setHours(closingTime.split(":")[0]);
         closingDate.setMinutes(closingTime.split(":")[1]);
 
-        let openText;
-        let closedText;
+        let spanText;
 
         if (day === currentDate.getDay()) {
             if (openingDate < currentDate && closingDate > currentDate) {
-                openText = <span id="open-now">Open now</span>
-                return openText;
+                spanText = <span id="open-now">Open now</span>
             } else {
-                closedText = <span id="closed">Closed now</span>;
-                return closedText;
+                spanText = <span id="closed">Closed now</span>;
             }
+            return spanText;
         } else {
             return null;
         }
     }
     
-    addressDirections(address, city, state, zipCode) {
+    const addressDirections = (address, city, state, zipCode) => {
         let addressArr = address.split(' ').concat(city, state, zipCode);
         let newAddress = addressArr.join('+');
         return `https://www.google.com/maps/place/${newAddress}`;
     }
 
-    render() {
-        const { business, currentUser, logout } = this.props;
+    const today = new Date();
 
-        if (!business) return null;
-
-
-        const checkLoggedIn = currentUser ? (
-            <div className="biz-index-check-loggedin-container">
-                <h2 className="biz-index-welcome-user">Welcome, {currentUser.first_name}!</h2>
-                <button className="biz-index-logout-user" onClick={logout}>Log out</button>
-            </div>
-        ) : (
-            <div className="biz-index-login-signup-buttons">
-                <Link className="biz-index-login-button" to='/login'>Log In</Link>
-                <Link className="biz-index-signup-button" to='/signup'>Sign Up</Link>
-            </div>
-        )
-
-
-        const today = new Date();
-
+    if (business && reviews) {
         return(
-
             <div className="biz-show-container">
-
                 <div className="biz-index-navbar">
                     <Link to="/" className="biz-index-back-to-homepage">
                         <h3 className="biz-index-homepage-text">smackin'</h3>
@@ -136,8 +132,7 @@ class BusinessShowPage extends React.Component {
                         <SearchBarContainer />
                     </div>
 
-                    {checkLoggedIn}
-
+                    {displayUserOnBusiness(currentUser, logout)}
                 </div>
 
                 <div className="biz-show-background-photos">
@@ -150,8 +145,8 @@ class BusinessShowPage extends React.Component {
                     <h1 className="biz-show-name">{business.name}</h1>
 
                     <div className="biz-show-reviews-section">
-                        <p id="biz-show-avgRating" className={this.checkAvgStarRating()}></p>
-                        <p className="biz-show-numReviews">{business.reviews.length} reviews</p>
+                        <p id="biz-show-avgRating" className={checkAvgStarRating()}></p>
+                        <p className="biz-show-numReviews">{numReviews} reviews</p>
                     </div>
 
                     <div className="biz-show-details-info">
@@ -161,7 +156,7 @@ class BusinessShowPage extends React.Component {
                     </div>
 
                     <div className="biz-show-details-hours-wrapper">
-                        <p className="biz-show-details-hours">{this.checkOpenOrClosed(today.getDay())} &ensp; {business.hours}</p>
+                        <p className="biz-show-details-hours">{checkOpenOrClosed(today.getDay())} &ensp; {business.hours}</p>
                         <p className="biz-show-details-hours-update">&ensp;<BsInfoCircleFill />  Hours updated {Math.floor(Math.random() * 12) + 2} months ago</p>
                     </div>
                 </div>
@@ -174,14 +169,12 @@ class BusinessShowPage extends React.Component {
                 </div>
 
                 <div className="biz-show-location-hours-container">
-
                     <div className="biz-show-location-hours-map-container">
                         <h1 className="biz-show-location-hours-title">Location &amp; Hours</h1>
-                        <a href={this.addressDirections(business.address, business.city, business.state, business.zip_code)} target="_blank"><img src={business.photoURLs[business.photoURLs.length - 1]} alt="map" className="biz-show-map" /></a>
+                        <a href={addressDirections(business.address, business.city, business.state, business.zip_code)} target="_blank"><img src={business.photoURLs[business.photoURLs.length - 1]} alt="map" className="biz-show-map" /></a>
                         <p className="biz-show-address">{business.address}</p>
                         <p className="biz-show-city-state">{business.city}, {business.state} {business.zip_code}</p>
                     </div>
-
 
                     <div className="biz-show-hours-day-container">
                         <div className="biz-show-day-container">
@@ -195,16 +188,15 @@ class BusinessShowPage extends React.Component {
                         </div>
 
                         <div className="biz-show-hours-container">
-                            <p className="biz-show-hours">{business.hours}  &ensp; {this.checkOpenOrClosed(1)}</p>
-                            <p className="biz-show-hours">{business.hours}  &ensp; {this.checkOpenOrClosed(2)}</p>
-                            <p className="biz-show-hours">{business.hours}  &ensp; {this.checkOpenOrClosed(3)}</p>
-                            <p className="biz-show-hours">{business.hours}  &ensp; {this.checkOpenOrClosed(4)}</p>
-                            <p className="biz-show-hours">{business.hours}  &ensp; {this.checkOpenOrClosed(5)}</p>
-                            <p className="biz-show-hours">{business.hours}  &ensp; {this.checkOpenOrClosed(6)}</p>
-                            <p className="biz-show-hours">{business.hours}  &ensp; {this.checkOpenOrClosed(0)}</p>
+                            <p className="biz-show-hours">{business.hours}  &ensp; {checkOpenOrClosed(1)}</p>
+                            <p className="biz-show-hours">{business.hours}  &ensp; {checkOpenOrClosed(2)}</p>
+                            <p className="biz-show-hours">{business.hours}  &ensp; {checkOpenOrClosed(3)}</p>
+                            <p className="biz-show-hours">{business.hours}  &ensp; {checkOpenOrClosed(4)}</p>
+                            <p className="biz-show-hours">{business.hours}  &ensp; {checkOpenOrClosed(5)}</p>
+                            <p className="biz-show-hours">{business.hours}  &ensp; {checkOpenOrClosed(6)}</p>
+                            <p className="biz-show-hours">{business.hours}  &ensp; {checkOpenOrClosed(0)}</p>
                         </div>
                     </div>
-
                 </div>
 
                 <div className="biz-show-aside-container">
@@ -219,7 +211,7 @@ class BusinessShowPage extends React.Component {
                         </div>
                         <div className="biz-show-aside-info-directions">
                             <div className="biz-show-aside-directions-container">
-                                <a className="biz-show-aside-directions-link" href={this.addressDirections(business.address, business.city, business.state, business.zip_code)} target="_blank">Get Directions</a>
+                                <a className="biz-show-aside-directions-link" href={addressDirections(business.address, business.city, business.state, business.zip_code)} target="_blank">Get Directions</a>
                             
                                 <div className="biz-show-aside-address-container">
                                     <p className="biz-show-aside-address">{business.address} {business.city}, {business.state}</p>
@@ -228,21 +220,20 @@ class BusinessShowPage extends React.Component {
                             </div>
                             <div className="biz-show-aside-directions-icon"><BsArrow90DegRight /></div>
                         </div>
-
                     </div>
                 </div>
 
-
                 <div className="biz-show-rec-reviews">
                     <div className="biz-show-each-review">
-                        <ReviewIndexContainer business={business}/>
+                        <ReviewIndexContainer business={business} rating={rating} numReviews={numReviews} handleDeleteReview={handleDeleteReview} />
                     </div>
                 </div>
 
                 <Footer />
-
             </div>
         )
+    } else {
+        return null;
     }
 };
 

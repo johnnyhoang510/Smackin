@@ -1,36 +1,24 @@
 import React from "react";
 
+const Filter = (props) => {
 
-class Filter extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.handleFilter = this.handleFilter.bind(this);
-    }
-
-    handleFilter(e) {
+    const handleFilter = (e) => {
         e.preventDefault();
-        let price = e.currentTarget.value;
-        // console.log(price)
-        this.props.history.push(`/businesses/search/${price}`)
+        const dollarSigns = e.currentTarget.value;
+        props.history.push(`/businesses/search/${dollarSigns}`)
     }
 
-    render() {
-
-        // console.log(this.props)
-
-        return(
-            <div>
-                <h2 className="filters-title">Filters</h2>
-                <div className="filters-container">
-                    <button value="$" onClick={this.handleFilter} className="filter-button-1">$</button>
-                    <button value="$$" onClick={this.handleFilter} className="filter-button-2">$$</button>
-                    <button value="$$$" onClick={this.handleFilter} className="filter-button-3">$$$</button>
-                    <button value="$$$$" onClick={this.handleFilter} className="filter-button-4">$$$$</button>
-                </div>
+    return(
+        <div>
+            <h2 className="filters-title">Filters</h2>
+            <div className="filters-container">
+                <button value="$" onClick={(e) => handleFilter(e)} className="filter-button-1">$</button>
+                <button value="$$" onClick={(e) => handleFilter(e)} className="filter-button-2">$$</button>
+                <button value="$$$" onClick={(e) => handleFilter(e)} className="filter-button-3">$$$</button>
+                <button value="$$$$" onClick={(e) => handleFilter(e)} className="filter-button-4">$$$$</button>
             </div>
-        )
-    }
+        </div>
+    )
 };
 
 

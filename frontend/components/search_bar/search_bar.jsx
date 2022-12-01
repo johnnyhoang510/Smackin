@@ -1,77 +1,61 @@
 import React from "react";
-import { BsSearch } from "react-icons/bs"
+import { useState } from "react";
+import { BsSearch } from "react-icons/bs";
 
-class SearchBar extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            query: ''
-        }
+const SearchBar = (props) => {
+    const [query, setQuery] = useState("");
 
-        this.handleSearch = this.handleSearch.bind(this);
-        this.handleSearchEnter = this.handleSearchEnter.bind(this);
-    };
-
-    // componentDidMount() {
-    //     this.props.fetchBusinesses();
-    // }
-
-    update(field) {
-        return e => this.setState({ [field]: e.currentTarget.value })
-    }
-
-    handleSearch(e) {
+    const handleSearch = (e) => {
         e.preventDefault();
-        let searchQuery = this.state.query
-        if (searchQuery === '') {
-            searchQuery = `/businesses`
+        let url;
+
+        if (query === '') {
+            url = "/businesses"
         } else {
-            searchQuery = `/businesses/search/${searchQuery}`
+            url = `/businesses/search/${query}`        
         }
-        this.props.history.push(`${searchQuery}`)
+
+        props.history.push(url)
+        setQuery('')
     }
 
-    handleSearchEnter(e) {
+    const handleSearchEnter = (e) => {
         if (e.key === "Enter") {
-            let searchQuery = this.state.query;
-            if (searchQuery === '') {
-                searchQuery = `/businesses`
+            e.preventDefault();
+            let url;
+
+            if (query === '') {
+                url = "/businesses"
             } else {
-                searchQuery = `/businesses/search/${searchQuery}`
+                url = `/businesses/search/${query}`
             }
-            this.props.history.push(`${searchQuery}`)
+
+            props.history.push(url)
+            setQuery('')
         }
     }
 
-    render() {
-
-        // console.log(this.props);
-        // if (!this.props.businesses) return null;
-        
-        return(
-            <div>
-
-                <div className="searchbar-container">
-                    <p className="searchbar-find">Find</p>
-                        <input
+    return(
+        <div>
+            <div className="searchbar-container">
+                <p className="searchbar-find">Find</p>
+                    <input
                         className="searchbar-component-find"
                         type="text"
                         placeholder="burgers, Thai, seafood..."
-                        onChange={this.update('query')}
-                        onKeyPress={this.handleSearchEnter}
-                        value={this.state.query}
-                        />
-                    <p className="searchbar-near">Near</p>
-                        <input
+                        onChange={(e) => setQuery(e.currentTarget.value)}
+                        onKeyPress={(e) => handleSearchEnter(e)}
+                        value={query}
+                    />
+                <p className="searchbar-near">Near</p>
+                    <input
                         className="searchbar-component-near"
                         readOnly placeholder="Oakland, CA"
-                        />
-                    <BsSearch onClick={this.handleSearch} className="searchbar-icon" />
-                </div>
-
+                    />
+                <BsSearch onClick={(e) => handleSearch(e)} className="searchbar-icon" />
             </div>
-        )
-    }
+        </div>
+    )
 };
 
 

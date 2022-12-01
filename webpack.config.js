@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-    entry: './frontend/smackin_entry.jsx',
+    entry: ['babel-polyfill', './frontend/smackin_entry.jsx'],
     output: {
         path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
         filename: 'bundle.js'

@@ -1,7 +1,6 @@
 import React from "react";
 import MarkerManager from "../../util/marker_manager";
 
-
 class BusinessMap extends React.Component {
     
     componentDidMount() {
@@ -21,8 +20,6 @@ class BusinessMap extends React.Component {
     componentDidUpdate() {
         this.MarkerManager.updateMarkers(this.props.businesses);
     }
-
-
 
     render() {
         
