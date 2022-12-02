@@ -4,21 +4,18 @@ class Api::ReviewsController < ApplicationController
     def index
         if params[:business_id]
             @reviews = Review.where(business_id: params[:business_id])
-            @action = "business"
-            p params
         elsif params[:user_id]
             @reviews = Review.where(user_id: params[:user_id])
-            @action = "user"
-            p params
         else
             @reviews = Review.all
         end
-        # debugger
         render :index
     end
 
     def create
         @review = Review.new(review_params)
+        @user = @review.user
+        @user.set_num_reviews
 
         if @review.save
             render :show
@@ -34,6 +31,8 @@ class Api::ReviewsController < ApplicationController
 
     def update
         @review = Review.find(params[:id])
+        @user = @review.user
+        @user.set_num_reviews
 
         if @review.update(review_params)
             render :show
@@ -46,6 +45,8 @@ class Api::ReviewsController < ApplicationController
         @review = Review.find(params[:id])
 
         if @review && @review.destroy
+            @user = @review.user
+            @user.set_num_reviews
             render :show
         else
             render json: ["An error occurred while deleting. Please try again"], status: 422

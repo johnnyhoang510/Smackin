@@ -12,7 +12,8 @@ class Api::UsersController < ApplicationController
 
     def create
         @user = User.new(user_params)
-
+        @user.set_num_reviews
+        
         if @user.save
             login!(@user)
             render "api/users/show"

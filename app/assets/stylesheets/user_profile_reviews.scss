@@ -23,6 +23,7 @@
 .user-profile-middle-container {
     margin-top: 65px;
     margin-left: -310px;
+    color: #333;
 }
 
 .user-profile-title-name {
@@ -30,7 +31,31 @@
     margin-bottom: 6px;
     font-size: 30px;
     line-height: 1.2em;
-    color: #333;
+    padding-bottom: 5px;
+}
+
+.user-profile-city {
+    padding-bottom: 11px;
+}
+
+.user-profile-stars-num-reviews-container {
+    display: flex;
+    padding-bottom: 5px;
+}
+
+.user-profile-review-stars {
+    font-size: 25px;
+    color: darkorange;
+    padding-top: 1px;
+    padding-right: 5px;
+}
+
+.user-profile-num-reviews {
+    padding-top: 6px;
+}
+
+.bold-num-reviews {
+    font-weight: 500;
 }
 
 .user-profile-right-container {
@@ -45,4 +70,67 @@
     padding-bottom: 7px;
     font-size: 14px;
     font-weight: 600;
+    cursor: pointer;
+}
+
+.user-profile-blue-text:hover {
+    text-decoration: underline;
+}
+
+.user-profile-reviews-container {
+    margin-top: 25px;
+    margin-left: 460px;
+    display: flex;
+}
+
+.reviews-title {
+    font-weight: bold;
+    margin-bottom: 6px;
+    font-size: 21px;
+    line-height: 1.28571em;
+    color: #d32323;
+}
+
+.user-profile-sort-container {
+    display: flex;
+    color: #666;
+}
+
+.user-reviews-right-container {
+    margin-left: 244px;
+    border-left: solid 1px #d9d9d9;
+    height: 300px;
+    padding-left: 20px;
+}
+
+.about-user {
+    font-weight: bold;
+    margin-bottom: 6px;
+    font-size: 16px;
+    line-height: 1.3125em;
+    color: #d32323;
+}
+
+.sort-by-date {
+    padding-right: 30px;
+
+}
+
+.sort-by-category {
+
+}
+
+.about-user-subtitles {
+    font-weight: bold;
+    margin-bottom: 6px;
+    font-size: 14px;
+    line-height: 1.28571em;
+    color: #333;
+    padding-top: 5px;
+}
+
+.about-user-content {
+    padding-bottom: 12px;
+    font-size: 14px;
+    color: #333;
 }

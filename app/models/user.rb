@@ -53,4 +53,20 @@ class User < ApplicationRecord
         self.session_token ||= SecureRandom::urlsafe_base64
     end
 
+    def set_num_reviews
+        numReviews = {
+            1=>0,
+            2=>0,
+            3=>0,
+            4=>0,
+            5=>0
+        }
+
+        self.reviews.each do |review|
+            numReviews[review.rating] += 1
+        end
+
+        self.num_reviews = numReviews
+        self.save!
+    end
 end
