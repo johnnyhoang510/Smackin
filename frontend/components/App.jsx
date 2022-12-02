@@ -9,12 +9,13 @@ import BusinessShowPageContainer from "../components/business/business_show_page
 import CreateReviewFormContainer from "../components/review/create_review_form_container";
 import EditReviewFormContainer from "../components/review/edit_review_form_container";
 import SearchIndexContainer from "../components/search_bar/search_index_container";
-
+import UserReviewsContainer from "../components/userProfile/reviews_container";
 
 const App = () => {
     return (
         <div>
             <Switch>
+                <ProtectedRoute exact path="/users/:userId/reviews" component={UserReviewsContainer} />
                 <ProtectedRoute exact path="/businesses/:businessId/reviews/:reviewId/edit" component={EditReviewFormContainer} />
                 <ProtectedRoute exact path="/businesses/:businessId/reviews/new" component={CreateReviewFormContainer} />
                 <AuthRoute path="/login" component={LoginFormContainer} />

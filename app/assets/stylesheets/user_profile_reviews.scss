@@ -1,0 +1,48 @@
+#user-profile-reviews {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.user-profile-background {
+    display: flex;
+    justify-content: space-around;
+    background: #f5f5f5;
+    border-bottom: 1px solid #e6e6e6;
+    height: 180px;
+    margin-top: -32px;
+}
+
+.user-profile-pic-container {
+    margin-top: 30px;
+}
+
+.user-profile-pic {
+    border: solid 1px #cccccc;
+    border-radius: 5px;
+}
+
+.user-profile-middle-container {
+    margin-top: 65px;
+    margin-left: -310px;
+}
+
+.user-profile-title-name {
+    font-weight: bold;
+    margin-bottom: 6px;
+    font-size: 30px;
+    line-height: 1.2em;
+    color: #333;
+}
+
+.user-profile-right-container {
+    border-left: solid 1px #d9d9d9;
+    height: 55px;
+    margin-top: 80px;
+    padding-left: 20px;
+}
+
+.user-profile-blue-text {
+    color: #0073bb;
+    padding-bottom: 7px;
+    font-size: 14px;
+    font-weight: 600;
+}

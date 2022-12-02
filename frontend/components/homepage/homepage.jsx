@@ -52,7 +52,7 @@ const Homepage = (props) => {
             </div>
 
             <div className="homepage-best-businesses-container">
-                <h2 className="homepage-best-businesses-title">Find the Best Businesses in Town</h2>
+                <Link to="users/1/reviews" className="homepage-best-businesses-title">Find the Best Businesses in Town</Link>
 
                 <div className="homepage-best-businesses-photos-container">
 
