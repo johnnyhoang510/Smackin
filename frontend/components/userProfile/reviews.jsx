@@ -30,6 +30,25 @@ const Reviews = (props) => {
         return `${monthStrings[month]} ${year}`
     }
 
+    const checkNumReviews = (numReviews) => {
+        switch (numReviews) {
+            case 5:
+                return "num-reviews-5";
+            case 4:
+                return "num-reviews-4";
+            case 3:
+                return "num-reviews-3";
+            case 2:
+                return "num-reviews-2";
+            case 1:
+                return "num-reviews-1";
+            case 0:
+                return "num-reviews-0";
+            default:
+                break;
+        }
+    }
+
     if (currentUser) {
         return (
             <div id="user-profile-reviews">
@@ -73,11 +92,11 @@ const Reviews = (props) => {
                     <div className="user-reviews-right-container">
                         <h2 className="about-user">About {currentUser.first_name} {currentUser.last_name[0]}.</h2>
                         <p className="about-user-subtitles">Rating Distribution</p>
-                        <p><span>5 stars</span><span>{currentUser.num_reviews[5]}</span></p>
-                        <p><span>4 stars</span><span>{currentUser.num_reviews[4]}</span></p>
-                        <p><span>3 stars</span><span>{currentUser.num_reviews[3]}</span></p>
-                        <p><span>2 stars</span><span>{currentUser.num_reviews[2]}</span></p>
-                        <p><span>1 stars</span><span>{currentUser.num_reviews[1]}</span></p>
+                        <p className="about-user-rating-distribution-row"><span className="num-stars-background-5" id={checkNumReviews(currentUser.num_reviews[5])}>5 stars</span><span className="num-reviews">{currentUser.num_reviews[5]}</span></p>
+                        <p className="about-user-rating-distribution-row"><span className="num-stars-background-4" id={checkNumReviews(currentUser.num_reviews[4])}>4 stars</span><span className="num-reviews">{currentUser.num_reviews[4]}</span></p>
+                        <p className="about-user-rating-distribution-row"><span className="num-stars-background-3" id={checkNumReviews(currentUser.num_reviews[3])}>3 stars</span><span className="num-reviews">{currentUser.num_reviews[3]}</span></p>
+                        <p className="about-user-rating-distribution-row"><span className="num-stars-background-2" id={checkNumReviews(currentUser.num_reviews[2])}>2 stars</span><span className="num-reviews">{currentUser.num_reviews[2]}</span></p>
+                        <p className="about-user-rating-distribution-row"><span className="num-stars-background-1" id={checkNumReviews(currentUser.num_reviews[1])}>1 stars</span><span className="num-reviews">{currentUser.num_reviews[1]}</span></p>
                         <p className="about-user-subtitles">Location</p>
                         <p className="about-user-content">Oakland, CA</p>
                         <p className="about-user-subtitles">Smackin' Since</p>

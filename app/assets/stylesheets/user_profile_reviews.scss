@@ -120,6 +120,72 @@
 
 }
 
+.about-user-rating-distribution-row {
+    font-weight: bold;
+    line-height: 22px;
+    font-size: 12px;
+    color: #666;
+    margin: 7px 7px 7px 0px;
+}
+
+#num-reviews-5 {
+    padding-right: 135px;
+}
+
+#num-reviews-4 {
+    padding-right: 110px;
+}
+
+#num-reviews-3 {
+    padding-right: 85px;
+}
+
+#num-reviews-2 {
+    padding-right: 60px;
+}
+
+#num-reviews-1 {
+    padding-right: 35px;
+}
+
+#num-reviews-0 {
+    padding-right: 10px;
+}
+
+.num-stars-background-5 {
+    background-color: #fcd6d3;
+    padding: 5px;
+}
+
+.num-stars-background-4 {
+    background-color: #ffe5df;
+    padding: 5px;
+}
+
+.num-stars-background-3 {
+    background-color: #ffe9cc;
+    padding: 5px;
+}
+
+.num-stars-background-2 {
+    background-color: #fff0cc;
+    padding: 5px;
+}
+
+.num-stars-background-1 {
+    background-color: #fff8cc;
+    padding: 5px;
+}
+
+.num-stars-background-0 {
+    background-color: white;
+    padding: 5px;
+}
+
+.num-reviews {
+    padding-left: 6px;
+}
+
 .about-user-subtitles {
     font-weight: bold;
     margin-bottom: 6px;
