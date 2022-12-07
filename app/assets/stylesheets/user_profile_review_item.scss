@@ -18,6 +18,7 @@
     height: 60px;
     object-fit: cover;
     border-radius: 3px;
+    image-rendering: pixelated;
 }
 
 .heading-container {
@@ -80,6 +81,7 @@
     width: 132px;
     margin-top: -6px;
     object-fit: cover;
+    image-rendering: pixelated;
 }
 
 .review-body {

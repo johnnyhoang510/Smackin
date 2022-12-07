@@ -40,7 +40,6 @@ const UserReviewIndexItem = (props) => {
     }
 
     if (business !== "") {
-        console.log(business)
         return(
             <div className="review-item-container">
                 <div className="pic-heading-container">
