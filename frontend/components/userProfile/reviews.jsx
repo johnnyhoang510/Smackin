@@ -4,7 +4,7 @@ import { MdStar } from "react-icons/md";
 import UserReviewIndexItem from "./userReviewIndexItem";
 
 const Reviews = (props) => {
-    const { currentUser, logout } = props;
+    const { currentUser, fetchBusiness } = props;
 
     const beautifyDate = (date) => {
         if (!date) return null;
@@ -68,11 +68,12 @@ const Reviews = (props) => {
                         </div>
                     </div>
 
-                    <div className="user-profile-right-container">
+                    {/* future to do? */}
+                    {/* <div className="user-profile-right-container">
                         <p className="user-profile-blue-text">Add Profile Photos</p>
                         <p className="user-profile-blue-text">Update Your Profile</p>
                         <p className="user-profile-blue-text">Find Friends</p>
-                    </div>
+                    </div> */}
 
                 </div>
 
@@ -80,12 +81,19 @@ const Reviews = (props) => {
                     <div className="user-reviews-middle-container">
                         <h2 className="reviews-title">Reviews</h2>
                         <div className="user-profile-sort-container">
-                            <p className="sort-by-date">Sort by: Date</p>
-                            <p className="sort-by-category">All Categories</p>
+                            <label htmlFor="sort-by-select" className="sort-by-subtitle">Sort by:</label>
+                            <select name="sort-by-select" id="sort-by-select" className="sort-by-label">
+                                <option value="alphabetical" defaultValue>Alphabetical</option>
+                                <option value="rating">Rating</option>
+                                <option value="date">Date</option>
+                                <option value="useful">Useful</option>
+                                <option value="funny">Funny</option>
+                                <option value="cool">Cool</option>
+                            </select>
                         </div>
                         {
                             currentUser.reviews.map( (review, idx) => (
-                                < UserReviewIndexItem review={review} key={idx} />
+                                < UserReviewIndexItem review={review} key={idx} fetchBusiness={fetchBusiness} />
                                 ))
                         }
                     </div>

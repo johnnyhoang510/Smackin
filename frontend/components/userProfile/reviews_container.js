@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import Reviews from "./reviews";
 import { fetchReviewsByUser } from "../../actions/review_actions";
-import { logout } from "../../actions/session_actions";
+import { fetchBusiness } from "../../actions/business_actions";
 
 const mSTP = (state) => {
     return {
@@ -14,7 +14,7 @@ const mSTP = (state) => {
 const mDTP = (dispatch) => {
     return {
         fetchReviewsByUser: (userId) => dispatch(fetchReviewsByUser(userId)),
-        logout: () => dispatch(logout())
+        fetchBusiness: (businessId) => dispatch(fetchBusiness(businessId))
     }
 };
 

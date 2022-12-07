@@ -13,7 +13,8 @@ const BusinessShowPage = (props) => {
     const [numReviews, setNumReviews] = useState(0)
 
     useEffect(() => {
-        fetchBusiness(props.match.params.businessId)
+        window.scrollTo(0, 0);
+        fetchBusiness(props.match.params.businessId);
         getAvgRating();
     }, [])
 

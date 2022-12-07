@@ -1,0 +1,90 @@
+.review-item-container {
+    height: 200px;
+    width: 600px;
+    margin: auto;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    border-bottom: solid 1px #e6e6e6;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    margin-top: -10px;
+}
+
+.pic-heading-container {
+    display: flex;
+}
+
+.user-review-photo {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+.heading-container {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    margin-left: 10px;
+}
+
+.review-item-biz-name {
+    color: #0073bb;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    padding-bottom: 4px;
+}
+
+.review-item-biz-name:hover {
+    text-decoration: underline;
+}
+
+.price-category-container {
+    padding-bottom: 4px;
+}
+
+.review-item-biz-price {
+    color: #333;
+    font-size: 14px;
+    padding-right: 3px;
+}
+
+.review-item-biz-category {
+    color: #333;
+    font-size: 14px;
+    padding-left: 3px;
+}
+
+.city-state {
+    color: #333;
+    font-size: 14px;
+    padding-bottom: 4px;
+}
+
+.reviews-date-container {
+    display: flex;
+    margin-top: 10px;
+}
+
+.review-created-date {
+    color: #333;
+    font-size: 14px;
+    padding-left: 6px;
+    margin-top: -1px;
+}
+
+#review-item-avgRating {
+    background-image: url(review-stars.png);
+    -webkit-appearance: none;
+    height: 24px;
+    width: 132px;
+    margin-top: -6px;
+    object-fit: cover;
+}
+
+.review-body {
+    margin-top: 10px;
+    color: #333;
+    font-size: 15px;
+    line-height: 1.1em;
+}
