@@ -4,8 +4,8 @@ import { login, logout, signup } from './actions/session_actions';
 import configureStore from "./store/store";
 import Root from "./components/root";
 import { fetchBusinesses, fetchBusiness } from "./actions/business_actions";
-import { fetchReviews, fetchReview, createReview, updateReview, deleteReview, fetchReviewsByUser } from "./actions/review_actions";
-
+// import { fetchReviews, fetchReview, createReview, updateReview, deleteReview, fetchReviewsByUser } from "./actions/review_actions";
+import { fetchReviewsByUser } from "./util/review_api_util";
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.getElementById('root');
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // window.login = login;
     // window.logout = logout;
     // window.getState = store.getState;
-    // window.dispatch = store.dispatch;
+    window.dispatch = store.dispatch;
     // window.fetchBusiness = fetchBusiness;
     // window.fetchBusinesses = fetchBusinesses;
     // window.fetchReviews = fetchReviews;
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // window.createReview = createReview;
     // window.updateReview = updateReview;
     // window.deleteReview = deleteReview;
-    // window.fetchReviewsByUser = fetchReviewsByUser;
+    window.fetchReviewsByUser = fetchReviewsByUser;
     //TESTING END
 
     ReactDOM.render(<Root store={store} />, root)

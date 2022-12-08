@@ -2,9 +2,24 @@ import React from "react";
 import NavBarContainer from "../navbar/navbar_container";
 import { MdStar } from "react-icons/md";
 import UserReviewIndexItem from "./userReviewIndexItem";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const Reviews = (props) => {
-    const { currentUser, fetchBusiness } = props;
+    const { currentUser, fetchBusiness, fetchReviewsByUser } = props;
+    const [reviews, setReviews] = useState([]);
+
+    useEffect(() => {
+        fetchReviewsByUser(currentUser.id)
+            .then(res => {
+                const unsortedReviews = Object.values(res.reviews);
+                // trying to sort on backend but this is a backup
+                // const sortedReviews = unsortedReviews.sort((a,b) => (a.rating > b.rating) ? 1 : ((b.rating > a.rating) ? -1 : 0))
+                // setReviews(sortedReviews)
+
+                setReviews(unsortedReviews)
+            })
+    }, [])
 
     const beautifyDate = (date) => {
         if (!date) return null;
@@ -49,7 +64,8 @@ const Reviews = (props) => {
         }
     }
 
-    if (currentUser) {
+    if (reviews.length > 0 && currentUser) {
+
         return (
             <div id="user-profile-reviews">
                 <NavBarContainer />
@@ -92,7 +108,7 @@ const Reviews = (props) => {
                             </select>
                         </div>
                         {
-                            currentUser.reviews.map( (review, idx) => (
+                            reviews.map( (review, idx) => (
                                 < UserReviewIndexItem review={review} key={idx} fetchBusiness={fetchBusiness} />
                                 ))
                         }

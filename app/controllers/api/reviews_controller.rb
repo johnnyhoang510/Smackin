@@ -5,7 +5,12 @@ class Api::ReviewsController < ApplicationController
         if params[:business_id]
             @reviews = Review.where(business_id: params[:business_id])
         elsif params[:user_id]
-            @reviews = Review.where(user_id: params[:user_id])
+            if params[:sort]
+                @reviews = Review.joins(:business).where("reviews.user_id = ?", params[:user_id]).order(params[:sort])
+            else
+                # default alphabetical by business name 
+                @reviews = Review.joins(:business).where("reviews.user_id = ?", params[:user_id]).order("businesses.name")
+            end
         else
             @reviews = Review.all
         end

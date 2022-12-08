@@ -60,7 +60,7 @@ const LoginForm = (props) => {
         if (errors.length) {
             return errors.map((err, idx) => {
                 return (
-                    <div class="login-error-row">
+                    <div className="login-error-row">
                         <li className="login-form-error" key={`error-${idx}`}>{err}</li>
                         <p onClick={() => clearErrors()} className="login-errors-x"><BsX className="error-x" /></p>
                     </div>
@@ -72,7 +72,7 @@ const LoginForm = (props) => {
     }
 
     return (
-        <div class="login">
+        <div className="login">
             <div className="login-form">
                 <header className="login-form-header">
                     <Link className="login-form-header-link" to="/">
