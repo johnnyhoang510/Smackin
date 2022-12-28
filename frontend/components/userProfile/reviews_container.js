@@ -13,7 +13,7 @@ const mSTP = (state) => {
 
 const mDTP = (dispatch) => {
     return {
-        fetchReviewsByUser: (userId, filter) => dispatch(fetchReviewsByUser(userId, filter)),
+        fetchReviewsByUser: (userId) => dispatch(fetchReviewsByUser(userId)),
         fetchBusiness: (businessId) => dispatch(fetchBusiness(businessId))
     }
 };

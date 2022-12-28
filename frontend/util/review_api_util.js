@@ -1,14 +1,14 @@
-export const fetchReviewsByUser = (userId, filter="businesses.name") => {
-    let sortParams;
-    if (filter === "businesses.name") {
-        sortParams = "";
-    } else {
-        sortParams = `?sort=${filter}`
-    }
+export const fetchReviewsByUser = (userId) => {
+    // let sortParams;
+    // if (filter === "businesses.name") {
+    //     sortParams = "";
+    // } else {
+    //     sortParams = `?sort=${filter}`
+    // }
 
     return $.ajax({
         method: "GET",
-        url: `/api/users/${userId}/reviews${sortParams}`
+        url: `/api/users/${userId}/reviews`
     })
 }
 

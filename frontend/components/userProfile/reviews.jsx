@@ -8,18 +8,41 @@ import { useEffect } from "react";
 const Reviews = (props) => {
     const { currentUser, fetchBusiness, fetchReviewsByUser } = props;
     const [reviews, setReviews] = useState([]);
+    const [sortBy, setSortBy] = useState("business_name");
 
     useEffect(() => {
         fetchReviewsByUser(currentUser.id)
             .then(res => {
                 const unsortedReviews = Object.values(res.reviews);
-                // trying to sort on backend but this is a backup
-                // const sortedReviews = unsortedReviews.sort((a,b) => (a.rating > b.rating) ? 1 : ((b.rating > a.rating) ? -1 : 0))
-                // setReviews(sortedReviews)
-
-                setReviews(unsortedReviews)
+                // backend sorting works, but is unordered when sent to frontend. sort on frontend for now
+                const sortedReviews = unsortedReviews.sort((a,b) => (a.business_name > b.business_name) ? 1 : ((b.business_name > a.business_name) ? -1 : 0))
+                setReviews(sortedReviews)
             })
     }, [])
+
+    useEffect(() => {
+        sortReviews();
+    }, [sortBy])
+
+    const sortReviews = () => {
+        const currentReviews = [...reviews];
+
+        switch (sortBy) {
+            case "alphabetical":
+                currentReviews.sort((a, b) => (a.business_name > b.business_name) ? 1 : ((b.business_name > a.business_name) ? -1 : 0))
+                break;
+            case "rating":
+                currentReviews.sort((a, b) => (a.rating > b.rating) ? 1 : ((b.rating > a.rating) ? -1 : 0))
+                break;
+            case "date":
+                currentReviews.sort((a, b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0))
+                break;
+            default:
+                break;
+        }
+
+        setReviews(currentReviews)
+    }
 
     const beautifyDate = (date) => {
         if (!date) return null;
@@ -64,7 +87,7 @@ const Reviews = (props) => {
         }
     }
 
-    if (reviews.length > 0 && currentUser) {
+    if (reviews && currentUser) {
 
         return (
             <div id="user-profile-reviews">
@@ -98,7 +121,7 @@ const Reviews = (props) => {
                         <h2 className="reviews-title">Reviews</h2>
                         <div className="user-profile-sort-container">
                             <label htmlFor="sort-by-select" className="sort-by-subtitle">Sort by:</label>
-                            <select name="sort-by-select" id="sort-by-select" className="sort-by-label">
+                            <select name="sort-by-select" id="sort-by-select" className="sort-by-label" onChange={(e) => setSortBy(e.target.value)}>
                                 <option value="alphabetical" defaultValue>Alphabetical</option>
                                 <option value="rating">Rating</option>
                                 <option value="date">Date</option>

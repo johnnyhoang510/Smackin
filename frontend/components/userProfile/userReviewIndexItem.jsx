@@ -10,8 +10,13 @@ const UserReviewIndexItem = (props) => {
     
     useEffect(() => {
         fetchBusiness(review.business_id)
-        .then(res => setBusiness(res.business))
+            .then(res => setBusiness(res.business))
     }, [])
+
+    useEffect(() => {
+        fetchBusiness(review.business_id)
+            .then(res => setBusiness(res.business))
+    }, [review])
 
     const checkAvgStarRating = (rating) => {
 
