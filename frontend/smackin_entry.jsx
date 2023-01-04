@@ -5,7 +5,8 @@ import configureStore from "./store/store";
 import Root from "./components/root";
 import { fetchBusinesses, fetchBusiness } from "./actions/business_actions";
 // import { fetchReviews, fetchReview, createReview, updateReview, deleteReview, fetchReviewsByUser } from "./actions/review_actions";
-import { fetchReviewsByUser, fetchReviews } from "./util/review_api_util";
+import { fetchReviewsByUser } from "./util/review_api_util";
+// import { fetchReviewsByUser } from "./actions/review_actions";
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.getElementById('root');
@@ -33,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.dispatch = store.dispatch;
     // window.fetchBusiness = fetchBusiness;
     // window.fetchBusinesses = fetchBusinesses;
-    window.fetchReviews = fetchReviews;
+    // window.fetchReviews = fetchReviews;
     // window.fetchReview = fetchReview;
     // window.createReview = createReview;
     // window.updateReview = updateReview;

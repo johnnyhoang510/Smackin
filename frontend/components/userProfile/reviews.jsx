@@ -6,45 +6,46 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 const Reviews = (props) => {
-    const { currentUser, fetchBusiness, fetchReviewsByUser } = props;
+    const { currentUser, fetchReviewsByUser } = props;
     const [reviews, setReviews] = useState([]);
-    const [sortBy, setSortBy] = useState("business_name");
+    const [sortBy, setSortBy] = useState("");
 
     useEffect(() => {
-        fetchReviewsByUser(currentUser.id)
+        fetchReviewsByUser(currentUser.id, sortBy)
             .then(res => {
-                const unsortedReviews = Object.values(res.reviews);
+                // console.log(res)
+                const unsortedReviews = Object.values(res.reviews.reviews);
                 // backend sorting works, but is unordered when sent to frontend. sort on frontend for now
-                const sortedReviews = unsortedReviews.sort((a,b) => (a.business_name > b.business_name) ? 1 : ((b.business_name > a.business_name) ? -1 : 0))
-                setReviews(sortedReviews)
+                // const sortedReviews = unsortedReviews.sort((a,b) => (a.business_name > b.business_name) ? 1 : ((b.business_name > a.business_name) ? -1 : 0))
+                setReviews(unsortedReviews)
             })
     }, [])
 
-    useEffect(() => {
-        sortReviews();
-    }, [sortBy])
+    // useEffect(() => {
+    //     sortReviews();
+    // }, [sortBy])
 
-    const sortReviews = () => {
-        const currentReviews = [...reviews];
+    // const sortReviews = () => {
+    //     const currentReviews = [...reviews];
 
-        switch (sortBy) {
-            case "alphabetical":
-                currentReviews.sort((a, b) => (a.business_name > b.business_name) ? 1 : ((b.business_name > a.business_name) ? -1 : 0))
-                break;
-            case "rating":
-                currentReviews.sort((a, b) => (a.rating > b.rating) ? 1 : ((b.rating > a.rating) ? -1 : 0))
-                break;
-            case "date":
-                currentReviews.sort((a, b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0))
-                break;
-            default:
-                break;
-        }
+    //     switch (sortBy) {
+    //         case "alphabetical":
+    //             currentReviews.sort((a, b) => (a.business_name > b.business_name) ? 1 : ((b.business_name > a.business_name) ? -1 : 0))
+    //             break;
+    //         case "rating":
+    //             currentReviews.sort((a, b) => (a.rating > b.rating) ? 1 : ((b.rating > a.rating) ? -1 : 0))
+    //             break;
+    //         case "date":
+    //             currentReviews.sort((a, b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0))
+    //             break;
+    //         default:
+    //             break;
+    //     }
 
-        setReviews(currentReviews)
-    }
+    //     setReviews(currentReviews)
+    // }
 
-    const beautifyDate = (date) => {
+    const convertDate = (date) => {
         if (!date) return null;
 
         const monthStrings = {
@@ -132,7 +133,7 @@ const Reviews = (props) => {
                         </div>
                         {
                             reviews.map( (review, idx) => (
-                                < UserReviewIndexItem review={review} key={idx} fetchBusiness={fetchBusiness} />
+                                < UserReviewIndexItem review={review} key={idx} />
                                 ))
                         }
                     </div>
@@ -147,7 +148,7 @@ const Reviews = (props) => {
                         <p className="about-user-subtitles">Location</p>
                         <p className="about-user-content">Oakland, CA</p>
                         <p className="about-user-subtitles">Smackin' Since</p>
-                        <p className="about-user-content">{beautifyDate(currentUser.created_at)}</p>
+                        <p className="about-user-content">{convertDate(currentUser.created_at)}</p>
                     </div>
                 </div>
             </div>

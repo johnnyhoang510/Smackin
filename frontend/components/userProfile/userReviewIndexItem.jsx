@@ -1,25 +1,10 @@
 import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const UserReviewIndexItem = (props) => {
-    const { review, fetchBusiness} = props;
+    const { review } = props;
     
-    const [business, setBusiness] = useState("");
-    
-    useEffect(() => {
-        fetchBusiness(review.business_id)
-            .then(res => setBusiness(res.business))
-    }, [])
-
-    useEffect(() => {
-        fetchBusiness(review.business_id)
-            .then(res => setBusiness(res.business))
-    }, [review])
-
     const checkAvgStarRating = (rating) => {
-
         switch (rating) {
             case 5:
                 return "biz-show-rating-5"        
@@ -36,7 +21,7 @@ const UserReviewIndexItem = (props) => {
         }
     }
 
-    const beautifyDate = (date) => {
+    const convertDate = (date) => {
         if (!date) return null;
         const dateSplit = date.split("T")[0];
         const [year, month, day] = dateSplit.split("-")
@@ -44,24 +29,24 @@ const UserReviewIndexItem = (props) => {
         return `${month}/${day}/${year}`
     }
 
-    if (business !== "") {
+    if (review.business !== "") {
         return(
-            <div className="review-item-container">
+            <div className="user-profile-review-item-container">
                 <div className="pic-heading-container">
-                    <Link to={`/businesses/${business.id}`}><img src={business.photoURLs[0]} alt="" className="user-review-photo"/></Link>
+                    <Link to={`/businesses/${review.business.id}`}><img src={review.photo_url} alt="" className="user-review-photo"/></Link>
                     <div className="heading-container">
-                        <Link className="review-item-biz-name" to={`/businesses/${business.id}`}>{business.name}</Link>
-                        <p className="price-category-container"><span className="review-item-biz-price">{business.price}</span> • <span className="review-item-biz-category">{business.category}</span></p>
-                        <p className="city-state">{business.address}</p>
-                        <p className="city-state">{business.city}, {business.state}</p>
+                        <Link className="review-item-biz-name" to={`/businesses/${review.business.id}`}>{review.business.name}</Link>
+                        <p className="price-category-container"><span className="review-item-biz-price">{review.business.price}</span> • <span className="review-item-biz-category">{review.business.category}</span></p>
+                        <p className="city-state">{review.business.address}</p>
+                        <p className="city-state">{review.business.city}, {review.business.state}</p>
                     </div>
                 </div>
 
                 <div className="reviews-date-container">
-                    <span id="review-item-avgRating" className={checkAvgStarRating(review.rating)}></span>
-                    <span className="review-created-date">{beautifyDate(review.created_at)}</span>
+                    <span id="review-item-avgRating" className={checkAvgStarRating(review.review.rating)}></span>
+                    <span className="review-created-date">{convertDate(review.created_at)}</span>
                 </div>
-                <p className="review-body">{review.body}</p>
+                <p className="review-body">{review.review.body}</p>
             </div>
         )
     } else {

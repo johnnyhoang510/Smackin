@@ -2,16 +2,20 @@ class Api::ReviewsController < ApplicationController
     # before_action :require_logged_in, only: [:create, :show, :update, :destroy]
 
     def index
+        # debugger
         if params[:business_id]
             @reviews = Review.where(business_id: params[:business_id])
         elsif params[:user_id]
-        #     # if params[:sort]
-        #     #     @reviews = Review.joins(:business).where("reviews.user_id = ?", params[:user_id]).order(params[:sort])
-        #     # else
-        #         # default alphabetical by business name 
-        #         # @reviews = Review.joins(:business).where("reviews.user_id = ?", params[:user_id]).order("businesses.name")
-                @reviews = Review.joins(:business).where("reviews.user_id = ?", params[:user_id]).order("businesses.name")
-        #     # end
+            # if params[:sort]
+            #     # @sort = params[:sort]
+            #     @reviews = Review.joins(:business).where("reviews.user_id = ?", params[:user_id]).order(params[:sort])
+            # else
+            #     # default scope is alphabetical by business name 
+            #     # @sort = ""
+            #     @reviews = Review.joins(:business).where("reviews.user_id = ?", params[:user_id]).order("businesses.name")
+            #     # @reviews = Review.where(user_id: params[:user_id])
+            # end
+            @reviews = Review.where(user_id: params[:user_id])
         else
             @reviews = Review.all
         end

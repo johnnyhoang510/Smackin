@@ -1,7 +1,6 @@
 import { connect } from "react-redux";
 import Reviews from "./reviews";
 import { fetchReviewsByUser } from "../../actions/review_actions";
-import { fetchBusiness } from "../../actions/business_actions";
 
 const mSTP = (state) => {
     return {
@@ -13,8 +12,7 @@ const mSTP = (state) => {
 
 const mDTP = (dispatch) => {
     return {
-        fetchReviewsByUser: (userId) => dispatch(fetchReviewsByUser(userId)),
-        fetchBusiness: (businessId) => dispatch(fetchBusiness(businessId))
+        fetchReviewsByUser: (userId, filter) => dispatch(fetchReviewsByUser(userId, filter)),
     }
 };
 

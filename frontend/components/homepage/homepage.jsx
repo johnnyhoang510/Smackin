@@ -3,16 +3,52 @@ import { Link } from "react-router-dom";
 import SearchBarContainer from "../search_bar/search_bar_container";
 import Footer from "../footer/footer";
 import { GiSmallFire } from "react-icons/gi";
+import { BsPersonCircle, BsBoxArrowRight } from "react-icons/bs";
+import { useState, useRef } from "react";
+import useOutsideClick from "../../util/use_outside_click";
 
 const Homepage = (props) => {
     
     window.scrollTo(0, 0);
     const { currentUser, logout } = props;
 
+    const [showDropdown, setShowDropdown] = useState(false);
+    const [hovering, setHovering] = useState(false);
+    const ref = useRef();
+
+    useOutsideClick(ref, () => {
+        if (showDropdown) setShowDropdown(false);
+    })
+
+    const handleDropdown = () => {
+        if (!showDropdown) {
+            return "hidden-dropdown";
+        }
+    };
+
+    const handleTooltip = () => {
+        if (!hovering) {
+            return "hidden-tooltip"
+        }
+    }
+
     const display = currentUser ? (
         <div className="homepage-welcome-user-wrapper">
-            <h2 className="homepage-welcome-user">Welcome, {currentUser.first_name}!</h2>
-            <button className="homepage-logout-user" onClick={logout}>Log out</button>
+            <BsPersonCircle className="user-profile-logo" onClick={() => setShowDropdown(!showDropdown)} onMouseEnter={() => setHovering(true)} onMouseLeave={() => setHovering(false)}></BsPersonCircle>
+            { showDropdown && (
+                <div ref={ref} id={handleDropdown()} className="user-profile-hidden-dropdown">
+                    <Link to={`users/${currentUser.id}/reviews`} className="about-me-row">
+                        <BsPersonCircle className="mini-about-me-logo"></BsPersonCircle>
+                        <span className="about-me-text">About Me</span>
+                    </Link>
+                    <p onClick={logout} className="logout-row"><BsBoxArrowRight className="logout-box-logo"></BsBoxArrowRight><span className="user-logout-text">Log out</span></p>
+                </div> )
+            }
+            { hovering && ( 
+                <div id={handleTooltip()} className="tooltip">
+                    <span className="tooltiptext">{currentUser.first_name} {currentUser.last_name[0]}.</span>
+                </div> )
+            }
         </div>
     ) : (
         <div className="homepage-login-signup-buttons">
@@ -39,10 +75,10 @@ const Homepage = (props) => {
                     </div>
                 </div>
 
-                <Link to="/" className="homepage-title-logo-wrapper">
+                <div className="homepage-title-logo-wrapper">
                     <h1 className="homepage-title">smackin'</h1>
                     <img className="homepage-logo" src={window.logo} alt="logo" />
-                </Link>
+                </div>
             </div>
 
             <div className="homepage-searchbar-container">
@@ -52,27 +88,25 @@ const Homepage = (props) => {
             </div>
 
             <div className="homepage-best-businesses-container">
-                <Link to="users/1/reviews" className="homepage-best-businesses-title">Find the Best Businesses in Town</Link>
+                <h2 className="homepage-best-businesses-title">Find the Best Businesses in Town</h2>
 
                 <div className="homepage-best-businesses-photos-container">
-
-                    <Link to="businesses?search=tacos" className="homepage-best-business-photo-box">
+                    <Link to="businesses/search/tacos" className="homepage-best-business-photo-box">
                         <img className="homepage-best-business-photo" src={window.mexicanPhoto} alt="tacos" />
                         <p className="homepage-best-business-photo-text">Mexican</p>
                     </Link>
-                    <Link to="businesses?search=thai" className="homepage-best-business-photo-box">
+                    <Link to="businesses/search/thai" className="homepage-best-business-photo-box">
                         <img className="homepage-best-business-photo" src={window.thaiPhoto} alt="thai-food" />
                         <p className="homepage-best-business-photo-text">Thai</p>
                     </Link>
-                    <Link to="businesses?search=burgers" className="homepage-best-business-photo-box">
+                    <Link to="businesses/search/burgers" className="homepage-best-business-photo-box">
                         <img className="homepage-best-business-photo" src={window.burgerPhoto} alt="burger" />
                         <p className="homepage-best-business-photo-text">Burgers</p>
                     </Link>
-                    <Link to="businesses?search=japanese" className="homepage-best-business-photo-box">
+                    <Link to="businesses/search/japanese" className="homepage-best-business-photo-box">
                         <img className="homepage-best-business-photo" src={window.japanesePhoto} alt="sushi" />
                         <p className="homepage-best-business-photo-text">Japanese</p>
                     </Link>
-
                 </div>
             </div>
 

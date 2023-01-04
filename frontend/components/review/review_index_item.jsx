@@ -37,7 +37,7 @@ const ReviewIndexItem = (props) => {
         }
     }
     
-    const beautifyDate = (date) => {
+    const convertDate = (date) => {
         if (!date) return null;
         const dateSplit = date.split("T")[0];
         const [year, month, day] = dateSplit.split("-")
@@ -80,7 +80,7 @@ const ReviewIndexItem = (props) => {
 
                     <div className="review-item-rating-container">
                         <p id="review-index-item-star-rating" className={checkStarRating()}></p>
-                        <p className="review-item-create-date">{beautifyDate(review.created_at)}</p>
+                        <p className="review-item-create-date">{convertDate(review.created_at)}</p>
                     </div>
 
                     <div className="review-item-body-container">

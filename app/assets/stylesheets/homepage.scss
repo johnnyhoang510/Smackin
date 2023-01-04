@@ -52,6 +52,7 @@
 .homepage-login-signup-buttons{
     margin-top: 2%;
     margin-left: -67%;
+    margin-bottom: 21.4px;
 }
 
 .homepage-login-button {
@@ -97,8 +98,149 @@
 
 .homepage-welcome-user-wrapper {
     display: flex;
-    margin-left: -30%;
-    margin-top: -2.7%;
+    margin-left: -120px;
+    flex-direction: column;
+}
+
+#hidden-dropdown {
+    visibility: hidden;
+}
+
+// #hidden-toolip {
+//     visibility: hidden;
+// }
+
+// .user-profile-tooltip {
+//     position: absolute;
+//     color: white;
+//     background-color: #333;
+//     width: auto;
+//     height: 20px;
+//     border-radius: 4px;
+//     padding: 13px 14px 10px 15px;
+//     text-align: center;
+//     font-size: 13px;
+//     font-weight: 500;
+//     margin-left: -38px;
+//     margin-top: 52px;
+// }
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    background-color: #333;
+}
+
+.tooltip .tooltiptext {
+    width: 120px;
+    background-color: #1a1a1a;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 150%;
+    left: 50%;
+    margin-left: -135px;
+    margin-top: 10px;
+    padding-top: 8px;
+    padding-bottom: 10px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: 31px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #1a1a1a transparent;
+}
+
+.user-profile-hidden-dropdown {
+    display: flex;
+    flex-direction: column;
+    width: 220px;
+    border-radius: 4px;
+    background-color: white;
+    margin-left: -174px;
+    height: 120px;
+    position: absolute;
+    margin-top: 50px;
+    z-index: 1000;
+}
+
+.user-profile-logo {
+    font-size: 46px;
+    color: white;
+    cursor: pointer;
+}
+
+.about-me-row {
+    display: flex;
+    cursor: pointer;
+    text-decoration: none;
+    height: 30px;
+    width: 80%;
+    margin-left: 15px;
+    margin-top: 18px;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+.about-me-row:hover, .logout-row:hover {
+    background-color: #e6e6e6;
+    border-radius: 4px;
+}
+
+.mini-about-me-logo {
+    font-size: 24px;
+    color: #333;
+}
+
+.about-me-text {
+    text-decoration: none;
+    color: rgb(45, 46, 47);
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0px;
+    line-height: 20px;
+    padding-left: 17px;
+    padding-top: 3px;
+}
+
+.logout-row {
+    display: flex;
+    cursor: pointer;
+    padding-left: 30px;
+    padding-top: 5px;
+    width: 80%;
+    height: 30px;
+    margin-left: 15px;
+    padding-left: 10px;
+    margin-top: 10px;
+}
+
+.logout-box-logo {
+    font-size: 25px;
+    color: #333;
+}
+
+.user-logout-text {
+    color: rgb(45, 46, 47);
+    cursor: pointer;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0px;
+    line-height: 20px;
+    padding-left: 15px;
+    padding-top: 2px;
 }
 
 .homepage-welcome-user {
@@ -299,6 +441,7 @@
     margin-right: 5px;
     margin-left: 1px;
     object-fit: cover;
+    image-rendering: pixelated;
 }
 
 .homepage-star-rating-4 {
