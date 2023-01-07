@@ -2,22 +2,26 @@ class Api::ReviewsController < ApplicationController
     # before_action :require_logged_in, only: [:create, :show, :update, :destroy]
 
     def index
-        # debugger
         if params[:business_id]
-            @reviews = Review.where(business_id: params[:business_id])
+            if current_user
+                @reviews = Review
+                            .where("reviews.business_id = ?", params[:business_id])
+                            .order("CASE WHEN reviews.user_id = #{current_user.id} THEN 1 ELSE 2 END")
+            else
+                @reviews = Review.where("reviews.business_id = ?", params[:business_id])
+            end
         elsif params[:user_id]
-            # if params[:sort]
-            #     # @sort = params[:sort]
-            #     @reviews = Review.joins(:business).where("reviews.user_id = ?", params[:user_id]).order(params[:sort])
-            # else
-            #     # default scope is alphabetical by business name 
-            #     # @sort = ""
-            #     @reviews = Review.joins(:business).where("reviews.user_id = ?", params[:user_id]).order("businesses.name")
-            #     # @reviews = Review.where(user_id: params[:user_id])
-            # end
-            @reviews = Review.where(user_id: params[:user_id])
-        else
-            @reviews = Review.all
+            if params[:sort]
+                @reviews = Review
+                            .joins(:business)
+                            .where("reviews.user_id = ?", params[:user_id])
+                            .order(params[:sort])
+            else
+                @reviews = Review
+                            .joins(:business)
+                            .where("reviews.user_id = ?", params[:user_id])
+                            .order("businesses.name")
+            end
         end
         render :index
     end
@@ -25,9 +29,9 @@ class Api::ReviewsController < ApplicationController
     def create
         @review = Review.new(review_params)
         @user = @review.user
-        @user.set_num_reviews
-
+        
         if @review.save
+            @user.set_num_reviews
             render :show
         else
             render json: @review.errors.full_messages, status: 401
@@ -41,9 +45,7 @@ class Api::ReviewsController < ApplicationController
 
     def update
         @review = Review.find(params[:id])
-        @user = @review.user
-        @user.set_num_reviews
-
+        
         if @review.update(review_params)
             render :show
         else
@@ -53,9 +55,9 @@ class Api::ReviewsController < ApplicationController
 
     def destroy
         @review = Review.find(params[:id])
-
+        @user = @review.user
+        
         if @review && @review.destroy
-            @user = @review.user
             @user.set_num_reviews
             render :show
         else

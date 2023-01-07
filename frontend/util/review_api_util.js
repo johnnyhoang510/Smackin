@@ -3,10 +3,10 @@ export const fetchReviewsByUser = (userId, filter) => {
     if (filter !== "") {
         sortParams = `?sort=${filter}`
     }
-
+    
     return $.ajax({
         method: "GET",
-        url: `api/users/${userId}${sortParams}`
+        url: `api/users/${userId}/reviews${sortParams}`
     })
 }
 

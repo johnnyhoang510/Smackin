@@ -1,8 +1,19 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const UserReviewIndexItem = (props) => {
-    const { review } = props;
+    const { review, business } = props;
+
+    // useEffect(() => {
+    //     fetchBusiness(review.business_id)
+    //         .then(res => setBusiness(res.business))
+    // }, [])
+
+    // useEffect(() => {
+    //     fetchBusiness(review.business_id)
+    //         .then(res => setBusiness(res.business))
+    // }, [review])
     
     const checkAvgStarRating = (rating) => {
         switch (rating) {
@@ -29,24 +40,24 @@ const UserReviewIndexItem = (props) => {
         return `${month}/${day}/${year}`
     }
 
-    if (review.business !== "") {
+    if (review && business) {
         return(
             <div className="user-profile-review-item-container">
                 <div className="pic-heading-container">
-                    <Link to={`/businesses/${review.business.id}`}><img src={review.photo_url} alt="" className="user-review-photo"/></Link>
+                    <Link to={`/businesses/${business.id}`}><img src={review.photo_url} alt="" className="user-review-photo"/></Link>
                     <div className="heading-container">
-                        <Link className="review-item-biz-name" to={`/businesses/${review.business.id}`}>{review.business.name}</Link>
-                        <p className="price-category-container"><span className="review-item-biz-price">{review.business.price}</span> • <span className="review-item-biz-category">{review.business.category}</span></p>
-                        <p className="city-state">{review.business.address}</p>
-                        <p className="city-state">{review.business.city}, {review.business.state}</p>
+                        <Link className="review-item-biz-name" to={`/businesses/${business.id}`}>{business.name}</Link>
+                        <p className="price-category-container"><span className="review-item-biz-price">{business.price}</span> • <span className="review-item-biz-category">{business.category}</span></p>
+                        <p className="city-state">{business.address}</p>
+                        <p className="city-state">{business.city}, {business.state}</p>
                     </div>
                 </div>
 
                 <div className="reviews-date-container">
-                    <span id="review-item-avgRating" className={checkAvgStarRating(review.review.rating)}></span>
+                    <span id="review-item-avgRating" className={checkAvgStarRating(review.rating)}></span>
                     <span className="review-created-date">{convertDate(review.created_at)}</span>
                 </div>
-                <p className="review-body">{review.review.body}</p>
+                <p className="review-body">{review.body}</p>
             </div>
         )
     } else {

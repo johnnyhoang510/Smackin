@@ -81,5 +81,5 @@ export const deleteReview = (reviewId, businessId) => (dispatch) => {
 
 export const fetchReviewsByUser = (userId, filter) => (dispatch) => {
     return APIReviewUtil.fetchReviewsByUser(userId, filter)
-        .then(reviews => dispatch(receiveAllReviews(reviews)))
+        .then(data => dispatch(receiveAllReviews(data)))
 }

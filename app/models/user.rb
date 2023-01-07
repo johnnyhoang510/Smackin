@@ -61,7 +61,7 @@ class User < ApplicationRecord
             4=>0,
             5=>0
         }
-
+        
         self.reviews.each do |review|
             numReviews[review.rating] += 1
         end

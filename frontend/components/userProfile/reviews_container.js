@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import Reviews from "./reviews";
 import { fetchReviewsByUser } from "../../actions/review_actions";
+import { fetchCurrentUser } from "../../actions/session_actions";
 
 const mSTP = (state) => {
     return {
@@ -13,6 +14,7 @@ const mSTP = (state) => {
 const mDTP = (dispatch) => {
     return {
         fetchReviewsByUser: (userId, filter) => dispatch(fetchReviewsByUser(userId, filter)),
+        fetchCurrentUser: (userId) => dispatch(fetchCurrentUser(userId))
     }
 };
 

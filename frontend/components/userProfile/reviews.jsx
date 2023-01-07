@@ -6,44 +6,27 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 const Reviews = (props) => {
-    const { currentUser, fetchReviewsByUser } = props;
+    const { currentUser, fetchCurrentUser, fetchReviewsByUser } = props;
     const [reviews, setReviews] = useState([]);
     const [sortBy, setSortBy] = useState("");
+    const [user, setUser] = useState(""); 
 
     useEffect(() => {
-        fetchReviewsByUser(currentUser.id, sortBy)
-            .then(res => {
-                // console.log(res)
-                const unsortedReviews = Object.values(res.reviews.reviews);
-                // backend sorting works, but is unordered when sent to frontend. sort on frontend for now
-                // const sortedReviews = unsortedReviews.sort((a,b) => (a.business_name > b.business_name) ? 1 : ((b.business_name > a.business_name) ? -1 : 0))
-                setReviews(unsortedReviews)
-            })
+        fetchCurrentUser(currentUser.id)
+            .then((res) => setUser(res.currentUser))
+            .then(() => fetchReviews())
     }, [])
 
-    // useEffect(() => {
-    //     sortReviews();
-    // }, [sortBy])
+    useEffect(() => {
+        fetchReviews();
+    }, [sortBy])
 
-    // const sortReviews = () => {
-    //     const currentReviews = [...reviews];
-
-    //     switch (sortBy) {
-    //         case "alphabetical":
-    //             currentReviews.sort((a, b) => (a.business_name > b.business_name) ? 1 : ((b.business_name > a.business_name) ? -1 : 0))
-    //             break;
-    //         case "rating":
-    //             currentReviews.sort((a, b) => (a.rating > b.rating) ? 1 : ((b.rating > a.rating) ? -1 : 0))
-    //             break;
-    //         case "date":
-    //             currentReviews.sort((a, b) => (a.id > b.id) ? 1 : ((b.id > a.id) ? -1 : 0))
-    //             break;
-    //         default:
-    //             break;
-    //     }
-
-    //     setReviews(currentReviews)
-    // }
+    const fetchReviews = () => {
+        fetchReviewsByUser(currentUser.id, sortBy)
+            .then(res => {
+                setReviews(res.reviews)
+            })
+    }
 
     const convertDate = (date) => {
         if (!date) return null;
@@ -70,25 +53,39 @@ const Reviews = (props) => {
     }
 
     const checkNumReviews = (numReviews) => {
-        switch (numReviews) {
-            case 5:
-                return "num-reviews-5";
-            case 4:
-                return "num-reviews-4";
-            case 3:
-                return "num-reviews-3";
-            case 2:
-                return "num-reviews-2";
-            case 1:
-                return "num-reviews-1";
-            case 0:
-                return "num-reviews-0";
-            default:
-                break;
+        // switch (numReviews) {
+        //     case (numReviews >= 5):
+        //         return "num-reviews-5";
+        //     case 4:
+        //         return "num-reviews-4";
+        //     case 3:
+        //         return "num-reviews-3";
+        //     case 2:
+        //         return "num-reviews-2";
+        //     case 1:
+        //         return "num-reviews-1";
+        //     case 0:
+        //         return "num-reviews-0";
+        //     default:
+        //         break;
+        // }
+
+        if (numReviews >= 5) {
+            return "num-reviews-5";
+        } else if (numReviews === 4) {
+            return "num-reviews-4";
+        } else if (numReviews === 3) {
+            return "num-reviews-3";
+        } else if (numReviews === 2) {
+            return "num-reviews-2";
+        } else if (numReviews === 1) {
+            return "num-reviews-1";
+        } else if (numReviews === 0) {
+            return "num-reviews-0";
         }
     }
 
-    if (reviews && currentUser) {
+    if (reviews && user !== "") {
 
         return (
             <div id="user-profile-reviews">
@@ -99,12 +96,12 @@ const Reviews = (props) => {
                     </div>
                     
                     <div className="user-profile-middle-container">
-                        <h1 className="user-profile-title-name">{currentUser.first_name} {currentUser.last_name[0]}.</h1>
+                        <h1 className="user-profile-title-name">{user.first_name} {user.last_name[0]}.</h1>
                         {/* may need to add a column for city, state */}
                         <p className="user-profile-city">From Oakland, CA</p>
                         <div className="user-profile-stars-num-reviews-container">
                             <MdStar className="user-profile-review-stars"/>
-                            <span className="user-profile-num-reviews"><b className="bold-num-reviews">{currentUser.reviews.length}</b> Reviews</span>
+                            <span className="user-profile-num-reviews"><b className="bold-num-reviews">{reviews.length}</b> Reviews</span>
                         </div>
                     </div>
 
@@ -123,9 +120,9 @@ const Reviews = (props) => {
                         <div className="user-profile-sort-container">
                             <label htmlFor="sort-by-select" className="sort-by-subtitle">Sort by:</label>
                             <select name="sort-by-select" id="sort-by-select" className="sort-by-label" onChange={(e) => setSortBy(e.target.value)}>
-                                <option value="alphabetical" defaultValue>Alphabetical</option>
+                                <option value="" defaultValue>Alphabetical</option>
                                 <option value="rating">Rating</option>
-                                <option value="date">Date</option>
+                                <option value="created_at">Date</option>
                                 <option value="useful">Useful</option>
                                 <option value="funny">Funny</option>
                                 <option value="cool">Cool</option>
@@ -133,22 +130,22 @@ const Reviews = (props) => {
                         </div>
                         {
                             reviews.map( (review, idx) => (
-                                < UserReviewIndexItem review={review} key={idx} />
+                                < UserReviewIndexItem review={review} key={idx} business={review.business} />
                                 ))
                         }
                     </div>
                     <div className="user-reviews-right-container">
-                        <h2 className="about-user">About {currentUser.first_name} {currentUser.last_name[0]}.</h2>
+                        <h2 className="about-user">About {user.first_name} {user.last_name[0]}.</h2>
                         <p className="about-user-subtitles">Rating Distribution</p>
-                        <p className="about-user-rating-distribution-row"><span className="num-stars-background-5" id={checkNumReviews(currentUser.num_reviews[5])}>5 stars</span><span className="num-reviews">{currentUser.num_reviews[5]}</span></p>
-                        <p className="about-user-rating-distribution-row"><span className="num-stars-background-4" id={checkNumReviews(currentUser.num_reviews[4])}>4 stars</span><span className="num-reviews">{currentUser.num_reviews[4]}</span></p>
-                        <p className="about-user-rating-distribution-row"><span className="num-stars-background-3" id={checkNumReviews(currentUser.num_reviews[3])}>3 stars</span><span className="num-reviews">{currentUser.num_reviews[3]}</span></p>
-                        <p className="about-user-rating-distribution-row"><span className="num-stars-background-2" id={checkNumReviews(currentUser.num_reviews[2])}>2 stars</span><span className="num-reviews">{currentUser.num_reviews[2]}</span></p>
-                        <p className="about-user-rating-distribution-row"><span className="num-stars-background-1" id={checkNumReviews(currentUser.num_reviews[1])}>1 stars</span><span className="num-reviews">{currentUser.num_reviews[1]}</span></p>
+                        <p className="about-user-rating-distribution-row"><span className="num-stars-background-5" id={checkNumReviews(user.num_reviews[5])}>5 stars</span><span className="num-reviews">{user.num_reviews[5]}</span></p>
+                        <p className="about-user-rating-distribution-row"><span className="num-stars-background-4" id={checkNumReviews(user.num_reviews[4])}>4 stars</span><span className="num-reviews">{user.num_reviews[4]}</span></p>
+                        <p className="about-user-rating-distribution-row"><span className="num-stars-background-3" id={checkNumReviews(user.num_reviews[3])}>3 stars</span><span className="num-reviews">{user.num_reviews[3]}</span></p>
+                        <p className="about-user-rating-distribution-row"><span className="num-stars-background-2" id={checkNumReviews(user.num_reviews[2])}>2 stars</span><span className="num-reviews">{user.num_reviews[2]}</span></p>
+                        <p className="about-user-rating-distribution-row"><span className="num-stars-background-1" id={checkNumReviews(user.num_reviews[1])}>1 stars</span><span className="num-reviews">{user.num_reviews[1]}</span></p>
                         <p className="about-user-subtitles">Location</p>
                         <p className="about-user-content">Oakland, CA</p>
                         <p className="about-user-subtitles">Smackin' Since</p>
-                        <p className="about-user-content">{convertDate(currentUser.created_at)}</p>
+                        <p className="about-user-content">{convertDate(user.created_at)}</p>
                     </div>
                 </div>
             </div>
