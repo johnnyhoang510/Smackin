@@ -4,4 +4,5 @@ json.array! @reviews.each do |review|
         json.user_last_name review.user.last_name
         json.photo_url url_for(review.business.photos[0])
         json.business review.business
+        json.num_votes review.votes.count
 end

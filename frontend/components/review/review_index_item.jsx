@@ -1,14 +1,34 @@
 import React from "react";
 import { BiUserCircle } from 'react-icons/bi';
 import { Link } from "react-router-dom";
-import { FaEllipsisH } from "react-icons/fa"
-import { useState, useRef } from "react";
+import { FaEllipsisH } from "react-icons/fa";
+import { BsLightbulb } from "react-icons/bs";
+import { useState, useRef, useEffect } from "react";
 import useOutsideClick from "../../util/use_outside_click";
 
 const ReviewIndexItem = (props) => {
-    const { business, currentUser, review, handleDeleteReview } = props;
+    const { business, currentUser, review, handleDeleteReview, createVote, deleteVote, fetchVote } = props;
     const [show, setShow] = useState(false);
+    const [hasVoted, setHasVoted] = useState(false);
+    const [numVotes, setNumVotes] = useState(0);
+    const [vote, setVote] = useState("");
     const ref = useRef();
+
+    useEffect(() => {
+        try {
+            fetchVote(currentUser.id, review.id)
+                .then(res => {
+                    setVote(res.vote)
+                    setHasVoted(true)
+                    setNumVotes(review.num_votes)
+                })
+        } catch (error) {
+            setVote("")
+            setHasVoted(false)
+            setNumVotes(review.num_votes)
+        }
+    }, [])
+    
 
     useOutsideClick(ref, () => {
         if (show) setShow(false);
@@ -34,6 +54,24 @@ const ReviewIndexItem = (props) => {
                 return "review-item-rating-1"
             default:
                 break;
+        }
+    }
+
+    const handleVote = () => {
+        if (!hasVoted && currentUser.id !== review.user_id) {
+            createVote(currentUser.id, review.id)
+                .then((res) => {
+                    setVote(res.vote)
+                    setHasVoted(true)
+                    setNumVotes(numVotes + 1)
+                })
+        } else if (hasVoted && currentUser.id !== review.user_id) {
+            deleteVote(vote.id)
+                .then(() => {
+                    setVote("")
+                    setHasVoted(false)
+                    setNumVotes(numVotes - 1)
+                })
         }
     }
     
@@ -87,6 +125,16 @@ const ReviewIndexItem = (props) => {
                         <p className="review-item-body">{review.body}</p>
                     </div>
 
+                    <button 
+                        id={hasVoted && currentUser.id !== review.user_id ? "voted-button" : ""} 
+                        className={currentUser.id === review.user_id ? "disabled-vote-button" : "vote-button"} 
+                        disabled={currentUser.id === review.user_id ? true : false} 
+                        onClick={(e) => handleVote(e)}
+                    >
+                        <BsLightbulb className="lightbulb" id={hasVoted && currentUser.id !== review.user_id ? "voted-lightbulb" : ""}></BsLightbulb>
+                        <span className="useful-text" id={hasVoted && currentUser.id !== review.user_id ? "voted-text" : ""}>Useful </span>
+                        <span className="review-num-votes" id={hasVoted && currentUser.id !== review.user_id ? "voted-num-votes" : ""}>{numVotes}</span>
+                    </button>
                 </div>
             </div>
         )

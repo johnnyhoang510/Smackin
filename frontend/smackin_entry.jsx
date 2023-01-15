@@ -9,6 +9,7 @@ import Root from "./components/root";
 // import { fetchCurrentUser } from "./util/session_api_util";
 // import { fetchReviewsByUser } from "./actions/review_actions";
 // import { fetchReviews } from "./util/review_api_util";
+// import { createVote, deleteVote, fetchVote } from "./actions/vote_actions";
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.getElementById('root');
@@ -43,6 +44,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // window.deleteReview = deleteReview;
     // window.fetchReviewsByUser = fetchReviewsByUser;
     // window.fetchCurrentUser = fetchCurrentUser;
+    // window.createVote = createVote;
+    // window.deleteVote = deleteVote;
+    // window.fetchVote = fetchVote;
     //TESTING END
 
     ReactDOM.render(<Root store={store} />, root)

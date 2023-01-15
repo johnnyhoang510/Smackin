@@ -10,6 +10,11 @@ Rails.application.routes.draw do
     resources :businesses, only: [:index, :show] do
       resources :reviews, only: [:index, :create, :show, :update, :destroy]
     end
-    
+
+    resources :votes, only: [:show, :create, :destroy] do
+      collection do
+        get :find, to: "votes#find", as: "find"
+      end
+    end
   end
 end
