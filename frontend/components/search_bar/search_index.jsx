@@ -5,6 +5,8 @@ import BusinessMap from "../map/business_map";
 import FilterContainer from "../filter/filter_container";
 import Footer from "../footer/footer";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
 
 const SearchIndex = (props) => {
     const { errors, clearErrors, fetchReviews, fetchBusinesses } = props;
@@ -55,11 +57,12 @@ const SearchIndex = (props) => {
 
     if (businesses) {
         return (
-            <div className="biz-index-item-wrapper">
+            <div>
 
                 <div className="biz-index-container">
 
                     <NavBarContainer />
+                    <Link to="/businesses" className="search-index-all-businesses-link">Browse All Businesses</Link>
 
                     <aside className="biz-index-filters-aside">
                         <FilterContainer />
