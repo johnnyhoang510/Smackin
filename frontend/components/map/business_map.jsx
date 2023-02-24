@@ -14,11 +14,11 @@ class BusinessMap extends React.Component {
         this.map = new google.maps.Map(this.mapNode, MAP_OPTIONS);
         this.MarkerManager = new MarkerManager(this.map);
 
-        this.MarkerManager.updateMarkers(this.props.businesses);
+        this.MarkerManager.updateMarkers(this.props.businesses, this.props.hovering, this.props.hoveringIdx);
     }
 
     componentDidUpdate() {
-        this.MarkerManager.updateMarkers(this.props.businesses);
+        this.MarkerManager.updateMarkers(this.props.businesses, this.props.hovering, this.props.hoveringIdx);
     }
 
     render() {

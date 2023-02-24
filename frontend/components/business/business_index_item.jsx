@@ -4,7 +4,7 @@ import { BiMessage } from "react-icons/bi"
 import { useEffect } from "react";
 
 const BusinessIndexItem = (props) => {
-    const { business, idx, fetchReviews } = props;
+    const { business, idx, fetchReviews, handleHovering } = props;
 
     useEffect(() => {
         fetchReviews(business.id)
@@ -42,7 +42,7 @@ const BusinessIndexItem = (props) => {
 
     if (business) {
         return (
-            <div>
+            <div onMouseEnter={() => handleHovering("mouseEnter", idx)} onMouseLeave={() => handleHovering("mouseLeave", idx)} className="biz-index-item-wrapper">
                 <Link to={`/businesses/${business.id}`} className="biz-index-item">
 
                     <div className="biz-index-item-container">

@@ -1,3 +1,5 @@
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+
 class MarkerManager {
     constructor(map) {
         this.map = map;
@@ -5,7 +7,7 @@ class MarkerManager {
         this.businessObjects = {};
     }
 
-    updateMarkers(businesses) {
+    updateMarkers(businesses, hovering, hoveringIdx) {
         //this will stop markers from being set if there is no search query from fetchBusinesses
         if (!Array.isArray(businesses)) return null;
         let markerKeys = Object.keys(this.markers);
@@ -16,22 +18,55 @@ class MarkerManager {
         })
 
         businesses.forEach(business => this.businessObjects[business.id] = business);
-
+        
         businesses.forEach( (business,idx) => {
             if (!this.markers[business.id]) {
-                this.businessObjects[business.id] = business;
-                this.createMarkerfromBusiness(business, (idx + 1))
+                if (hovering && hoveringIdx === idx + 1) {
+                    this.businessObjects[business.id] = business;
+                    this.createSpecialMarker(business)
+                } else {
+                    this.businessObjects[business.id] = business;
+                    this.createMarkerfromBusiness(business, (idx + 1))
+                }
             }
         })
     }
 
-    createMarkerfromBusiness(business, index) {
+    createSpecialMarker(business) {
         let position = new google.maps.LatLng(business.lat, business.lng);
+
         let marker = new google.maps.Marker({
             position,
             map: this.map,
             businessId: business.id,
-            label: {text: index.toString(), color: 'white'}
+            icon: {
+                path: faStar.icon[4],
+                fillColor: "#ffd700",
+                fillOpacity: 1,
+                anchor: new google.maps.Point(
+                    faStar.icon[0] / 2, // width
+                    faStar.icon[1] // height
+                ),
+                strokeWeight: 1,
+                strokeColor: "#ffd700",
+                scale: 0.075,
+            },
+            animation: google.maps.Animation.BOUNCE
+        })
+
+        this.markers[business.id] = marker;
+        this.markers[business.id].setMap(this.map);
+    }
+
+    createMarkerfromBusiness(business, index) {
+        let position = new google.maps.LatLng(business.lat, business.lng);
+        
+        let marker = new google.maps.Marker({
+            position,
+            map: this.map,
+            businessId: business.id,
+            label: {text: index.toString(), color: 'white'},
+            animation: google.maps.Animation.DROP
         })
         
         this.markers[business.id] = marker;

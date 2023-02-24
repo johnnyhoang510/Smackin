@@ -28,6 +28,10 @@ class User < ApplicationRecord
         foreign_key: :user_id,
         class_name: :Review
 
+    has_many :reviews_voted_on,
+        foreign_key: :user_id,
+        class_name: :Vote
+
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)
         return nil if user.nil?
@@ -53,4 +57,20 @@ class User < ApplicationRecord
         self.session_token ||= SecureRandom::urlsafe_base64
     end
 
+    def set_num_reviews
+        numReviews = {
+            1=>0,
+            2=>0,
+            3=>0,
+            4=>0,
+            5=>0
+        }
+        
+        self.reviews.each do |review|
+            numReviews[review.rating] += 1
+        end
+
+        self.num_reviews = numReviews
+        self.save!
+    end
 end

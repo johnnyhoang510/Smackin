@@ -3,8 +3,12 @@ class Api::BusinessesController < ApplicationController
 
         if params[:query]
             @businesses = Business.includes(:reviews)
-                .where("category ILIKE ? OR name ILIKE ? OR price ILIKE ?",
-                    "%#{params[:query]}%", "%#{params[:query]}%", "#{params[:query]}")
+                .where(
+                    "category ILIKE ? OR 
+                    name ILIKE ? OR 
+                    price ILIKE ?",
+                    "%#{params[:query]}%", "%#{params[:query]}%", "#{params[:query]}"
+                )
             if @businesses.length > 0
                 render :index
             else
@@ -28,9 +32,5 @@ class Api::BusinessesController < ApplicationController
     end
 
 
-    private
-
-    def business_params
-        params.require(:business).permit(:name, :address, :city, :state, :zip_code, :phone_number, :category, :lat, :lng, :photos)
-    end
+    # private
 end

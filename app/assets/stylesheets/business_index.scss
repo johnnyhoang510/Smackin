@@ -15,6 +15,12 @@
     height: 100px;
 }
 
+.search-index-all-businesses-link {
+    position: absolute;
+    margin-left: 241px;
+    color: #2d2e2f;
+}
+
 .biz-index-back-to-homepage {
     display: flex;
     margin-left: -20px;
@@ -185,16 +191,17 @@
     margin-left: 10px;
 }
 
+.biz-index-item-wrapper{
+    width: 800px;
+}
+
 .biz-index-item{
     display: block;
     font-family: 'Poppins','Helvetica Neue',Helvetica,Arial,sans-serif;
     text-decoration: none;
     border: 1px solid #ebebeb;
     border-radius: 4px;
-    width: 50%;
     height: 240px;
-    min-width: 680px;
-    max-width: 800px;
     margin: 15px 35px;
     padding: 24px;
 }
@@ -214,6 +221,7 @@
     margin-top: 3px;
     object-fit: cover;
     border-radius: 4px;
+    image-rendering:auto;
 }
 
 .biz-index-item-inner-container {
@@ -257,6 +265,7 @@
     height: 18px;
     width: 103px;
     margin-left: 21px;
+    image-rendering: pixelated;
 }
 
 .biz-index-item-rating-5 {

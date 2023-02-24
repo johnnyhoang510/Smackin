@@ -78,3 +78,8 @@ export const deleteReview = (reviewId, businessId) => (dispatch) => {
             err => dispatch(receiveReviewErrors(err))
         )
 };
+
+export const fetchReviewsByUser = (userId, filter) => (dispatch) => {
+    return APIReviewUtil.fetchReviewsByUser(userId, filter)
+        .then(data => dispatch(receiveAllReviews(data)))
+}

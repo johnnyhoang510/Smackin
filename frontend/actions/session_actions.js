@@ -56,3 +56,11 @@ export const signup = (formUser) => (dispatch) => {
             err => dispatch(receiveErrors(err.responseJSON))
     )
 };
+
+export const fetchCurrentUser = (userId) => (dispatch) => {
+    return APISessionUtil.fetchCurrentUser(userId)
+        .then(
+            user => dispatch(receiveCurrentUser(user)),
+            err => dispatch(receiveErrors(err.responseJSON))
+        )
+};

@@ -8,12 +8,13 @@ import { useState, useEffect } from "react";
 import { displayUserOnBusiness } from "../../util/display_current_user";
 
 const BusinessShowPage = (props) => {
-    const { business, businessId, currentUser, reviews, fetchBusiness, fetchReviews, logout, deleteReview } = props;
+    const { business, businessId, currentUser, reviews, fetchBusiness, fetchReviews, logout, deleteReview, createVote, deleteVote, fetchVote } = props;
     const [rating, setRating] = useState(0);
     const [numReviews, setNumReviews] = useState(0)
 
     useEffect(() => {
-        fetchBusiness(props.match.params.businessId)
+        window.scrollTo(0, 0);
+        fetchBusiness(props.match.params.businessId);
         getAvgRating();
     }, [])
 
@@ -22,6 +23,10 @@ const BusinessShowPage = (props) => {
         fetchReviews(props.match.params.businessId);
         getAvgRating();
     }, [businessId])
+
+    useEffect(() => {
+        fetchReviews(props.match.params.businessId)
+    }, [numReviews])
     
     const getAvgRating = async () => {
         let reviewRating = 0;
@@ -225,7 +230,15 @@ const BusinessShowPage = (props) => {
 
                 <div className="biz-show-rec-reviews">
                     <div className="biz-show-each-review">
-                        <ReviewIndexContainer business={business} rating={rating} numReviews={numReviews} handleDeleteReview={handleDeleteReview} />
+                        <ReviewIndexContainer 
+                            business={business} 
+                            rating={rating} 
+                            numReviews={numReviews} 
+                            handleDeleteReview={handleDeleteReview} 
+                            createVote={createVote} 
+                            deleteVote={deleteVote} 
+                            fetchVote={fetchVote} 
+                        />
                     </div>
                 </div>
 

@@ -92,7 +92,7 @@ const SignupForm = (props) => {
                         {displayErrors()}
                 </ul>
 
-                <div class="signup-form-image-wrapper">
+                <div className="signup-form-image-wrapper">
                     <form className="form-signup" onKeyDown={(e) => submitHandler(e)}>
                         <h2 className="form-type-title-signup">Sign Up for Smackin'</h2>
 
